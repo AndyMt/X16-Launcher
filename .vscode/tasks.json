@@ -1,0 +1,44 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CC65 make",
+            "type": "shell",
+            "command": "make all",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "(EMU SD) Launch",
+            "type": "shell",
+            "command": "StartSD.cmd",
+            "group": {
+                "kind": "none",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "(BOX16) Launch",
+            "type": "shell",
+            "command": "D:/Projects/RetroComputing/X16/emu/Box16.exe",
+            "args": [
+                "-scale",
+                "2",
+                "-ymstrict"
+            ],
+            "group": {
+                "kind": "none",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        }
+    ]
+}

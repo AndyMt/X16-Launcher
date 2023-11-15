@@ -1,0 +1,43 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "(EMU) Launch",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "D:/Projects/RetroComputing/X16/emu/x16emu.exe",
+            "args": ["-prg", "${workspaceFolder}/out/launcher.prg","-run","-scale","2", "-joy1", "-keymap", "de-ch" ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/out/Testdata",
+            "environment": [],
+            "externalConsole": false
+        },
+        {
+            "name": "(BOX16) Launch",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "D:/Projects/RetroComputing/X16/emuBox16/Box16.exe",
+            "args": ["-prg", "${workspaceFolder}/out/launcher.prg","-run","-scale","2","-ymstrict"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/out",
+            "environment": [],
+            "externalConsole": false
+        },
+        {
+            "name": "(BOX16) standalone",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "D:/Projects/RetroComputing/X16/emuBox16/Box16.exe",
+            "args": ["-scale","2","-ymstrict"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/out",
+            "environment": [],
+            "externalConsole": false
+        }        
+
+    ]
+}

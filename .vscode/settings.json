@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "cbm.h": "c",
+        "vload.h": "c",
+        "dirent.h": "c",
+        "fcntl.h": "c"
+    }
+}

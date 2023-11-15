@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "X16",
+            "includePath": [
+                "D:\\Projects\\RetroComputing\\X16\\cc65\\include/**",
+                "${workspaceFolder}/libX16/include/**",
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+            ],
+            "compilerPath": "D:\\Projects\\RetroComputing\\X16\\cc65\\bin\\cc65",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "${default}"
+        }
+    ],
+    "version": 4
+}
