@@ -37,5 +37,6 @@ static unsigned char ascii_to_x16[] = {             // 0123456789
 extern void __fastcall__ vsync();
 extern int16_t __fastcall__ cbm_k_macptr(unsigned char numbyte, uint8_t* buffer);
 extern void screen_set_charset(unsigned char charset);
-
+extern int8_t check_dos_error();
+extern char dosmsg[80];
 #endif

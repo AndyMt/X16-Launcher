@@ -26,12 +26,12 @@ struct DirEntry
 };
 
 static struct DirEntry arrEntries[50];
-static uint8_t numEntries = 0;
-static uint8_t maxEntries = 50;
+static int8_t numEntries = 0;
+static int8_t maxEntries = 50;
 
-static uint8_t pageSize = 20;
-static uint8_t pageStart = 0;
-static uint8_t pageEnd = 0;
+static int8_t pageSize = 20;
+static int8_t pageStart = 0;
+static int8_t pageEnd = 0;
 
 static char baseDir[80];
 static char buffer[512];
@@ -45,7 +45,8 @@ static char buffer[512];
 /*****************************************************************************/
 // loads with current HiRAM bank = the one we want.
 // Even if it's not, it's the one we're gonna get! :)
-uint16_t bload(char* filename, uint16_t address) {
+uint16_t bload(char* filename, uint16_t address) 
+{
 
 	cbm_k_setlfs(0,8,2);
 	cbm_k_setnam(filename);
@@ -55,10 +56,12 @@ uint16_t bload(char* filename, uint16_t address) {
 /*****************************************************************************/
 // loads to address
 uint16_t load(char* filename, uint16_t address) {
-
+    uint16_t ret = 0;
 	cbm_k_setlfs(0,8,1);
 	cbm_k_setnam(filename);
-	return cbm_k_load(0,address)-address;
+	ret = cbm_k_load(0,address)-address;
+    cbm_k_close(0);
+    return ret;
 }
 
 /*****************************************************************************/
@@ -252,30 +255,64 @@ void launch(char* dir, char* name)
 bool checkFile(char* filename)
 {
     int res = 0;
+    int lfn = 2;
+    int sad = 2;
+    int i=0;
+    char c = 0;
+    char status[4];
+    uint8_t err = 0;
+
+    res = cbm_open(lfn,8,sad,filename);
+    cbm_close(lfn);
+    if (res == 0)
+    {
+        // open command channel to read status
+        res = cbm_open(15, 8, 15, "");
+        if (res == 0)
+        {
+
+            res = cbm_k_chkin(15);
+            while (true)
+            {
+                c = cbm_k_getin();
+                if (cbm_k_readst())
+                    break;
+                if (i < 4)
+                {
+                    status[i] = c;
+                    i++;
+                }
+            }
+            status[i] = 0;
+            cbm_close(15);
+            return status[0]=='0' && status[1]=='0';
+        } 
+    }
+    return 0;
+}
+
+/*****************************************************************************/
+// check if file exists
+bool checkFile_working(char* filename)
+{
+    int res = 0;
     int lfn = 1;
     int sad = 0;
 
     res = cbm_open(lfn,8,0,filename);
     res = cbm_k_chkin(lfn);
-    if (res) 
-    {
-        cbm_k_readst();
-        cbm_k_close(lfn);
-        return false;
-    }
+    if (res) return false;
     res = cbm_k_macptr(4, buffer);
-    cbm_k_readst();
     cbm_k_close(lfn);
 
     return res == 4;    
 }
 
-
 /*****************************************************************************/
 // directory update
-void updateDirList(int selectedIndex)
+void updateDirList(int8_t selectedIndex)
 {
-    uint8_t index=0;
+    int8_t index=0;
     char strName[40];
     char prgName[40];
     char prgPath[80];
@@ -317,12 +354,15 @@ void updateDirList(int selectedIndex)
         bgcolor(index == selectedIndex ? 1 : 6);
 
         gotoxy(4,index-pageStart+3);
+
+
         if (checkFile(prgPath))
             strcpy(strName, " ");
         else if (arrEntries[index].name[1] == '.')
             strcpy(strName, "<");
         else
             strcpy(strName, ">");
+            
         strcat(strName, arrEntries[index].name);
         if (arrEntries[index].name[0] > '9' && arrEntries[index].name[1] != '.')
             strName[1]+=32;
@@ -359,17 +399,11 @@ void showThumbnail(int selectedIndex)
     strcpy(strThumbFile, "");
     strcat(strThumbFile, arrEntries[selectedIndex].name);
     strcat(strThumbFile, "/.thumb.abm");
-    //if (!checkFile(strThumbFile))
-    //{
-    //    return;
-    //}
 
     // load image
     if (!vload(strThumbFile, 8, THUMBNAIL_BUFFER_ADDR))
     {
-        cbm_k_readst();
-        //cbm_k_clall();
-
+        checkFile(strThumbFile);
         return;
     }
     // now copy and stretch
@@ -424,7 +458,7 @@ void showMeta(int selectedIndex)
     uint8_t y = 0;
     uint16_t i = 0;
     bool boPrint = false;
-    
+
     strcpy(strMetaFile, "");
     strcat(strMetaFile, arrEntries[selectedIndex].name);
     strcat(strMetaFile, "/.meta.inf");
@@ -442,10 +476,11 @@ void showMeta(int selectedIndex)
     len = bload(strMetaFile, 0xA000);    
     if (!len)
     {
+        //check_dos_error();
+        checkFile(strMetaFile);
         return;
     }
-
-    // get title, author and description strings
+    // fix upper lower-case
     szMeta[len] = 0;
     for (i=0; i<len; i++)
     {
@@ -455,6 +490,8 @@ void showMeta(int selectedIndex)
         else if (c > 96 && c<96+27)
             szMeta[i]-=32;
     }
+
+    // get title, author and description strings
     for (i=0; i<len; i++)
     {
         if (szMeta[i] == ':')
@@ -478,7 +515,7 @@ void showMeta(int selectedIndex)
             }
         }
     }
-
+    // show information
     gotoxy(32,16);
     printf(szTitle);
     textcolor(15);
@@ -486,6 +523,10 @@ void showMeta(int selectedIndex)
     printf("by: %s", szAuthor);
     textcolor(1);
 
+    if (kbhit())
+        return;
+
+    // show description with word wrap
     len -= (szDesc - szMeta);
     szDesc[len] = 0;
     x = 32;
@@ -498,6 +539,7 @@ void showMeta(int selectedIndex)
             gotoxy(x,y);
             cbm_k_chrout(szDesc[i]);
             x++;
+            // word wrap (crude, but kind of working)
             if (szDesc[i] == ' ' && x > 60)
             {
                 y++;
@@ -505,6 +547,8 @@ void showMeta(int selectedIndex)
             }
         }
     }    
+    textcolor(1);
+    bgcolor(6);    
 }
 
 /*****************************************************************************/
@@ -515,18 +559,34 @@ int navigate()
     int index=arrEntries[0].name[0] == '.' ? 1 : 0;
     textcolor(2);
 
+    if (kbhit())
+        cgetc(); 
+
     while (true)
     {
         updateDirList(index);
         if (!kbhit())
-            showMeta(index);
-        if (!kbhit())
             showThumbnail(index);
+        if (!kbhit())
+            showMeta(index);
         while (!kbhit())
         { }
         key = cgetc();
+        //gotoxy(0,0);
+        //printf("%02X", key);
         switch (key)
         {
+            case 0x13: // home
+                index = 0;
+                pageStart = 0;
+            break;
+            case 0x82: // page up
+                if (index <=0) break;
+                index -= pageSize-1;
+                pageStart -= pageSize-1;
+                if (index < 0)
+                    index = 0;
+            break;
             case 0x91: // up
                 if (index <=0) break;
                 index--;
@@ -536,8 +596,15 @@ int navigate()
             case 0x11: // down
                 if (index >= numEntries-1) break;
                 index++;
-                if (index >= pageEnd)
-                    pageStart++;
+            break;
+            case 0x02: // page down
+                index += pageSize-1;
+                if (index >= numEntries-1)
+                    index = numEntries-1;
+                pageStart += pageSize-1;
+            break;
+            case 0x04: // end
+                index = numEntries-1;
             break;
             case 0x51:
                 screen_set_charset(3);
@@ -548,8 +615,23 @@ int navigate()
                 return index;
             break;
         }
+
+        // check pageing
+        if (pageStart >= numEntries)
+            pageStart = numEntries-pageSize;
+        pageEnd = pageStart + pageSize;
+        if (pageEnd > numEntries)
+        {
+            pageEnd = numEntries;
+            pageStart = pageEnd - pageSize;
+        }
+        if (index >= pageEnd)
+            pageStart = index - pageSize+1;
+        if (pageStart < 0)
+            pageStart = 0;
+        pageEnd = pageStart + pageSize;
     }
-   
+
 }
 
 /*****************************************************************************/
@@ -584,23 +666,6 @@ void drawLayout()
     }
 
     bgcolor(6);
-}
-
-/*****************************************************************************/
-// check if file exists
-bool checkFile_working(char* filename)
-{
-    int res = 0;
-    int lfn = 2;
-    int sad = 0;
-
-    res = cbm_open(lfn,8,0,filename);
-    res = cbm_k_chkin(lfn);
-    if (res) return false;
-    res = cbm_k_macptr(4, buffer);
-    cbm_k_close(lfn);
-
-    return res == 4;    
 }
 
 /*****************************************************************************/
@@ -646,6 +711,15 @@ int main(int argc, char *argv[])
     char prgPath[80];
     baseDir[0]=0;
     //strcpy(baseDir,"games/");
+
+/*     clrscr();
+    checkFile("launcher.prg");
+    checkFile("err.prg");
+    checkFile("launcher.prg");
+    checkFile("err.prg");
+
+    while(!kbhit())     {}
+return 0; */
 
     SetupScreenMode(MAIN_SCREEN_TXT_ADDR, MAIN_FONT_ADDR);
 
