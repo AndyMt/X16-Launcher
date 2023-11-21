@@ -120,50 +120,29 @@ ret:            rts
     ldx #0
     stx row
 
-    lda THUMBNAIL_BASE_ADDR ; base address for sprites
+    lda #<THUMBNAIL_BASE_ADDR ; base address for sprites
     sta addr
-    lda >THUMBNAIL_BASE_ADDR ; base address for sprites
+    lda #>THUMBNAIL_BASE_ADDR 
     sta addr+1
 
-    lda THUMBNAIL_BUFFER_ADDR
-    sta offset
-    lda >THUMBNAIL_BUFFER_ADDR
-    sta offset+1
+    lda #<THUMBNAIL_BUFFER_ADDR
+    sta start
+    lda #>THUMBNAIL_BUFFER_ADDR
+    sta start+1
+
 row_loop:       
 
-    ; ; select ADDRESEL 1 = offset
-    ; lda VERA_ctrl
-    ; ora #$01
-    ; sta VERA_ctrl
-    ; ; store vram address (1=offset)
-    ; lda #$10
-    ; sta VERA_addr_bank      ; always 0 + inc 1
-    ; lda offset+1
-    ; sta VERA_addr_high
-    ; lda offset
-    ; sta VERA_addr_low
+    ; copy start offset 
+    lda start
+    sta offset
+    lda start+1
+    sta offset+1
 
-
-    ; ; select ADDRESEL 0 = addr in sprite data
-    ; lda VERA_ctrl
-    ; and #$fe
-    ; sta VERA_ctrl
-    ; ; store addr (0=addr)
-    ; lda #$10
-    ; sta VERA_addr_bank      ; always 0 + inc 1
-    ; lda addr+1
-    ; sta VERA_addr_high
-    ; lda addr
-    ; sta VERA_addr_low
-
-    ldy #0
-y_loop:                     ; using y register for counting exclusively
-
-    ; select ADDRESEL 1 = offset
+        ; select ADDRESEL 1 = offset
     lda VERA_ctrl
     ora #$01
     sta VERA_ctrl
-    ; store addr (1=offset)
+    ; store vram address (1=offset)
     lda #$10
     sta VERA_addr_bank      ; always 0 + inc 1
     lda offset+1
@@ -171,7 +150,8 @@ y_loop:                     ; using y register for counting exclusively
     lda offset
     sta VERA_addr_low
 
-    ; select ADDRESEL 0 = addr
+
+    ; select ADDRESEL 0 = addr in sprite data
     lda VERA_ctrl
     and #$fe
     sta VERA_ctrl
@@ -183,8 +163,31 @@ y_loop:                     ; using y register for counting exclusively
     lda addr
     sta VERA_addr_low
 
+    ldy #0
+y_loop:                     ; using y register for counting exclusively
+
+    ; select ADDRESEL 1 = offset
+    lda VERA_ctrl
+    ora #$01
+    sta VERA_ctrl
+    ; store addr (1=offset)
+    lda offset+1
+    sta VERA_addr_high
+    lda offset
+    sta VERA_addr_low
+
+    ; select ADDRESEL 0 = addr
+    lda VERA_ctrl
+    and #$fe
+    sta VERA_ctrl
+    ; store addr (0=addr)
+    lda addr+1
+    sta VERA_addr_high
+    lda addr
+    sta VERA_addr_low
+
     .repeat 32
-    lda #15; VERA_data1
+    lda VERA_data1
     sta VERA_data0
     sta VERA_data0
     .endrepeat
@@ -213,24 +216,15 @@ y_loop:                     ; using y register for counting exclusively
     jmp y_loop
 exit_y_loop:
 
-    ; increment row offset by $1800
     clc
-    lda #$18
-    adc addr+1
-    sta addr+1
-    ; increment addr by 32
-    clc
-    lda #32
-    adc offset
-    sta offset
-    lda #0                  ; carry over to high byte
-    adc offset+1
-    sta offset+1
+    lda start
+    adc #32
+    sta start
 
     ldx row
     inx
     stx row
-    cpx #4; #4
+    cpx #1; #4
     bcs exit_row_loop
     jmp row_loop
 exit_row_loop:
@@ -244,6 +238,7 @@ row:        .byte 0
 _s_addr:
 addr:       .word 0
 _s_offset:
+start:      .word 0     ; start of bitmap data offsets
 offset:     .word 0
 
 .bss

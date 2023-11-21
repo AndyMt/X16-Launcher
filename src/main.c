@@ -488,6 +488,9 @@ void showThumbnail(int selectedIndex)
     }
  */
     split_thumbnail();
+    gotoxy(0, 0);
+    printf("addr: %04X\r\n", s_addr);
+    printf("offs: %04X\r\n", s_offset);
 
     createSprite(2, 64,64, xOffset,    yOffset, THUMBNAIL_BASE_ADDR, NULL);
     createSprite(4, 64,64, xOffset+64, yOffset, THUMBNAIL_BASE_ADDR+6144, NULL);
