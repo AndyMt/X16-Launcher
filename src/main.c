@@ -435,8 +435,6 @@ void showThumbnail(int selectedIndex)
     int x = 0;
     int c = 0;
     unsigned char pixelValue = 0;
-    uint16_t addr = THUMBNAIL_BASE_ADDR;
-    uint16_t offset = THUMBNAIL_BUFFER_ADDR;
     char strThumbFile[40];
 
     // hide all sprites
@@ -455,7 +453,7 @@ void showThumbnail(int selectedIndex)
     // load image
     if (!vload(strThumbFile, 8, THUMBNAIL_BUFFER_ADDR))
     {
-        //checkFile(strThumbFile);
+        checkFile(strThumbFile);
         return;
     }
 
