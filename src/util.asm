@@ -125,7 +125,7 @@ ret:            rts
     lda #>THUMBNAIL_BASE_ADDR 
     sta addr+1
 
-    lda #<THUMBNAIL_BUFFER_ADDR
+    lda #<THUMBNAIL_BUFFER_ADDR ; base address for bitmap data
     sta start
     lda #>THUMBNAIL_BUFFER_ADDR
     sta start+1
@@ -138,7 +138,7 @@ row_loop:
     lda start+1
     sta offset+1
 
-        ; select ADDRESEL 1 = offset
+    ; select ADDRESEL 1 = offset
     lda VERA_ctrl
     ora #$01
     sta VERA_ctrl
@@ -149,7 +149,6 @@ row_loop:
     sta VERA_addr_high
     lda offset
     sta VERA_addr_low
-
 
     ; select ADDRESEL 0 = addr in sprite data
     lda VERA_ctrl
@@ -224,7 +223,7 @@ exit_y_loop:
     ldx row
     inx
     stx row
-    cpx #1; #4
+    cpx #4;
     bcs exit_row_loop
     jmp row_loop
 exit_row_loop:
