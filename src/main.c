@@ -26,6 +26,7 @@ struct DirEntry
     char name[32];
     char type[8];
     bool hasPrg;
+    bool isDir;
 };
 
 static struct DirEntry arrEntries[50];
@@ -243,6 +244,7 @@ int getDirectoryList(char* dir)
             {
                 strcpy(type, "prg");
                 arrEntries[index].hasPrg = false;
+                arrEntries[index].isDir = false;
             }
 
             strcpy(arrEntries[index].name, name);
@@ -250,6 +252,7 @@ int getDirectoryList(char* dir)
 
             if (isDir)
             {
+                arrEntries[index].isDir = true;
                 // check if there is a PRG of identical name in that folder
                 strcpy(prgName, name);
                 strcat(prgName, ".prg");
@@ -274,16 +277,12 @@ int getDirectoryList(char* dir)
 // launch program
 void launchPrg(char* name)
 {
-    int i=0;
-    
     while (kbhit()) cgetc();  // eat all keypresses before launching anything
 
     // hide all sprites
     videomode(VIDEOMODE_80x30);
-    for (i = 0; i < 10; i++)
-    {
-        hideSprite(i);
-    }    
+    hideAllSprites();
+
     // restore color and screen
     textcolor(6);
     bgcolor(6);
@@ -310,16 +309,12 @@ void launchPrg(char* name)
 // launch program in diretory
 void launch(char* dir, char* name)
 {
-    int i=0;
-    
     while (kbhit()) cgetc();  // eat all keypresses before launching anything
 
     // hide all sprites
     videomode(VIDEOMODE_80x30);
-    for (i = 0; i < 10; i++)
-    {
-        hideSprite(i);
-    }    
+    hideAllSprites();
+
     // restore color and screen
     textcolor(6);
     bgcolor(6);
@@ -422,6 +417,8 @@ void updateDirList(int8_t selectedIndex)
     int8_t index=0;
     char strName[40];
 
+    // hide all sprites
+    hideAllSprites();
 
     if (numEntries <= maxEntries)
         pageEnd = pageStart + pageSize;
@@ -490,11 +487,12 @@ void showThumbnail(int selectedIndex)
     unsigned char pixelValue = 0;
     char strThumbFile[40];
 
+    if (!arrEntries[selectedIndex].hasPrg && !arrEntries[selectedIndex].isDir)
+        return;
+
     // hide all sprites
-    for (c = 0; c < 10; c++)
-    {
-        hideSprite(c);
-    }    
+    hideAllSprites();
+   
     // don't show anything on the ".." (parent folder) entry
     if (arrEntries[selectedIndex].name[0] == '.')
         return;
@@ -506,11 +504,14 @@ void showThumbnail(int selectedIndex)
     // load image
     if (!vload(strThumbFile, 8, THUMBNAIL_BUFFER_ADDR))
     {
-        checkFile(strThumbFile);
+        //check_dos_error();
+        //checkFile(strThumbFile);
         return;
     }
 
     split_thumbnail();
+
+    //if (kbhit()) cgetc();
 
     createSprite(2, 64,64, xOffset,    yOffset, THUMBNAIL_BASE_ADDR, NULL);
     createSprite(4, 64,64, xOffset+64, yOffset, THUMBNAIL_BASE_ADDR+6144, NULL);
@@ -520,48 +521,7 @@ void showThumbnail(int selectedIndex)
     createSprite(5, 64,32, xOffset+64, yOffset+64, THUMBNAIL_BASE_ADDR+6144+4096, NULL);
     createSprite(7, 64,32, xOffset+128,yOffset+64, THUMBNAIL_BASE_ADDR+6144*2+4096, NULL);
     createSprite(9, 64,32, xOffset+192,yOffset+64, THUMBNAIL_BASE_ADDR+6144*3+4096, NULL);
-}
 
-void showThumbnail_test(int selectedIndex)
-{
-    int xOffset = 256+8;
-    int yOffset = 16+4;
-    int y = 0;
-    int x = 0;
-    int c = 0;
-    unsigned char pixelValue = 0;
-    uint16_t addr = THUMBNAIL_BASE_ADDR;
-    uint16_t offset = THUMBNAIL_BUFFER_ADDR;
-    char strThumbFile[40];
-
-    // hide all sprites
-    for (c = 0; c < 10; c++)
-    {
-        hideSprite(c);
-    }    
-    // don't show anything on the ".." (parent folder) entry
-    if (arrEntries[selectedIndex].name[0] == '.')
-        return;
-
-    strcpy(strThumbFile, "");
-    strcat(strThumbFile, arrEntries[selectedIndex].name);
-    strcat(strThumbFile, "/.thumb.abm");
-
-    // load image
-    if (!vload(strThumbFile, 8, THUMBNAIL_BASE_ADDR))
-    {
-        //checkFile(strThumbFile);
-        return;
-    }
-
-    createSprite(2, 64,64, xOffset,    yOffset, THUMBNAIL_BASE_ADDR, NULL);
-    createSprite(4, 64,64, xOffset+64, yOffset, THUMBNAIL_BASE_ADDR+6144, NULL);
-    createSprite(6, 64,64, xOffset+128,yOffset, THUMBNAIL_BASE_ADDR+6144*2, NULL);
-    createSprite(8, 64,64, xOffset+192,yOffset, THUMBNAIL_BASE_ADDR+6144*3, NULL);
-    createSprite(3, 64,32, xOffset,    yOffset+64, THUMBNAIL_BASE_ADDR+4096, NULL);
-    createSprite(5, 64,32, xOffset+64, yOffset+64, THUMBNAIL_BASE_ADDR+6144*1+4096, NULL);
-    createSprite(7, 64,32, xOffset+128,yOffset+64, THUMBNAIL_BASE_ADDR+6144*2+4096, NULL);
-    createSprite(9, 64,32, xOffset+192,yOffset+64, THUMBNAIL_BASE_ADDR+6144*3+4096, NULL);
 }
 
 /*****************************************************************************/
@@ -582,6 +542,9 @@ void showMeta(int selectedIndex)
     uint8_t y = 0;
     uint16_t i = 0;
     bool boPrint = false;
+
+    if (!arrEntries[selectedIndex].hasPrg && !arrEntries[selectedIndex].isDir)
+        return;
 
     strcpy(strMetaFile, "");
     strcat(strMetaFile, arrEntries[selectedIndex].name);
@@ -682,6 +645,9 @@ void showMeta(int selectedIndex)
     }    
     textcolor(1);
     bgcolor(6);    
+
+    //if (kbhit()) cgetc();
+
 }
 
 /*****************************************************************************/
@@ -702,13 +668,21 @@ int navigate()
             showMeta(index);
         if (!kbhit())
             showThumbnail(index);
+
+
         while (!kbhit())
         { }
         key = cgetc();
+
+        while (kbhit()) cgetc();         
+
         //gotoxy(0,0);
         //printf("%02X", key);
         switch (key)
         {
+            case 0x1B: // esc
+                return -1;
+            break;
             case 0x13: // home
                 index = 0;
                 pageStart = 0;
@@ -739,10 +713,6 @@ int navigate()
             case 0x04: // end
                 index = numEntries-1;
             break;
-            case 0x51:
-                screen_set_charset(3);
-                videomode(VIDEOMODE_80x30);
-                return -1;
             case 0x0D: // enter key
                 screen_set_charset(3);
                 return index;
@@ -791,7 +761,6 @@ void drawLayout()
 
     gotoxy(4,23);
     printf(" use arrow keys + enter ");
-  //printf(" Launch:                ");
 
     // background for thumbnail
     bgcolor(0);
@@ -805,6 +774,10 @@ void drawLayout()
     bgcolor(6);
     gotoxy(6,3);
     printf("loading...");
+
+    textcolor(15);
+    gotoxy(4,25);
+    printf("Launcher (c) by AndyMt");
 }
 
 /*****************************************************************************/
@@ -818,8 +791,11 @@ bool changeDir(char* directory)
 
     strcpy(command,"cd:");
     strcat(command, directory);
+
+checkFile(directory);
     res = cbm_open(lfn,8,sad,command);
     cbm_k_close(lfn);
+checkFile(directory);
 
     return res == 4;    
 }
@@ -834,16 +810,6 @@ int main(int argc, char *argv[])
     char prgName[40];
     char prgPath[80];
     baseDir[0]=0;
-    //strcpy(baseDir,"games/");
-
-/*     clrscr();
-    checkFile("launcher.prg");
-    checkFile("err.prg");
-    checkFile("launcher.prg");
-    checkFile("err.prg");
-
-    while(!kbhit())     {}
-return 0; */
 
     SetupScreenMode();
 
@@ -858,12 +824,14 @@ repeat:
     getDirectoryList(baseDir);    
     index = navigate();
     if (index == -1)
+    {
+        hideAllSprites();
+        screen_set_charset(3);
+        videomode(VIDEOMODE_80x30);
         return 0;
-
+    }
     
     strcpy(prgName, arrEntries[index].name);
-    gotoxy(0,0);
-    printf(prgName);
 
     if (arrEntries[index].type[0] == 'd') // selected a directory
     {

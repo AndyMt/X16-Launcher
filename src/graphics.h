@@ -21,6 +21,7 @@ extern void setSpriteBitmap(uint8_t index, uint32_t addr);
 extern void setSpritePosition(uint8_t index, uint16_t px, uint16_t py);
 extern void showSprite(uint8_t index);
 extern void hideSprite(uint8_t index);
+extern void hideAllSprites();
 extern int SetupScreenMode();
 
 #endif

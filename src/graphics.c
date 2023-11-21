@@ -184,3 +184,14 @@ int SetupScreenMode()
     return 1;
 
 }
+
+/*****************************************************************************/
+// hide all sprites
+void hideAllSprites()
+{
+    uint8_t i;
+    for (i = 0; i < 10; i++)
+    {
+        hideSprite(i);
+    }   
+}

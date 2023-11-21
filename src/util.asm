@@ -110,7 +110,7 @@ errloop:        jsr GETIN
                 sta _dosmsg,y
                 ldx #$0f
                 jsr CLOSE
-;                jsr CLALL
+                ;jsr CLALL
                 lda #$01
 ret:            rts
 .endproc
