@@ -19,6 +19,7 @@ clean:
 	del .\out\*.prg .\src\*.o
 
 copy:
+	cp .\out\launcher.prg .\out\Testdata\LAUNCHER.PRG
 	cp .\out\launcher.prg .\out\Testdata\AUTOBOOT.X16
 	cp .\out\launcher.prg E:\LAUNCHER.PRG
 	cp .\out\launcher.prg E:\AUTOBOOT.X16

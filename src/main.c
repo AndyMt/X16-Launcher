@@ -12,6 +12,8 @@
 #include "graphics.h"
 #include "util.h"
 
+/*****************************************************************************/
+
 extern void LaunchPrg();
 extern uint8_t res1;
 extern uint8_t res2;
@@ -37,10 +39,8 @@ static int8_t pageEnd = 0;
 static char baseDir[80];
 static char buffer[512];
 
-
-
 /*****************************************************************************/
-// set RAM bank#define RAM_BANK        (*(unsigned char *)0x00)
+// set RAM bank
 #define setHighBank(bank) RAM_BANK = bank;
 
 /*****************************************************************************/
@@ -175,7 +175,7 @@ bool checkFile(char* filename)
 
 /*****************************************************************************/
 // list directory
-int listDirectory(char* dir)
+int getDirectoryList(char* dir)
 {
     uint16_t len = 0;
     uint16_t pos = 0;
@@ -188,6 +188,8 @@ int listDirectory(char* dir)
     static char strDirLoad[85];
     char prgName[30];
     char prgPath[100];    
+    bool isDir = false;
+    bool isPrg = false;
 
     if (dir[0])
     {
@@ -231,22 +233,34 @@ int listDirectory(char* dir)
         memcpy(type, pBuffer+start, count);
         type[count] = 0;
 
-        // only take files of type "dir"
-        if (type[0] == 'd' && name[1] != 0)
+        isPrg = strstr(name, ".prg");
+        isDir = type[0] == 'd';
+
+        // only take files of type "dir" and "prg"
+        if (name[1] != 0 && (isPrg || isDir) )
         {
+            if (isPrg)
+            {
+                strcpy(type, "prg");
+                arrEntries[index].hasPrg = false;
+            }
+
             strcpy(arrEntries[index].name, name);
             strcpy(arrEntries[index].type, type);
 
-            // check if there is a PRG of identical name in that folder
-            strcpy(prgName, name);
-            strcat(prgName, ".prg");
+            if (isDir)
+            {
+                // check if there is a PRG of identical name in that folder
+                strcpy(prgName, name);
+                strcat(prgName, ".prg");
 
-            strcpy(prgPath, "");
-            strcat(prgPath, name);
-            strcat(prgPath, "/");
-            strcat(prgPath, prgName);
+                strcpy(prgPath, "");
+                strcat(prgPath, name);
+                strcat(prgPath, "/");
+                strcat(prgPath, prgName);
 
-            arrEntries[index].hasPrg = checkFile(prgPath);                
+                arrEntries[index].hasPrg = checkFile(prgPath);                
+            }
 
             index++;
         }
@@ -258,9 +272,47 @@ int listDirectory(char* dir)
 
 /*****************************************************************************/
 // launch program
+void launchPrg(char* name)
+{
+    int i=0;
+    
+    while (kbhit()) cgetc();  // eat all keypresses before launching anything
+
+    // hide all sprites
+    videomode(VIDEOMODE_80x30);
+    for (i = 0; i < 10; i++)
+    {
+        hideSprite(i);
+    }    
+    // restore color and screen
+    textcolor(6);
+    bgcolor(6);
+    clrscr();
+
+    // print load command on screen"
+    gotoxy(0,6);
+    printf("load\"");
+    printf(name);
+    printf("\",8,1");
+
+    // print run command
+    gotoxy(0,11);
+    printf("run");
+
+    gotoxy(0,4);
+    __asm__("lda #13");
+    __asm__("jsr $fec3");
+    __asm__("lda #13");
+    __asm__("jsr $fec3");
+}
+
+/*****************************************************************************/
+// launch program in diretory
 void launch(char* dir, char* name)
 {
     int i=0;
+    
+    while (kbhit()) cgetc();  // eat all keypresses before launching anything
 
     // hide all sprites
     videomode(VIDEOMODE_80x30);
@@ -295,9 +347,8 @@ void launch(char* dir, char* name)
     gotoxy(0,11);
     printf("run");
 
-    // TRICK: put 3x "enter" key into keyboard buffer
+    // TRICK: put a number of "enter" keys into keyboard buffer
     gotoxy(0,0);
-
     __asm__("lda #13");
     __asm__("jsr $fec3");
     __asm__("lda #13");
@@ -407,6 +458,8 @@ void updateDirList(int8_t selectedIndex)
             strcpy(strName, " ");
             arrEntries[index].hasPrg = true;
         }
+        else if (arrEntries[index].type[0] == 'p')
+            strcpy(strName, " ");
         else if (arrEntries[index].name[1] == '.')
             strcpy(strName, "<");
         else
@@ -750,6 +803,8 @@ void drawLayout()
     }
 
     bgcolor(6);
+    gotoxy(6,3);
+    printf("loading...");
 }
 
 /*****************************************************************************/
@@ -800,27 +855,39 @@ repeat:
     clrscr();
     screen_set_charset(3);
     drawLayout();
-    listDirectory(baseDir);    
+    getDirectoryList(baseDir);    
     index = navigate();
     if (index == -1)
         return 0;
+
+    
     strcpy(prgName, arrEntries[index].name);
-    strcat(prgName, ".prg");
+    gotoxy(0,0);
+    printf(prgName);
 
-    strcpy(prgPath, "");
-    strcat(prgPath, arrEntries[index].name);
-    strcat(prgPath, "/");
-    strcat(prgPath, prgName);
-
-    if (checkFile(prgPath)) // program file exists => launch it
+    if (arrEntries[index].type[0] == 'd') // selected a directory
     {
-        launch(arrEntries[index].name, prgName);
-        return 0;
+        strcat(prgName, ".prg");
+
+        strcpy(prgPath, "");
+        strcat(prgPath, arrEntries[index].name);
+        strcat(prgPath, "/");
+        strcat(prgPath, prgName);
+
+        if (checkFile(prgPath)) // program file exists => launch it
+        {
+            launch(arrEntries[index].name, prgName);
+            return 0;
+        }
+        else // change directory
+        {
+            changeDir(arrEntries[index].name);
+            goto repeat;
+        }
     }
-    else // change directory
+    else // launch prg in current directory
     {
-        changeDir(arrEntries[index].name);
-        goto repeat;
+        launchPrg(prgName); 
     }
     return 0;
 }
