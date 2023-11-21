@@ -23,6 +23,7 @@ struct DirEntry
 {
     char name[32];
     char type[8];
+    bool hasPrg;
 };
 
 static struct DirEntry arrEntries[50];
@@ -131,6 +132,46 @@ int lastSpace(char* buf, uint16_t start, uint16_t len)
     return 0xFFFF;
 }
 
+/*****************************************************************************/
+// check if file exists
+bool checkFile(char* filename)
+{
+    int res = 0;
+    int lfn = 2;
+    int sad = 2;
+    int i=0;
+    char c = 0;
+    char status[4];
+    uint8_t err = 0;
+
+    res = cbm_open(lfn,8,sad,filename);
+    cbm_close(lfn);
+    if (res == 0)
+    {
+        // open command channel to read status
+        res = cbm_open(15, 8, 15, "");
+        if (res == 0)
+        {
+
+            res = cbm_k_chkin(15);
+            while (true)
+            {
+                c = cbm_k_getin();
+                if (cbm_k_readst())
+                    break;
+                if (i < 4)
+                {
+                    status[i] = c;
+                    i++;
+                }
+            }
+            status[i] = 0;
+            cbm_close(15);
+            return status[0]=='0' && status[1]=='0';
+        } 
+    }
+    return 0;
+}
 
 /*****************************************************************************/
 // list directory
@@ -145,6 +186,9 @@ int listDirectory(char* dir)
     static char name[32];
     static char type[8];
     static char strDirLoad[85];
+    char prgName[30];
+    char prgPath[100];    
+
     if (dir[0])
     {
         strcpy(strDirLoad, "$//");
@@ -192,6 +236,18 @@ int listDirectory(char* dir)
         {
             strcpy(arrEntries[index].name, name);
             strcpy(arrEntries[index].type, type);
+
+            // check if there is a PRG of identical name in that folder
+            strcpy(prgName, name);
+            strcat(prgName, ".prg");
+
+            strcpy(prgPath, "");
+            strcat(prgPath, name);
+            strcat(prgPath, "/");
+            strcat(prgPath, prgName);
+
+            arrEntries[index].hasPrg = checkFile(prgPath);                
+
             index++;
         }
     }    
@@ -252,7 +308,7 @@ void launch(char* dir, char* name)
 
 /*****************************************************************************/
 // check if file exists
-bool checkFile(char* filename)
+bool checkFile_working(char* filename)
 {
     int res = 0;
     int lfn = 2;
@@ -293,7 +349,7 @@ bool checkFile(char* filename)
 
 /*****************************************************************************/
 // check if file exists
-bool checkFile_working(char* filename)
+bool checkFile_mac(char* filename)
 {
     int res = 0;
     int lfn = 1;
@@ -314,8 +370,7 @@ void updateDirList(int8_t selectedIndex)
 {
     int8_t index=0;
     char strName[40];
-    char prgName[40];
-    char prgPath[80];
+
 
     if (numEntries <= maxEntries)
         pageEnd = pageStart + pageSize;
@@ -326,7 +381,6 @@ void updateDirList(int8_t selectedIndex)
     bgcolor(15);
 
     gotoxy(4,2);
-    printf(" Launch:                ");
     if (pageStart > 0)
     {
         gotoxy(27,2);
@@ -342,22 +396,17 @@ void updateDirList(int8_t selectedIndex)
     bgcolor(6);
     for (index = pageStart; index < pageEnd; index++)
     {
-        strcpy(prgName, arrEntries[index].name);
-        strcat(prgName, ".prg");
-
-        strcpy(prgPath, "");
-        strcat(prgPath, arrEntries[index].name);
-        strcat(prgPath, "/");
-        strcat(prgPath, prgName);
-
         textcolor(index == selectedIndex ? 6 : 1);
         bgcolor(index == selectedIndex ? 1 : 6);
 
         gotoxy(4,index-pageStart+3);
 
 
-        if (checkFile(prgPath))
+        if (arrEntries[index].hasPrg)
+        {
             strcpy(strName, " ");
+            arrEntries[index].hasPrg = true;
+        }
         else if (arrEntries[index].name[1] == '.')
             strcpy(strName, "<");
         else
@@ -380,6 +429,78 @@ void updateDirList(int8_t selectedIndex)
 //  and distributes it to 6 sprites (2 of 64x64 and 4 of 32x32)
 void showThumbnail(int selectedIndex)
 {
+    uint16_t xOffset = 256+8;
+    uint16_t yOffset = 16+4;
+    int y = 0;
+    int x = 0;
+    int c = 0;
+    unsigned char pixelValue = 0;
+    uint16_t addr = THUMBNAIL_BASE_ADDR;
+    uint16_t offset = THUMBNAIL_BUFFER_ADDR;
+    char strThumbFile[40];
+
+    // hide all sprites
+    for (c = 0; c < 10; c++)
+    {
+        hideSprite(c);
+    }    
+    // don't show anything on the ".." (parent folder) entry
+    if (arrEntries[selectedIndex].name[0] == '.')
+        return;
+
+    strcpy(strThumbFile, "");
+    strcat(strThumbFile, arrEntries[selectedIndex].name);
+    strcat(strThumbFile, "/.thumb.abm");
+
+    // load image
+    if (!vload(strThumbFile, 8, THUMBNAIL_BUFFER_ADDR))
+    {
+        //checkFile(strThumbFile);
+        return;
+    }
+/*     
+    // now copy and stretch
+    for (c = 0; c < 4; c++)
+    {
+        if (kbhit())
+            return;
+        addr = THUMBNAIL_BASE_ADDR+c*6144;
+        offset = THUMBNAIL_BUFFER_ADDR+c*32;
+        VERA.control = VERA.control | 0x01;
+        SET_VERA_ADDR(offset);
+        VERA.control = VERA.control & 0xFE;
+        SET_VERA_ADDR(addr);
+        for (y = 0; y < 96; y++)
+        {
+            VERA.control = VERA.control | 0x01;
+            SET_VERA_ADDR_SHORT(offset);
+            VERA.control = VERA.control & 0xFE;
+            SET_VERA_ADDR_SHORT(addr);
+            for (x=0; x<32; x++)
+            {
+                pixelValue = VERA.data1;
+                VERA.data0 = pixelValue;
+                VERA.data0 = pixelValue;
+            }
+            addr += 64;
+            offset += 128;
+        }
+    }
+ */
+    split_thumbnail();
+
+    createSprite(2, 64,64, xOffset,    yOffset, THUMBNAIL_BASE_ADDR, NULL);
+    createSprite(4, 64,64, xOffset+64, yOffset, THUMBNAIL_BASE_ADDR+6144, NULL);
+    createSprite(6, 64,64, xOffset+128,yOffset, THUMBNAIL_BASE_ADDR+6144*2, NULL);
+    createSprite(8, 64,64, xOffset+192,yOffset, THUMBNAIL_BASE_ADDR+6144*3, NULL);
+    createSprite(3, 64,32, xOffset,    yOffset+64, THUMBNAIL_BASE_ADDR+4096, NULL);
+    createSprite(5, 64,32, xOffset+64, yOffset+64, THUMBNAIL_BASE_ADDR+6144+4096, NULL);
+    createSprite(7, 64,32, xOffset+128,yOffset+64, THUMBNAIL_BASE_ADDR+6144*2+4096, NULL);
+    createSprite(9, 64,32, xOffset+192,yOffset+64, THUMBNAIL_BASE_ADDR+6144*3+4096, NULL);
+}
+
+void showThumbnail_test(int selectedIndex)
+{
     int xOffset = 256+8;
     int yOffset = 16+4;
     int y = 0;
@@ -395,39 +516,19 @@ void showThumbnail(int selectedIndex)
     {
         hideSprite(c);
     }    
+    // don't show anything on the ".." (parent folder) entry
+    if (arrEntries[selectedIndex].name[0] == '.')
+        return;
 
     strcpy(strThumbFile, "");
     strcat(strThumbFile, arrEntries[selectedIndex].name);
     strcat(strThumbFile, "/.thumb.abm");
 
     // load image
-    if (!vload(strThumbFile, 8, THUMBNAIL_BUFFER_ADDR))
+    if (!vload(strThumbFile, 8, THUMBNAIL_BASE_ADDR))
     {
-        checkFile(strThumbFile);
+        //checkFile(strThumbFile);
         return;
-    }
-    // now copy and stretch
-    for (c = 0; c < 4; c++)
-    {
-        if (kbhit())
-            return;
-        addr = THUMBNAIL_BASE_ADDR+c*6144;
-        offset = THUMBNAIL_BUFFER_ADDR+c*32;
-        for (y = 0; y < 96; y++)
-        {
-            VERA.control = VERA.control | 0x01;
-            SET_VERA_ADDR(offset);
-            VERA.control = VERA.control & 0xFE;
-            SET_VERA_ADDR(addr);
-            for (x=0; x<32; x++)
-            {
-                pixelValue = VERA.data1;
-                VERA.data0 = pixelValue;
-                VERA.data0 = pixelValue;
-            }
-            addr += 64;
-            offset += 128;
-        }
     }
 
     createSprite(2, 64,64, xOffset,    yOffset, THUMBNAIL_BASE_ADDR, NULL);
@@ -448,7 +549,7 @@ void showMeta(int selectedIndex)
 {
     char strMetaFile[40];
     uint16_t len = 0;
-    char* szMeta = 0xA000;
+    char* szMeta = (char*)0xA000;
     char* szTitle = 0;
     char* szAuthor = 0;
     char* szDesc = 0;
@@ -473,11 +574,20 @@ void showMeta(int selectedIndex)
         gotoxy(32,16+i);
         printf("                                      ");
     }
+
+    // don't show anything on the ".." (parent folder) entry
+    if (arrEntries[selectedIndex].name[0] == '.')
+    {
+        gotoxy(32,16);
+        printf("Navigate to parent directory.");
+        return;
+    }
+
     len = bload(strMetaFile, 0xA000);    
     if (!len)
     {
         //check_dos_error();
-        checkFile(strMetaFile);
+        //checkFile(strMetaFile);
         return;
     }
     // fix upper lower-case
@@ -566,9 +676,9 @@ int navigate()
     {
         updateDirList(index);
         if (!kbhit())
-            showThumbnail(index);
-        if (!kbhit())
             showMeta(index);
+        if (!kbhit())
+            showThumbnail(index);
         while (!kbhit())
         { }
         key = cgetc();
@@ -648,6 +758,10 @@ void drawLayout()
         gotoxy(3,2+i);
         printf("\xb6                        \xb4");
     }
+    gotoxy(4,2);
+    bgcolor(15);
+    textcolor(6);
+    printf(" Launch:                ");
 
     textcolor(0);
     bgcolor(15);
@@ -685,21 +799,6 @@ bool changeDir(char* directory)
     return res == 4;    
 }
 
-/*****************************************************************************/
-// list directory
-void test(char* filename)
-{
-    char* e=0;
-    DIR* d = opendir("./brixx");
-
-    while(e = readdir(d))
-    {
-        printf("[%s]\r\n",e);
-        seekdir (d, telldir (d));
-    }
-    closedir(d);
-    printf("done\r\n");
-}
 
 /*****************************************************************************/
 // main program
@@ -721,7 +820,7 @@ int main(int argc, char *argv[])
     while(!kbhit())     {}
 return 0; */
 
-    SetupScreenMode(MAIN_SCREEN_TXT_ADDR, MAIN_FONT_ADDR);
+    SetupScreenMode();
 
     // empty keyboard buffer first
     while (kbhit())

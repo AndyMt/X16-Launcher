@@ -124,7 +124,7 @@ void hideSprite(uint8_t index)
 
 /*****************************************************************************/
 // setup screen configuration (bitmapped + text)
-int SetupScreenMode(uint32_t screenTextAddr, uint32_t screenFontAddr)
+int SetupScreenMode()
 {
     uint8_t x = 0;
     uint8_t y = 0;
