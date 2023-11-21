@@ -4,6 +4,7 @@
         "vload.h": "c",
         "dirent.h": "c",
         "fcntl.h": "c",
-        "errno.h": "c"
+        "errno.h": "c",
+        "joystick.h": "c"
     }
 }

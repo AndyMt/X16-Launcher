@@ -8,6 +8,7 @@
 #include <cbm.h>
 #include <dirent.h>
 #include <errno.h>
+#include <joystick.h>
 #include <vload.h>
 #include "graphics.h"
 #include "util.h"
@@ -654,6 +655,8 @@ void showMeta(int selectedIndex)
 // directory navigation
 int navigate()
 {
+    uint16_t joy_matrix=0;
+    uint16_t last_matrix=0;
     char key=0;
     int index=arrEntries[0].name[0] == '.' ? 1 : 0;
     textcolor(2);
@@ -668,16 +671,49 @@ int navigate()
             showMeta(index);
         if (!kbhit())
             showThumbnail(index);
-
-
+        // check keyboard and joystick
         while (!kbhit())
-        { }
+        { 
+    //         joy_matrix = joy_read(JOY_1);
+    // gotoxy(0,0);
+    // printf("%02X, %d",joy_matrix, joy_count());
+    //         if ((joy_matrix & 0xF0FF) != 0)
+    //         {
+    //             if (JOY_RIGHT(joy_matrix) || JOY_START(joy_matrix) || JOY_BTN_1(joy_matrix) || JOY_BTN_2(joy_matrix) || JOY_BTN_3(joy_matrix) || JOY_BTN_4(joy_matrix))
+    //             {
+    //                 __asm__("lda #$0D");
+    //                 __asm__("jsr $fec3");            
+    //             }
+    //             if (JOY_LEFT(joy_matrix))
+    //             {
+    //                 __asm__("lda #$2E");
+    //                 __asm__("jsr $fec3");            
+    //             }
+    //             else if (JOY_UP(joy_matrix))
+    //             {
+    //                 __asm__("lda #$91");
+    //                 __asm__("jsr $fec3");            
+    //             }
+    //             else if (JOY_DOWN(joy_matrix))
+    //             {
+    //                 __asm__("lda #$11");
+    //                 __asm__("jsr $fec3");            
+    //             }
+    //             // wait for change = release of last button.
+    //             last_matrix = joy_matrix;
+    //             do
+    //             {
+    //                 joy_matrix = joy_read(JOY_2); 
+    //             }
+    //             while (joy_matrix == last_matrix);
+    //        }
+        }
         key = cgetc();
 
         while (kbhit()) cgetc();         
 
-        //gotoxy(0,0);
-        //printf("%02X", key);
+        gotoxy(0,1);
+        printf("%02X", key);
         switch (key)
         {
             case 0x1B: // esc
@@ -709,6 +745,11 @@ int navigate()
                 if (index >= numEntries-1)
                     index = numEntries-1;
                 pageStart += pageSize-1;
+            break;
+            case 0x2E: // dot = directory up
+                index = 0;
+                pageStart = 0;
+                return index;
             break;
             case 0x04: // end
                 index = numEntries-1;
@@ -812,6 +853,8 @@ int main(int argc, char *argv[])
     baseDir[0]=0;
 
     SetupScreenMode();
+
+    joy_install(cx16_std_joy);
 
     // empty keyboard buffer first
     while (kbhit())
