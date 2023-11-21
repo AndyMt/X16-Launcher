@@ -458,39 +458,8 @@ void showThumbnail(int selectedIndex)
         //checkFile(strThumbFile);
         return;
     }
-/*     
-    // now copy and stretch
-    for (c = 0; c < 4; c++)
-    {
-        if (kbhit())
-            return;
-        addr = THUMBNAIL_BASE_ADDR+c*6144;
-        offset = THUMBNAIL_BUFFER_ADDR+c*32;
-        VERA.control = VERA.control | 0x01;
-        SET_VERA_ADDR(offset);
-        VERA.control = VERA.control & 0xFE;
-        SET_VERA_ADDR(addr);
-        for (y = 0; y < 96; y++)
-        {
-            VERA.control = VERA.control | 0x01;
-            SET_VERA_ADDR_SHORT(offset);
-            VERA.control = VERA.control & 0xFE;
-            SET_VERA_ADDR_SHORT(addr);
-            for (x=0; x<32; x++)
-            {
-                pixelValue = VERA.data1;
-                VERA.data0 = pixelValue;
-                VERA.data0 = pixelValue;
-            }
-            addr += 64;
-            offset += 128;
-        }
-    }
- */
+
     split_thumbnail();
-    gotoxy(0, 0);
-    printf("addr: %04X\r\n", s_addr);
-    printf("offs: %04X\r\n", s_offset);
 
     createSprite(2, 64,64, xOffset,    yOffset, THUMBNAIL_BASE_ADDR, NULL);
     createSprite(4, 64,64, xOffset+64, yOffset, THUMBNAIL_BASE_ADDR+6144, NULL);

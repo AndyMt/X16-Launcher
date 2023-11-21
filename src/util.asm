@@ -231,14 +231,21 @@ exit_row_loop:
 .endproc
 
 
+.zeropage
+_s_addr:
+addr:       .word 0
+start:      .word 0
+_s_offset:
+offset:     .word 0
+
 .segment "DATA"
 rc2:        .byte 0
 row:        .byte 0
-_s_addr:
-addr:       .word 0
-_s_offset:
-start:      .word 0     ; start of bitmap data offsets
-offset:     .word 0
+; _s_addr:
+; addr:       .word 0
+; _s_offset:
+; start:      .word 0     ; start of bitmap data offsets
+; offset:     .word 0
 
 .bss
     _dosmsg:         .res 80
