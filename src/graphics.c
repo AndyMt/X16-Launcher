@@ -18,12 +18,12 @@ uint32_t spriteAttr0 = ((uint32_t)VERA_INC_1 << 16) | SPRITE_ATTR0;
 
 /*****************************************************************************/
 // load into VRAM
-uint16_t vload(const char *fileName, uint8_t device, uint32_t rawAddr)
+uint16_t veraload(const char *fileName, uint8_t device, uint32_t rawAddr)
 {
     uint8_t bank = (uint8_t)(rawAddr >> 16) & 0xf;
     uint16_t addr = (uint16_t)(rawAddr & 0xffff); // baseAddr;
 
-    cbm_k_setlfs(1,device,0);
+    cbm_k_setlfs(4,device,0);
     cbm_k_setnam(fileName);
     // Note: cbm_k_load() flag overloaded to specify the VERA bank + 2
     return (cbm_k_load(2+bank,addr) - addr);
@@ -70,7 +70,7 @@ void createSprite(uint8_t index, uint8_t width, uint8_t height, uint16_t xPos, u
     {
         // Copy the player sprite data into the video RAM.
         // Set the address to increment with each access.
-        res = vload(filename, 8, addr);
+        res = veraload(filename, 8, addr);
     }
 }
 
@@ -136,11 +136,6 @@ int SetupScreenMode()
     VERA.display.border = 5;
     VERA.control = VERA.control | 0x03;
 
-/*
-    VERA.layer1.config = MAP_WIDTH_128 | MAP_HEIGHT_32 | LAYER_CONFIG_4BPP | 0x08;              // 128x64 map, color depth 1, 256 color text mode
-    VERA.layer1.mapbase = MAP_BASE_ADDR(screenTextAddr);                                        // Map base at 0x00000 (text content/color)
-    VERA.layer1.tilebase = TILE_BASE_ADDR(screenFontAddr) | TILE_WIDTH_8 | TILE_HEIGHT_8;       // Tile base in this case char set
-*/
     // set border safe zone. Resulting area is 560 x 192
     VERA.display.vstart = (16 * 2)/2;
     VERA.display.vstop = (480 - 16*2)/2;
@@ -151,6 +146,8 @@ int SetupScreenMode()
 
 
     cbm_k_bsout(CH_FONT_LOWER);
+    screen_set_charset(3);
+
     clrscr();
 
     // 
@@ -165,6 +162,22 @@ int SetupScreenMode()
     //vpoke(0x00, screenTextAddr + 256*2*32 - i);
 
     clrscr();
+    // copy arrow symbol upside down to 0x5E, which is mapped to 0x7E
+    for (y=0; y<8;y++)
+    {
+        a = vpeek(MAIN_FONT_ADDR+0x1e*8+y);
+        vpoke(a, MAIN_FONT_ADDR-1+0x5f*8-y);
+    }
+    // program icon to 0x5F, which is mapped to 0x7F
+    y=0;
+    vpoke(0x00, MAIN_FONT_ADDR+0x5f*8+y++);
+    vpoke(0x00, MAIN_FONT_ADDR+0x5f*8+y++);
+    vpoke(0x7E, MAIN_FONT_ADDR+0x5f*8+y++);
+    vpoke(0x42, MAIN_FONT_ADDR+0x5f*8+y++);
+    vpoke(0x7E, MAIN_FONT_ADDR+0x5f*8+y++);
+    vpoke(0x7E, MAIN_FONT_ADDR+0x5f*8+y++);
+    vpoke(0x7E, MAIN_FONT_ADDR+0x5f*8+y++);
+    vpoke(0x00, MAIN_FONT_ADDR+0x5f*8+y++);
 /*// show palette
     for (y=0;y<16;y++)
     {
@@ -183,6 +196,17 @@ int SetupScreenMode()
 
     return 1;
 
+}
+
+/*****************************************************************************/
+// restore screen mode back to boot state
+void restoreScreenmode()
+{
+    //screen_set_charset(2);
+    //cbm_k_bsout(CH_FONT_UPPER);
+
+    //hideAllSprites();
+    __asm__("jsr $FF81"); // call CINT
 }
 
 /*****************************************************************************/

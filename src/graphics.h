@@ -2,6 +2,7 @@
 #define _GRAPHICS_H
 
 #include <stdint.h>
+#include "util.h"
 
 #define LAYER0 0b01
 #define LAYER1 0b10
@@ -23,5 +24,7 @@ extern void showSprite(uint8_t index);
 extern void hideSprite(uint8_t index);
 extern void hideAllSprites();
 extern int SetupScreenMode();
+extern void restoreScreenmode();
+extern uint16_t veraload(const char* filename, uint8_t device, uint32_t addr);
 
 #endif

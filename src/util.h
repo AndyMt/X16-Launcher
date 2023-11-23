@@ -6,6 +6,7 @@
 extern void __fastcall__ vsync();
 extern int16_t __fastcall__ cbm_k_macptr(unsigned char numbyte, uint8_t* buffer);
 extern void screen_set_charset(unsigned char charset);
+extern void screen_put_char(unsigned char c);
 extern int8_t check_dos_error();
 extern void split_thumbnail();
 

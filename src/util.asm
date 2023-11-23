@@ -21,6 +21,7 @@ VERA_ctrl         = $9F25
 .export _check_dos_error
 .export _check_file_exists
 .export _split_thumbnail
+.export _screen_put_char
 
 .export _dosmsg
 .export _s_addr
@@ -37,6 +38,11 @@ b1:     jsr     RDTIM
 
 .proc _screen_set_charset: near
         jsr     SET_CHARSET
+        rts
+.endproc
+
+.proc _screen_put_char: near
+        jsr     CHROUT
         rts
 .endproc
 

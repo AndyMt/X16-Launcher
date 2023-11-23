@@ -16,6 +16,8 @@
 /*****************************************************************************/
 
 extern void LaunchPrg();
+extern bool changeDir(char* directory);
+
 extern uint8_t res1;
 extern uint8_t res2;
 extern uint8_t res3;
@@ -25,21 +27,33 @@ extern char* Name;
 struct DirEntry
 {
     char name[32];
-    char type[8];
+    char type[6];
+    bool isPrg;
     bool hasPrg;
+    bool hasThumb;
+    bool hasMeta;
     bool isDir;
 };
 
-static struct DirEntry arrEntries[50];
-static int8_t numEntries = 0;
-static int8_t maxEntries = 50;
+struct DirCollection
+{
+    uint8_t numEntries;
+    uint8_t maxEntries;
+    struct DirEntry* arrEntries;
+};
+
+static struct DirCollection DirList;
+static struct DirCollection SubList;
+
+static struct DirEntry arrDirectory[50];
+uint8_t numEntries;
+uint8_t maxEntries = 50;
 
 static int8_t pageSize = 20;
 static int8_t pageStart = 0;
 static int8_t pageEnd = 0;
 
-static char baseDir[80];
-static char buffer[512];
+static char baseDir[40];
 
 /*****************************************************************************/
 // set RAM bank
@@ -58,7 +72,7 @@ uint16_t bload(char* filename, uint16_t address)
 
 /*****************************************************************************/
 // loads to address
-uint16_t load(char* filename, uint16_t address) {
+uint16_t lofad(char* filename, uint16_t address) {
     uint16_t ret = 0;
 	cbm_k_setlfs(0,8,1);
 	cbm_k_setnam(filename);
@@ -80,14 +94,14 @@ void dump(uint16_t addr, int len)
     {
         b = ((char*)addr + index)[0];
         x = index % 16 * 3;
-        y = index / 16 + 2;
+        y = index / 16 + 25;
         if (x > 22)
             x++;
         gotoxy(x,y);
         printf("%02X", b);
 
         x = index % 16 + 50;
-        y = index / 16 + 2;
+        y = index / 16 + 25;
         gotoxy(x,y);
         if (b >= 0x20 && b < 0x80 || b > 0xA0)
             cbm_k_chrout(b);
@@ -176,8 +190,300 @@ bool checkFile(char* filename)
 }
 
 /*****************************************************************************/
-// list directory
-int getDirectoryList(char* dir)
+// get directory
+bool setupDirectory(struct DirCollection* dir, int max)
+{
+    dir->maxEntries = max;
+    dir->numEntries = 0;
+    dir->arrEntries = calloc(max, sizeof(struct DirEntry));
+    return (bool)dir->arrEntries;
+}
+
+/*****************************************************************************/
+// get directory
+char* getCurrentDirectory()
+{
+    uint16_t len = 0;
+    uint16_t pos = 0;
+    uint16_t start = 0;
+    uint16_t index = 0;
+    uint16_t count = 0;
+    char* pBuffer = (char*)(0xA000);
+    static char name[32];
+    static char type[8];
+    static char strDirLoad[85];
+    bool isDir = false;
+    bool isPrg = false;
+    bool isValid = false;
+
+    strcpy(strDirLoad, "$=c");
+
+    setHighBank(2);
+    len = bload(strDirLoad, 0xA000);
+    strcpy(name, "/");
+
+    //dump(0xA000, 64);
+
+    while (pos < len)
+    {
+        // get name
+        pos = nextQuote(pBuffer, pos, len);
+        if (pos == 0xFFFF)
+            break;
+        start = pos+1;
+        pos = nextQuote(pBuffer, start, len);
+        count = pos-start;
+        if (count > 30)
+            count = 30;
+        memcpy(name, pBuffer+start, count);
+        name[count] = 0;
+        if (pBuffer[pos-1] != '\"')
+            pos = nextQuote(pBuffer, pos, len);
+
+        // get type (either PRG or DIR)
+        pos = lastSpace(pBuffer, pos+1, len);
+        start = pos;
+        pos = nextSpace(pBuffer, start, len);
+        count = pos-start;
+        if (count > 30)
+            count = 30;
+        memcpy(type, pBuffer+start, count);
+        type[count] = 0;
+
+        isPrg = (bool)strstr(name, ".prg");
+        isDir = type[0] == 'd';
+        if (isDir)
+        {
+            return name;
+        }
+    }    
+
+    return name;    
+}
+
+/*****************************************************************************/
+// get directory
+uint8_t getDirectory(struct DirCollection* dir, char* base, char* filter)
+{
+    uint16_t len = 0;
+    uint16_t pos = 0;
+    uint16_t start = 0;
+    uint16_t index = 0;
+    uint16_t count = 0;
+    char* pBuffer = (char*)(0xA000);
+    static char name[32];
+    static char type[8];
+    static char strDirLoad[85];
+    bool isDir = false;
+    bool isPrg = false;
+    bool isValid = false;
+
+    if (base[0])
+    {
+        //strcpy(strDirLoad, "$//");
+        //strcat(strDirLoad, base);
+        //strcat(strDirLoad, "/:");
+        changeDir(base);
+    }
+    if (filter[0]=='d')
+        strcpy(strDirLoad, "$");
+    else if (filter[0]=='p')
+        strcpy(strDirLoad, "$:*=p");
+    else
+        strcpy(strDirLoad, "$");
+
+    dir->numEntries = 0;
+    setHighBank(2);
+    len = bload(strDirLoad, 0xA000);
+    //if (base[0])
+    //    dump(0xA000, 20);
+
+    while (pos < len)
+    {
+        // get name
+        pos = nextQuote(pBuffer, pos, len);
+        if (pos == 0xFFFF)
+            break;
+        start = pos+1;
+        pos = nextQuote(pBuffer, start, len);
+        count = pos-start;
+        if (count > 30)
+            count = 30;
+        memcpy(name, pBuffer+start, count);
+        name[count] = 0;
+        if (pBuffer[pos-1] != '\"')
+            pos = nextQuote(pBuffer, pos, len);
+
+        // get type (either PRG or DIR)
+        pos = lastSpace(pBuffer, pos+1, len);
+        start = pos;
+        pos = nextSpace(pBuffer, start, len);
+        count = pos-start;
+        if (count > 30)
+            count = 30;
+        memcpy(type, pBuffer+start, count);
+        type[count] = 0;
+
+        isPrg = (bool)strstr(name, ".prg");
+        isDir = type[0] == 'd';
+
+
+        dir->arrEntries[index].isPrg = isPrg;
+        dir->arrEntries[index].hasPrg = false;
+
+        if (filter[0]=='*')
+        {
+            isValid = (bool)strstr(name, ".thumb.abm");
+            isValid |= (bool)strstr(name, ".meta.inf");
+        }
+        else if (filter[0]=='p' && !isPrg)
+            continue;
+        else if (filter[0]=='d' && !isDir)
+            continue;
+
+        // only take valid entries and directories
+        if (name[1] != 0 && (isDir || isValid || isPrg))
+        {
+            if (isPrg)
+            {
+                strcpy(type, "prg");
+                dir->arrEntries[index].hasPrg = false;
+            }
+            else
+            {
+                dir->arrEntries[index].hasPrg = false;
+            }
+
+            strcpy(dir->arrEntries[index].name, name);
+            strcpy(dir->arrEntries[index].type, type);
+
+            dir->arrEntries[index].isDir = isDir;
+
+            index++;
+            dir->numEntries = index;
+        }
+    }    
+
+    if (base[0])
+    {
+        changeDir("..");
+    }
+    return index;    
+}
+
+/*****************************************************************************/
+// get directory list
+int getDirectoryList(char* base)
+{
+    uint8_t index = 0;
+    uint8_t i = 0;
+    uint8_t c = 0;
+    uint8_t s = 0;
+    char* szName = NULL;
+    char prgName[30];
+    char prgPath[100];    
+    bool isDir = false;
+    bool isPrg = false;
+
+    // load directories first, add in alphabetical order
+    getDirectory(&DirList, base, "dir");
+    for (index=0; index < DirList.numEntries; index++)
+    {
+        for (i=0; i<=c; i++)
+        {
+            if (i==c || strcmp(DirList.arrEntries[index].name, arrDirectory[i].name) < 0)
+            {
+                memcpy(&arrDirectory[i+1], &arrDirectory[i], sizeof(struct DirEntry)*(c-i+2));
+                memcpy(&arrDirectory[i], &DirList.arrEntries[index], sizeof(struct DirEntry));
+                break;
+            }
+        }
+        c++;
+    }
+/*    for (index=0; index < DirList.numEntries; index++)
+    {
+        memcpy(&arrDirectory[c], &DirList.arrEntries[index], sizeof(struct DirEntry));
+        c++;
+    }
+*/
+    // programs next - allow to sort stuff later.
+    getDirectory(&DirList, base, "prg");
+    s=c;
+    for (index=0; index < DirList.numEntries; index++)
+    {
+        for (i=s; i<=c; i++)
+        {
+            if (i==c || strcmp(DirList.arrEntries[index].name, arrDirectory[i].name) < 0)
+            {
+                memcpy(&arrDirectory[i+1], &arrDirectory[i], sizeof(struct DirEntry)*(c-i+2));
+                memcpy(&arrDirectory[i], &DirList.arrEntries[index], sizeof(struct DirEntry));
+                break;
+            }
+        }
+        c++;
+    }
+
+    numEntries = c;
+
+    for (index=0; index < numEntries; index++)
+    {
+        arrDirectory[index].hasThumb = false;
+        arrDirectory[index].hasMeta = false;
+        if (arrDirectory[index].isDir)
+        {
+            // check if there is a PRG of identical name in that folder
+            szName = arrDirectory[index].name;
+            strcpy(prgName, szName);
+            strcat(prgName, ".prg");
+
+            strcpy(prgPath, "");
+            strcat(prgPath, szName);
+            strcat(prgPath, "/");
+            strcat(prgPath, prgName);
+
+ 
+            arrDirectory[index].hasThumb = false;
+            arrDirectory[index].hasMeta = false;            
+            arrDirectory[index].hasPrg = false;
+            if (szName[0]=='.')
+                continue;
+//*
+            arrDirectory[index].hasPrg = checkFile(prgPath);                
+            arrDirectory[index].hasThumb = true;
+            arrDirectory[index].hasMeta = true;            
+
+/*
+            getDirectory(&SubList, szName, "*");
+            for (i=0; i<SubList.numEntries; i++)
+            {
+                //gotoxy(0,25+c);
+                //printf(SubList.arrEntries[c++].name);
+                if (strstr(SubList.arrEntries[i].name, prgName))
+                {
+                    arrDirectory[index].hasPrg = true;
+                }
+                else if (strstr(SubList.arrEntries[i].name, ".thumb.abm"))
+                {
+                    arrDirectory[index].hasThumb = true;
+                }
+                else if (strstr(SubList.arrEntries[i].name, "meta.inf"))
+                {
+                    arrDirectory[index].hasMeta = true;
+                }
+            } 
+*/
+ 
+
+        }
+    }
+
+    return numEntries;
+}
+
+/*****************************************************************************/
+// get directory list
+/*
+int getDirectoryList_old(char* dir)
 {
     uint16_t len = 0;
     uint16_t pos = 0;
@@ -244,16 +550,16 @@ int getDirectoryList(char* dir)
             if (isPrg)
             {
                 strcpy(type, "prg");
-                arrEntries[index].hasPrg = false;
-                arrEntries[index].isDir = false;
+                arrDirectory[index].hasPrg = false;
+                arrDirectory[index].isDir = false;
             }
 
-            strcpy(arrEntries[index].name, name);
-            strcpy(arrEntries[index].type, type);
+            strcpy(arrDirectory[index].name, name);
+            strcpy(arrDirectory[index].type, type);
 
             if (isDir)
             {
-                arrEntries[index].isDir = true;
+                arrDirectory[index].isDir = true;
                 // check if there is a PRG of identical name in that folder
                 strcpy(prgName, name);
                 strcat(prgName, ".prg");
@@ -263,7 +569,7 @@ int getDirectoryList(char* dir)
                 strcat(prgPath, "/");
                 strcat(prgPath, prgName);
 
-                arrEntries[index].hasPrg = checkFile(prgPath);                
+                arrDirectory[index].hasPrg = checkFile(prgPath);                
             }
 
             index++;
@@ -273,16 +579,17 @@ int getDirectoryList(char* dir)
 
     return numEntries;    
 }
+*/
 
 /*****************************************************************************/
 // launch program
 void launchPrg(char* name)
 {
     while (kbhit()) cgetc();  // eat all keypresses before launching anything
+    checkFile(""); // clear drive status
 
     // hide all sprites
-    videomode(VIDEOMODE_80x30);
-    hideAllSprites();
+    restoreScreenmode();
 
     // restore color and screen
     textcolor(6);
@@ -311,10 +618,9 @@ void launchPrg(char* name)
 void launch(char* dir, char* name)
 {
     while (kbhit()) cgetc();  // eat all keypresses before launching anything
+    checkFile(""); // clear drive status
 
-    // hide all sprites
-    videomode(VIDEOMODE_80x30);
-    hideAllSprites();
+    restoreScreenmode();
 
     // restore color and screen
     textcolor(6);
@@ -324,11 +630,12 @@ void launch(char* dir, char* name)
     // print change dir command on screen"
     gotoxy(0,2);
     printf("dos\"cd");
-    if (baseDir[0])
+/*    if (baseDir[0])
     {
         printf("//");
         printf(baseDir);
     }
+*/    
     printf("/");
     printf(dir);
     printf("/:\"");
@@ -401,6 +708,7 @@ bool checkFile_mac(char* filename)
     int res = 0;
     int lfn = 1;
     int sad = 0;
+    static char buffer[8];
 
     res = cbm_open(lfn,8,0,filename);
     res = cbm_k_chkin(lfn);
@@ -429,17 +737,17 @@ void updateDirList(int8_t selectedIndex)
     textcolor(0);
     bgcolor(15);
 
-    gotoxy(4,2);
+    gotoxy(27,2);
     if (pageStart > 0)
-    {
-        gotoxy(27,2);
-        printf("^");
-    }
+        screen_put_char('^');
+    else
+        screen_put_char(' ');
+
     gotoxy(27,23);
     if (pageEnd < numEntries && selectedIndex < maxEntries)
-        printf("\xB2");
+        screen_put_char(0x7e);
     else
-        printf(" ");
+        screen_put_char(' ');
 
     textcolor(1);
     bgcolor(6);
@@ -451,24 +759,22 @@ void updateDirList(int8_t selectedIndex)
         gotoxy(4,index-pageStart+3);
 
 
-        if (arrEntries[index].hasPrg)
+        if (arrDirectory[index].hasPrg)
         {
             strcpy(strName, " ");
-            arrEntries[index].hasPrg = true;
+            //arrDirectory[index].hasPrg = true;
         }
-        else if (arrEntries[index].type[0] == 'p')
+        else if (arrDirectory[index].isPrg)
             strcpy(strName, " ");
-        else if (arrEntries[index].name[1] == '.')
+        else if (arrDirectory[index].name[1] == '.')
             strcpy(strName, "<");
         else
             strcpy(strName, ">");
             
-        strcat(strName, arrEntries[index].name);
-        if (arrEntries[index].name[0] > '9' && arrEntries[index].name[1] != '.')
+        strcat(strName, arrDirectory[index].name);
+        if (arrDirectory[index].name[0] > '9' && arrDirectory[index].name[1] != '.')
             strName[1]+=32;
         printf("%-24s", strName);
-
-
     }
     index = 0;
 
@@ -488,23 +794,27 @@ void showThumbnail(int selectedIndex)
     unsigned char pixelValue = 0;
     char strThumbFile[40];
 
-    if (!arrEntries[selectedIndex].hasPrg && !arrEntries[selectedIndex].isDir)
+    if (!arrDirectory[selectedIndex].hasPrg && !arrDirectory[selectedIndex].isDir)
         return;
 
     // hide all sprites
     hideAllSprites();
    
     // don't show anything on the ".." (parent folder) entry
-    if (arrEntries[selectedIndex].name[0] == '.')
+    if (arrDirectory[selectedIndex].name[0] == '.')
         return;
 
     strcpy(strThumbFile, "");
-    strcat(strThumbFile, arrEntries[selectedIndex].name);
+    strcat(strThumbFile, arrDirectory[selectedIndex].name);
     strcat(strThumbFile, "/.thumb.abm");
 
+    if (!arrDirectory[selectedIndex].hasThumb)
+        return;
+
     // load image
-    if (!vload(strThumbFile, 8, THUMBNAIL_BUFFER_ADDR))
+    if (!veraload(strThumbFile, 8, THUMBNAIL_BUFFER_ADDR))
     {
+        arrDirectory[selectedIndex].hasThumb = false;
         //check_dos_error();
         //checkFile(strThumbFile);
         return;
@@ -544,11 +854,8 @@ void showMeta(int selectedIndex)
     uint16_t i = 0;
     bool boPrint = false;
 
-    if (!arrEntries[selectedIndex].hasPrg && !arrEntries[selectedIndex].isDir)
-        return;
-
     strcpy(strMetaFile, "");
-    strcat(strMetaFile, arrEntries[selectedIndex].name);
+    strcat(strMetaFile, arrDirectory[selectedIndex].name);
     strcat(strMetaFile, "/.meta.inf");
 
     // load meta information
@@ -562,8 +869,15 @@ void showMeta(int selectedIndex)
         printf("                                      ");
     }
 
+    if (!arrDirectory[selectedIndex].hasMeta)
+        return;
+
+    if (!arrDirectory[selectedIndex].hasPrg && !arrDirectory[selectedIndex].isDir)
+    {
+        return;
+    }
     // don't show anything on the ".." (parent folder) entry
-    if (arrEntries[selectedIndex].name[0] == '.')
+    if (arrDirectory[selectedIndex].name[0] == '.')
     {
         gotoxy(32,16);
         printf("Navigate to parent directory.");
@@ -573,6 +887,7 @@ void showMeta(int selectedIndex)
     len = bload(strMetaFile, 0xA000);    
     if (!len)
     {
+        arrDirectory[selectedIndex].hasMeta = false;
         //check_dos_error();
         //checkFile(strMetaFile);
         return;
@@ -658,7 +973,7 @@ int navigate()
     uint16_t joy_matrix=0;
     uint16_t last_matrix=0;
     char key=0;
-    int index=arrEntries[0].name[0] == '.' ? 1 : 0;
+    int index=arrDirectory[0].name[0] == '.' ? 1 : 0;
     textcolor(2);
 
     if (kbhit())
@@ -712,8 +1027,8 @@ int navigate()
 
         while (kbhit()) cgetc();         
 
-        gotoxy(0,1);
-        printf("%02X", key);
+        //gotoxy(0,1);
+        //printf("%02X", key);
         switch (key)
         {
             case 0x1B: // esc
@@ -755,7 +1070,6 @@ int navigate()
                 index = numEntries-1;
             break;
             case 0x0D: // enter key
-                screen_set_charset(3);
                 return index;
             break;
         }
@@ -795,7 +1109,16 @@ void drawLayout()
     gotoxy(4,2);
     bgcolor(15);
     textcolor(6);
-    printf(" Launch:                ");
+
+    strcpy(baseDir, getCurrentDirectory());
+    if (baseDir[0] > '9' && baseDir[1] != '.')
+        baseDir[0]+=32;
+
+
+    if (baseDir[0]=='/')
+        printf(" %-20s   ", baseDir);
+    else
+        printf(" ./%-20s", baseDir);
 
     textcolor(0);
     bgcolor(15);
@@ -833,10 +1156,10 @@ bool changeDir(char* directory)
     strcpy(command,"cd:");
     strcat(command, directory);
 
-checkFile(directory);
+//checkFile(directory);
     res = cbm_open(lfn,8,sad,command);
     cbm_k_close(lfn);
-checkFile(directory);
+//checkFile(directory);
 
     return res == 4;    
 }
@@ -850,7 +1173,10 @@ int main(int argc, char *argv[])
     int index=0;
     char prgName[40];
     char prgPath[80];
+    char* szName=NULL;
+
     baseDir[0]=0;
+    strcpy(baseDir, "/");
 
     SetupScreenMode();
 
@@ -860,39 +1186,41 @@ int main(int argc, char *argv[])
     while (kbhit())
     { cgetc(); }
 
+    // prepare directory buffers
+    setupDirectory(&DirList, 50);
+    setupDirectory(&SubList, 10);
+
 repeat:
     clrscr();
-    screen_set_charset(3);
     drawLayout();
-    getDirectoryList(baseDir);    
+    getDirectoryList("");    
     index = navigate();
     if (index == -1)
     {
-        hideAllSprites();
-        screen_set_charset(3);
-        videomode(VIDEOMODE_80x30);
+        checkFile(""); // clear drive status
+        restoreScreenmode();
         return 0;
     }
     
-    strcpy(prgName, arrEntries[index].name);
+    strcpy(prgName, arrDirectory[index].name);
 
-    if (arrEntries[index].type[0] == 'd') // selected a directory
+    if (arrDirectory[index].type[0] == 'd') // selected a directory
     {
         strcat(prgName, ".prg");
 
         strcpy(prgPath, "");
-        strcat(prgPath, arrEntries[index].name);
+        strcat(prgPath, arrDirectory[index].name);
         strcat(prgPath, "/");
         strcat(prgPath, prgName);
 
         if (checkFile(prgPath)) // program file exists => launch it
         {
-            launch(arrEntries[index].name, prgName);
+            launch(arrDirectory[index].name, prgName);
             return 0;
         }
         else // change directory
         {
-            changeDir(arrEntries[index].name);
+            changeDir(arrDirectory[index].name);
             goto repeat;
         }
     }
@@ -900,5 +1228,6 @@ repeat:
     {
         launchPrg(prgName); 
     }
+
     return 0;
 }
