@@ -4,7 +4,7 @@ LIBRARIES := -L libX16/lib
 INCLUDES := -I libX16/include 
 
 SRC = \
-	src/main.c src/graphics.c src/util.asm
+	src/dirtools.c src/utils.c src/main.c src/graphics.c src/util.asm
 
 OBJ = $(SRC:%.c=%.o)
 
@@ -21,8 +21,10 @@ clean:
 copy:
 	cp .\out\launcher.prg .\out\Testdata\LAUNCHER.PRG
 	cp .\out\launcher.prg .\out\Testdata\AUTOBOOT.X16
-	cp .\out\launcher.prg E:\LAUNCHER.PRG
-	cp .\out\launcher.prg E:\AUTOBOOT.X16
+	#cp .\out\launcher.prg E:\LAUNCHER.PRG
+	#cp .\out\launcher.prg E:\AUTOBOOT.X16
+	cp .\out\launcher.prg E:\APPS\LAUNCHER.PRG
+	cp .\out\launcher.prg E:\LAUNCHER\AUTOBOOT.X16
 
 all: bins main copy
 

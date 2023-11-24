@@ -1,0 +1,1 @@
+copy out\INVADERZ.PRG E:\AUTOBOOT.X16
