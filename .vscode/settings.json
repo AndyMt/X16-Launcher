@@ -5,6 +5,9 @@
         "dirent.h": "c",
         "fcntl.h": "c",
         "errno.h": "c",
-        "joystick.h": "c"
+        "joystick.h": "c",
+        "stdio.h": "c",
+        "inifile.h": "c",
+        "string.h": "c"
     }
 }

@@ -162,22 +162,72 @@ int SetupScreenMode()
     //vpoke(0x00, screenTextAddr + 256*2*32 - i);
 
     clrscr();
-    // copy arrow symbol upside down to 0x5E, which is mapped to 0x7E
-    for (y=0; y<8;y++)
-    {
-        a = vpeek(MAIN_FONT_ADDR+0x1e*8+y);
-        vpoke(a, MAIN_FONT_ADDR-1+0x5f*8-y);
-    }
+    // arrow up symbol
+    SET_VERA_ADDR(MAIN_FONT_ADDR+0x1e*8);
+    VERA.data0 = 0b00000000;
+    VERA.data0 = 0b00000000;
+    VERA.data0 = 0b00011000;
+    VERA.data0 = 0b00111100;
+    VERA.data0 = 0b01111110;
+    VERA.data0 = 0b11111111;
+    VERA.data0 = 0b11111111;
+    VERA.data0 = 0b00000000;
+
+    // arrow down symbol 0x5E, which is mapped to 0x7E
+    SET_VERA_ADDR(MAIN_FONT_ADDR+0x5e*8);
+    VERA.data0 = 0b00000000;
+    VERA.data0 = 0b11111111;
+    VERA.data0 = 0b11111111;
+    VERA.data0 = 0b01111110;
+    VERA.data0 = 0b00111100;
+    VERA.data0 = 0b00011000;
+    VERA.data0 = 0b00000000;
+    VERA.data0 = 0b00000000;
+
+    // arrow right 0x6B, which is mapped to 0x7C
+    SET_VERA_ADDR(MAIN_FONT_ADDR+0x6B*8);
+    VERA.data0 = 0b00000000;
+    VERA.data0 = 0b01100000;
+    VERA.data0 = 0b00111000;
+    VERA.data0 = 0b00011110;
+    VERA.data0 = 0b00111000;
+    VERA.data0 = 0b01100000;
+    VERA.data0 = 0b00000000;
+    VERA.data0 = 0b00000000;
+
+    // arrow left 0x6C, which is mapped to 0x7D
+    SET_VERA_ADDR(MAIN_FONT_ADDR+0x5D*8);
+    VERA.data0 = 0b00000000;
+    VERA.data0 = 0b00000110;
+    VERA.data0 = 0b00011100;
+    VERA.data0 = 0b01111000;
+    VERA.data0 = 0b00011100;
+    VERA.data0 = 0b00000110;
+    VERA.data0 = 0b00000000;
+    VERA.data0 = 0b00000000;
+
+    // // arrow left 0x6C, which is mapped to 0x7D
+    // SET_VERA_ADDR(MAIN_FONT_ADDR+0x5D*8);
+    // VERA.data0 = 0b00000000;
+    // VERA.data0 = 0b00011000;
+    // VERA.data0 = 0b00111100;
+    // VERA.data0 = 0b01111110;
+    // VERA.data0 = 0b00011000;
+    // VERA.data0 = 0b00011000;
+    // VERA.data0 = 0b00011110;
+    // VERA.data0 = 0b00000000;    
+
     // program icon to 0x5F, which is mapped to 0x7F
-    y=0;
-    vpoke(0x00, MAIN_FONT_ADDR+0x5f*8+y++);
-    vpoke(0x00, MAIN_FONT_ADDR+0x5f*8+y++);
-    vpoke(0x7E, MAIN_FONT_ADDR+0x5f*8+y++);
-    vpoke(0x42, MAIN_FONT_ADDR+0x5f*8+y++);
-    vpoke(0x7E, MAIN_FONT_ADDR+0x5f*8+y++);
-    vpoke(0x7E, MAIN_FONT_ADDR+0x5f*8+y++);
-    vpoke(0x7E, MAIN_FONT_ADDR+0x5f*8+y++);
-    vpoke(0x00, MAIN_FONT_ADDR+0x5f*8+y++);
+    SET_VERA_ADDR(MAIN_FONT_ADDR+0x5f*8);
+    VERA.data0 = 0b00000000;
+    VERA.data0 = 0b01111111;
+    VERA.data0 = 0b01000001;
+    VERA.data0 = 0b01000001;
+    VERA.data0 = 0b01000001;
+    VERA.data0 = 0b01000001;
+    VERA.data0 = 0b01111111;
+    VERA.data0 = 0b00000000;
+    VERA.data0 = 0b00000000;
 /*// show palette
     for (y=0;y<16;y++)
     {

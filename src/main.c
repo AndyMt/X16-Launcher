@@ -13,6 +13,7 @@
 #include "graphics.h"
 #include "util.h"
 #include "dirtools.h"
+#include "inifile.h"
 
 /*****************************************************************************/
 
@@ -328,14 +329,16 @@ void updateDirList(int8_t selectedIndex)
         if (arrDirectory[index].hasPrg)
         {
             strcpy(strName, " ");
+            //strcpy(strName, "\x7F");
+            strcpy(strName, " ");
             //arrDirectory[index].hasPrg = true;
         }
         else if (arrDirectory[index].isPrg)
             strcpy(strName, " ");
         else if (arrDirectory[index].name[1] == '.')
-            strcpy(strName, "<");
+            strcpy(strName, "\x7C");
         else
-            strcpy(strName, ">");
+            strcpy(strName, "\x7D");
             
         strcat(strName, arrDirectory[index].name);
         if (arrDirectory[index].name[0] > '9' && arrDirectory[index].name[1] != '.')
@@ -453,7 +456,6 @@ char* getMetaFileName(int selectedIndex)
         strcpy(strMetaFile, launcherDir);
         strcat(strMetaFile, "/");
         strcat(strMetaFile, arrDirectory[selectedIndex].name);
-        strcat(strMetaFile, ".meta");
     }
     strcat(strMetaFile, ".inf");    
 
@@ -756,9 +758,14 @@ repeat:
                 pageStart += pageSize-1;
             break;
             case 0x2E: // dot = directory up
-                index = 0;
-                pageStart = 0;
-                return index;
+                if (arrDirectory[0].name[0]=='.')
+                {
+                    index = 0;
+                    pageStart = 0;
+                    return index;
+                }
+                else
+                    goto repeat;
             break;
             case 0x04: // end
                 index = numEntries-1;
@@ -847,12 +854,38 @@ int main(int argc, char *argv[])
     char prgName[40];
     char prgPath[80];
     char* szName=NULL;
+    char* szValue=NULL;
+    struct ini_section *sections = NULL;
+    struct ini_section *curr_section = sections;
 
     baseDir[0]=0;
     strcpy(baseDir, "/");
     strcpy(startDir, "");
-    strcpy(launcherDir, "/launcher");
+    strcpy(launcherDir, "");
     isLocalMode = true;
+
+    //cbm_k_bsout(CH_FONT_ISO);
+    //screen_set_charset(3);
+    
+    sections = read_ini("launcher.ini");
+    if (sections) // ini file is there, get values
+    {
+        printf("[%s]\r\n", sections->properties->key);
+        szValue = get_ini_property(sections, "localmode")->value;
+        isLocalMode = szValue[0]=='1' || szValue[0]=='y';
+        szValue = get_ini_property(sections, "launcherDir")->value;
+        if (szValue)
+        {
+            strcpy(launcherDir, szValue);
+        }
+        szValue = get_ini_property(sections, "startDir")->value;
+        if (szValue)
+        {
+            strcpy(startDir, szValue);
+            
+        }
+    }
+    curr_section = sections;
 
     if (startDir[0])
         changeDir(startDir);
