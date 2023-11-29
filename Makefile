@@ -24,7 +24,7 @@ copy:
 	#cp .\out\launcher.prg E:\LAUNCHER.PRG
 	#cp .\out\launcher.prg E:\AUTOBOOT.X16
 	cp .\out\launcher.prg E:\APPS\LAUNCHER.PRG
-	cp .\out\launcher.prg E:\LAUNCHER\AUTOBOOT.X16
+	#cp .\out\launcher.prg E:\LAUNCHER\AUTOBOOT.X16
 
 all: bins main copy
 

@@ -17,6 +17,17 @@
             "externalConsole": false
         },
         {
+            "name": "(EMU) Launch from local SD",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "D:/Projects/RetroComputing/X16/emu/x16emu.exe",
+            "args": ["-scale","2", "-joy1", "-keymap", "de-ch" ],
+            "stopAtEntry": false,
+            "cwd": "E:/",
+            "environment": [],
+            "externalConsole": false
+        },
+        {
             "name": "(BOX16) Launch",
             "type": "cppvsdbg",
             "request": "launch",

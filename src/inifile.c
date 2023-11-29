@@ -3,10 +3,26 @@
 #include <stdint.h>
 #include <string.h>
 #include "inifile.h"
+#include "x16_charmap.h"
 
 #define MAXLINE 100
 
-void strmap(char* szString)
+void mapFromX16ToUpper(char* szString)
+{
+    uint8_t i=0;
+    uint8_t c=0;
+    uint8_t len = strlen(szString);
+
+    for (i=0; i<len; i++)
+    {
+        c = szString[i];
+        if (c >= 192 && c<192+27)
+            szString[i]-=128;
+    }    
+
+}
+
+void mapFromAsciiToX16(char* szString)
 {
     uint8_t i=0;
     uint8_t c=0;
@@ -16,7 +32,7 @@ void strmap(char* szString)
     {
         c = szString[i];
         if (c >= 64 && c<64+27)
-            szString[i]+=128;
+            szString[i]+=0;
         else if (c > 96 && c<96+27)
             szString[i]-=32;
     }    
@@ -54,7 +70,7 @@ struct ini_section *read_ini(char *filename)
             curr_section = (struct ini_section *) malloc(sizeof(struct ini_section));
 
             //printf("load: %s\r\n", val1);
-            strmap(val1);
+            mapFromAsciiToX16(val1);
             //printf("case: %s\r\n", val1);
 
             strncpy(curr_section->name, val1, sizeof(val1));
@@ -79,8 +95,8 @@ struct ini_section *read_ini(char *filename)
 
                 curr_property = (struct ini_property *) malloc(sizeof(struct ini_property));
 
-                strmap(val1);
-                strmap(val2);
+                mapFromAsciiToX16(val1);
+                mapFromAsciiToX16(val2);
                 strncpy(curr_property->key, val1, sizeof(val1));
                 strncpy(curr_property->value, val2, sizeof(val2));
                 curr_property->prev_property = prev_property;
@@ -112,6 +128,8 @@ struct ini_section *read_ini(char *filename)
 struct ini_section *rewind_ini_section(struct ini_section *sections)
 {
     struct ini_section *curr_section = sections;
+    if (!curr_section)
+        return NULL;
     
     while(curr_section->prev_section != NULL)
     {
@@ -125,6 +143,8 @@ struct ini_section *get_ini_section(struct ini_section *sections, char *name)
 {
     struct ini_section *retVal = NULL;
     struct ini_section *curr_section = rewind_ini_section(sections);
+
+    mapFromX16ToUpper(name);
 
     while(curr_section != NULL)
     {
@@ -145,7 +165,7 @@ struct ini_property *get_ini_property(struct ini_section *section, char *key)
     struct ini_property *retVal = NULL;
     struct ini_property *properties = section->properties;
     struct ini_property *curr_property = properties;
-
+    mapFromX16ToUpper(key);
     while(curr_property != NULL)
     {
         //printf("strcmp: %d, len: %d\r\n",strcmp(curr_property->key, key), strlen(curr_property->key), strlen(key));
@@ -205,3 +225,115 @@ void delete_all_ini_sections(struct ini_section *sections)
     }
 }
 
+struct ini_section *create_ini_section(struct ini_section *section, char *name)
+{
+    struct ini_section *prev_section = NULL;
+    struct ini_section *curr_section = get_ini_section(section, name);
+
+    if (curr_section) // existing section
+    {
+        return curr_section;
+    }
+    else // add section if it doesn't exist
+    {
+        prev_section = curr_section;
+        curr_section = (struct ini_section *) malloc(sizeof(struct ini_section));
+
+        strcpy(curr_section->name, name);
+        curr_section->properties = NULL;
+        curr_section->prev_section = prev_section;
+        curr_section->next_section = NULL;
+
+        if(prev_section != NULL)
+        {
+            prev_section->next_section = curr_section;
+        }
+    }
+
+    return curr_section;
+}
+
+struct ini_property *set_ini_property(struct ini_section *section, char *key, char* value)
+{
+    struct ini_property *prev_property = NULL;
+    struct ini_property *curr_property = get_ini_property(section, key);
+    if (curr_property) // set existing property
+    {
+        strcpy(curr_property->value, value);
+    }
+    else // add property if it doesn't exist
+    {
+        prev_property = curr_property;
+
+        curr_property = (struct ini_property *) malloc(sizeof(struct ini_property));
+
+        strcpy(curr_property->key, key);
+        strcpy(curr_property->value, value);
+        curr_property->prev_property = prev_property;
+        curr_property->next_property = NULL;
+
+        if(prev_property != NULL)
+        {
+            prev_property->next_property = curr_property;
+        }
+
+        if(section->properties == NULL)
+        {
+            section->properties = curr_property;
+        }
+    }
+    return curr_property;
+}
+
+
+int save_ini(char* filename, struct ini_section *sections)
+{
+    struct ini_property *properties = 0;
+    struct ini_property *curr_property = 0;
+    struct ini_section *curr_section = rewind_ini_section(sections);
+
+    FILE *fp = fopen(filename, "w");
+    if (!fp)
+        return 0;
+
+    while(curr_section != NULL)
+    {
+        properties = curr_section->properties;
+        curr_property = properties;
+
+        fprintf(fp, "[%s]\n\r", curr_section->name);
+
+        while(curr_property != NULL)
+        {
+            fprintf(fp, "%s=%s\n\r", curr_property->key, curr_property->value);
+            curr_property = curr_property->next_property;
+        }
+
+        curr_section = curr_section->next_section;
+    }
+
+    fclose(fp);
+}
+
+void dump_ini(struct ini_section *sections)
+{
+    struct ini_property *curr_property = 0;
+    struct ini_section *curr_section = rewind_ini_section(sections);
+
+    if (!sections)
+        printf("<<empty>>\r\n");
+    while(curr_section != NULL)
+    {
+        curr_property = curr_section->properties;
+
+        printf("[%s]\r\n", curr_section->name);
+
+        while(curr_property != NULL)
+        {
+            printf("  %s=%s\r\n", curr_property->key, curr_property->value);
+            curr_property = curr_property->next_property;
+        }
+
+        curr_section = curr_section->next_section;
+    }
+}

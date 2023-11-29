@@ -23,7 +23,7 @@ uint16_t veraload(const char *fileName, uint8_t device, uint32_t rawAddr)
     uint8_t bank = (uint8_t)(rawAddr >> 16) & 0xf;
     uint16_t addr = (uint16_t)(rawAddr & 0xffff); // baseAddr;
 
-    cbm_k_setlfs(4,device,0);
+    cbm_k_setlfs(2,device,0);
     cbm_k_setnam(fileName);
     // Note: cbm_k_load() flag overloaded to specify the VERA bank + 2
     return (cbm_k_load(2+bank,addr) - addr);

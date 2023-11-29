@@ -16586,3 +16586,1722 @@
 20231124 17:59:34.404 INFO aloevera::cmd::asm::command - Resource Xixit has size 12288
 20231124 17:59:34.404 INFO aloevera - Command 'asm' completed successfully
 20231124 17:59:34.404 INFO aloevera - Finished
+20231129 10:41:59.252 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:41:59.252 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:41:59.252 INFO aloevera::cmd::create::command - Creating new project file at: launcher.av
+20231129 10:41:59.252 INFO aloevera - Command 'create' completed successfully
+20231129 10:41:59.252 INFO aloevera - Finished
+20231129 10:41:59.397 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:41:59.397 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:41:59.404 DEBUG aloevera_vera::palette - Palette load: Decoded PNG Info: Info { width: 1024, height: 1024, bit_depth: Eight, color_type: Indexed, interlaced: false, trns: None, pixel_dims: None, palette: Some([0, 0, 0, 255, 255, 255, 136, 0, 0, 170, 255, 238, 204, 68, 204, 0, 204, 85, 0, 0, 170, 238, 238, 119, 221, 136, 85, 102, 68, 0, 255, 119, 119, 51, 51, 51, 119, 119, 119, 170, 255, 102, 0, 136, 255, 187, 187, 187, 0, 0, 0, 17, 17, 17, 34, 34, 34, 51, 51, 51, 68, 68, 68, 85, 85, 85, 102, 102, 102, 119, 119, 119, 136, 136, 136, 153, 153, 153, 170, 170, 170, 187, 187, 187, 204, 204, 204, 221, 221, 221, 238, 238, 238, 255, 255, 255, 34, 17, 17, 68, 51, 51, 102, 68, 68, 136, 102, 102, 170, 136, 136, 204, 153, 153, 255, 187, 187, 34, 24, 24, 68, 34, 34, 102, 51, 51, 136, 68, 68, 170, 85, 85, 204, 102, 102, 255, 119, 119, 34, 0, 0, 68, 17, 17, 102, 17, 17, 136, 34, 34, 170, 34, 34, 204, 51, 51, 255, 51, 51, 34, 0, 0, 68, 0, 0, 102, 0, 0, 136, 0, 0, 170, 0, 0, 204, 0, 0, 255, 0, 0, 34, 34, 17, 68, 68, 51, 102, 102, 68, 136, 136, 102, 170, 170, 136, 204, 204, 153, 255, 238, 187, 34, 17, 17, 68, 51, 34, 102, 85, 51, 136, 119, 68, 170, 153, 85, 204, 187, 102, 255, 221, 119, 34, 17, 0, 68, 51, 17, 102, 85, 17, 136, 102, 34, 170, 136, 34, 204, 170, 51, 255, 204, 51, 34, 17, 0, 68, 51, 0, 102, 68, 0, 136, 102, 0, 170, 136, 0, 204, 153, 0, 255, 187, 0, 17, 34, 17, 51, 68, 51, 85, 102, 68, 119, 136, 102, 153, 170, 136, 187, 204, 153, 221, 255, 187, 17, 34, 17, 51, 68, 34, 68, 102, 51, 102, 136, 68, 136, 170, 85, 153, 204, 102, 187, 255, 119, 17, 34, 0, 34, 68, 17, 68, 102, 17, 85, 136, 34, 102, 170, 34, 136, 204, 51, 153, 255, 51, 17, 34, 0, 34, 68, 0, 51, 102, 0, 68, 136, 0, 85, 170, 0, 102, 204, 0, 119, 255, 0, 17, 34, 17, 51, 68, 51, 68, 102, 85, 102, 136, 102, 136, 170, 136, 153, 204, 170, 187, 255, 204, 17, 34, 17, 34, 68, 34, 51, 102, 68, 68, 136, 85, 85, 170, 102, 102, 204, 136, 119, 255, 153, 0, 34, 0, 17, 68, 17, 17, 102, 34, 34, 136, 51, 34, 170, 68, 51, 204, 85, 51, 255, 102, 0, 34, 0, 0, 68, 17, 0, 102, 17, 0, 136, 34, 0, 170, 34, 0, 204, 51, 0, 255, 51, 17, 34, 34, 51, 68, 68, 68, 102, 102, 102, 136, 136, 136, 170, 170, 153, 204, 204, 187, 255, 255, 17, 34, 34, 34, 68, 68, 51, 102, 102, 68, 136, 136, 85, 170, 170, 102, 204, 204, 119, 255, 255, 0, 34, 34, 17, 68, 68, 17, 102, 102, 34, 136, 136, 34, 170, 170, 51, 204, 204, 51, 255, 255, 0, 34, 34, 0, 68, 68, 0, 102, 102, 0, 136, 136, 0, 170, 170, 0, 204, 204, 0, 255, 255, 17, 17, 34, 51, 51, 68, 68, 85, 102, 102, 102, 136, 136, 136, 170, 153, 170, 204, 187, 204, 255, 17, 17, 34, 34, 34, 68, 51, 68, 102, 68, 85, 136, 85, 102, 170, 102, 136, 204, 119, 153, 255, 0, 0, 34, 17, 17, 68, 17, 34, 102, 34, 51, 136, 34, 68, 170, 51, 85, 204, 51, 102, 255, 0, 0, 34, 0, 17, 68, 0, 17, 102, 0, 34, 136, 0, 34, 170, 0, 51, 204, 0, 51, 255, 17, 17, 34, 51, 51, 68, 85, 68, 102, 119, 102, 136, 153, 136, 170, 187, 153, 204, 221, 187, 255, 17, 17, 34, 51, 34, 68, 68, 51, 102, 102, 68, 136, 136, 85, 170, 153, 102, 204, 187, 119, 255, 17, 0, 34, 34, 17, 68, 68, 17, 102, 85, 34, 136, 102, 34, 170, 136, 51, 204, 153, 51, 255, 17, 0, 34, 34, 0, 68, 51, 0, 102, 68, 0, 136, 85, 0, 170, 102, 0, 204, 119, 0, 255, 34, 17, 34, 68, 51, 68, 102, 68, 102, 136, 102, 136, 170, 136, 170, 204, 153, 204, 255, 187, 238, 34, 17, 21, 68, 34, 51, 102, 51, 85, 136, 68, 119, 170, 85, 153, 204, 102, 187, 255, 119, 221, 34, 0, 17, 68, 17, 51, 102, 17, 85, 136, 34, 102, 170, 34, 136, 204, 51, 170, 255, 51, 204, 34, 7, 17, 68, 0, 51, 102, 0, 68, 136, 0, 102, 170, 0, 136, 204, 0, 153, 255, 0, 187]), frame_control: None, animation_control: None, compression: Fast, filter: Sub }
+20231129 10:41:59.404 INFO aloevera_vera::palette - Creating new palette from image palette
+20231129 10:41:59.404 INFO aloevera_vera::palette - Palette creation successful
+20231129 10:41:59.404 INFO aloevera::cmd::palette::command - Inserting palette into project: launcher.av
+20231129 10:41:59.404 INFO aloevera - Command 'palette' completed successfully
+20231129 10:41:59.404 INFO aloevera - Finished
+20231129 10:41:59.528 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:41:59.528 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:41:59.531 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:41:59.531 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:41:59.531 DEBUG aloevera_vera::imageset - Hashes to indices map: {15543627673797485341: 0}
+20231129 10:41:59.531 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:41:59.531 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:41:59.532 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:41:59.532 INFO aloevera - Finished
+20231129 10:41:59.680 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:41:59.680 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:41:59.681 INFO aloevera_vera::imageset - Formatting imageset 3Potions to palette at depth of 8bpp
+20231129 10:41:59.685 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:41:59.685 INFO aloevera - Finished
+20231129 10:41:59.829 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:41:59.829 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:41:59.834 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:41:59.834 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:41:59.834 DEBUG aloevera_vera::imageset - Hashes to indices map: {12096861369896008961: 0}
+20231129 10:41:59.834 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:41:59.834 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:41:59.836 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:41:59.836 INFO aloevera - Finished
+20231129 10:41:59.983 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:41:59.983 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:41:59.983 INFO aloevera_vera::imageset - Formatting imageset Airship to palette at depth of 8bpp
+20231129 10:41:59.989 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:41:59.989 INFO aloevera - Finished
+20231129 10:42:00.138 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:00.138 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:00.143 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:00.143 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:00.143 DEBUG aloevera_vera::imageset - Hashes to indices map: {1611378351227214128: 0}
+20231129 10:42:00.143 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:00.143 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:00.146 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:00.146 INFO aloevera - Finished
+20231129 10:42:00.307 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:00.307 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:00.307 INFO aloevera_vera::imageset - Formatting imageset BRIXX to palette at depth of 8bpp
+20231129 10:42:00.313 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:00.313 INFO aloevera - Finished
+20231129 10:42:00.466 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:00.466 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:00.469 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:00.469 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:00.470 DEBUG aloevera_vera::imageset - Hashes to indices map: {1763340554642726875: 0}
+20231129 10:42:00.470 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:00.470 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:00.473 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:00.473 INFO aloevera - Finished
+20231129 10:42:00.613 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:00.613 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:00.615 INFO aloevera_vera::imageset - Formatting imageset BRIXX1 to palette at depth of 8bpp
+20231129 10:42:00.623 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:00.623 INFO aloevera - Finished
+20231129 10:42:00.808 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:00.808 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:00.815 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:00.815 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:00.815 DEBUG aloevera_vera::imageset - Hashes to indices map: {16580783072271016422: 0}
+20231129 10:42:00.815 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:00.815 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:00.819 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:00.819 INFO aloevera - Finished
+20231129 10:42:00.961 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:00.961 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:00.965 INFO aloevera_vera::imageset - Formatting imageset CALC to palette at depth of 8bpp
+20231129 10:42:00.974 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:00.975 INFO aloevera - Finished
+20231129 10:42:01.121 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:01.121 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:01.127 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGBA, bit_depth: Eight, line_size: 512 }
+20231129 10:42:01.127 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:01.128 DEBUG aloevera_vera::imageset - Hashes to indices map: {10382240961391932136: 0}
+20231129 10:42:01.128 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:01.128 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:01.132 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:01.132 INFO aloevera - Finished
+20231129 10:42:01.268 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:01.268 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:01.269 INFO aloevera_vera::imageset - Formatting imageset Chasvalt to palette at depth of 8bpp
+20231129 10:42:01.281 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:01.281 INFO aloevera - Finished
+20231129 10:42:01.463 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:01.463 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:01.467 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:01.467 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:01.468 DEBUG aloevera_vera::imageset - Hashes to indices map: {9861305395312359022: 0}
+20231129 10:42:01.468 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:01.468 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:01.475 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:01.475 INFO aloevera - Finished
+20231129 10:42:01.598 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:01.598 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:01.600 INFO aloevera_vera::imageset - Formatting imageset CrazyLander to palette at depth of 8bpp
+20231129 10:42:01.610 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:01.610 INFO aloevera - Finished
+20231129 10:42:01.779 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:01.779 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:01.791 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:01.792 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:01.793 DEBUG aloevera_vera::imageset - Hashes to indices map: {122596960052285503: 0}
+20231129 10:42:01.793 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:01.793 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:01.801 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:01.801 INFO aloevera - Finished
+20231129 10:42:01.934 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:01.935 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:01.937 INFO aloevera_vera::imageset - Formatting imageset FlappyBird to palette at depth of 8bpp
+20231129 10:42:01.947 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:01.947 INFO aloevera - Finished
+20231129 10:42:02.088 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:02.088 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:02.088 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:02.088 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:02.088 DEBUG aloevera_vera::imageset - Hashes to indices map: {5486202511915113732: 0}
+20231129 10:42:02.089 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:02.089 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:02.095 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:02.095 INFO aloevera - Finished
+20231129 10:42:02.251 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:02.251 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:02.253 INFO aloevera_vera::imageset - Formatting imageset Folder to palette at depth of 8bpp
+20231129 10:42:02.264 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:02.264 INFO aloevera - Finished
+20231129 10:42:02.442 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:02.442 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:02.442 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:02.442 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:02.443 DEBUG aloevera_vera::imageset - Hashes to indices map: {4809819102767877191: 0}
+20231129 10:42:02.443 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:02.443 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:02.451 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:02.451 INFO aloevera - Finished
+20231129 10:42:02.582 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:02.582 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:02.585 INFO aloevera_vera::imageset - Formatting imageset FolderDoc to palette at depth of 8bpp
+20231129 10:42:02.597 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:02.597 INFO aloevera - Finished
+20231129 10:42:02.770 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:02.770 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:02.774 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:02.774 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:02.775 DEBUG aloevera_vera::imageset - Hashes to indices map: {10957225932172388759: 0}
+20231129 10:42:02.775 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:02.775 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:02.784 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:02.784 INFO aloevera - Finished
+20231129 10:42:02.934 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:02.934 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:02.937 INFO aloevera_vera::imageset - Formatting imageset FolderGameDemos to palette at depth of 8bpp
+20231129 10:42:02.952 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:02.952 INFO aloevera - Finished
+20231129 10:42:03.113 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:03.113 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:03.117 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:03.118 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:03.118 DEBUG aloevera_vera::imageset - Hashes to indices map: {2517852181311103498: 0}
+20231129 10:42:03.118 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:03.118 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:03.128 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:03.128 INFO aloevera - Finished
+20231129 10:42:03.257 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:03.257 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:03.260 INFO aloevera_vera::imageset - Formatting imageset FolderGames to palette at depth of 8bpp
+20231129 10:42:03.273 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:03.273 INFO aloevera - Finished
+20231129 10:42:03.454 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:03.454 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:03.458 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:03.459 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:03.459 DEBUG aloevera_vera::imageset - Hashes to indices map: {12369377034678562202: 0}
+20231129 10:42:03.459 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:03.459 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:03.469 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:03.469 INFO aloevera - Finished
+20231129 10:42:03.627 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:03.627 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:03.632 INFO aloevera_vera::imageset - Formatting imageset FolderX16 to palette at depth of 8bpp
+20231129 10:42:03.646 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:03.646 INFO aloevera - Finished
+20231129 10:42:03.826 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:03.826 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:03.839 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:03.839 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:03.840 DEBUG aloevera_vera::imageset - Hashes to indices map: {6242387938183910646: 0}
+20231129 10:42:03.840 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:03.840 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:03.850 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:03.851 INFO aloevera - Finished
+20231129 10:42:03.976 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:03.976 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:03.980 INFO aloevera_vera::imageset - Formatting imageset Hangman to palette at depth of 8bpp
+20231129 10:42:03.995 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:03.995 INFO aloevera - Finished
+20231129 10:42:04.152 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:04.152 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:04.181 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:04.182 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:04.182 DEBUG aloevera_vera::imageset - Hashes to indices map: {6942042588097377529: 0}
+20231129 10:42:04.182 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:04.182 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:04.195 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:04.195 INFO aloevera - Finished
+20231129 10:42:04.333 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:04.333 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:04.341 INFO aloevera_vera::imageset - Formatting imageset Invaderz to palette at depth of 8bpp
+20231129 10:42:04.356 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:04.356 INFO aloevera - Finished
+20231129 10:42:04.523 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:04.523 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:04.563 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:04.564 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:04.565 DEBUG aloevera_vera::imageset - Hashes to indices map: {10296319256696741095: 0}
+20231129 10:42:04.565 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:04.565 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:04.583 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:04.583 INFO aloevera - Finished
+20231129 10:42:04.718 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:04.718 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:04.726 INFO aloevera_vera::imageset - Formatting imageset Megaman to palette at depth of 8bpp
+20231129 10:42:04.744 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:04.744 INFO aloevera - Finished
+20231129 10:42:04.896 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:04.896 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:04.899 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:04.900 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:04.900 DEBUG aloevera_vera::imageset - Hashes to indices map: {6669484271694697250: 0}
+20231129 10:42:04.900 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:04.900 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:04.913 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:04.913 INFO aloevera - Finished
+20231129 10:42:05.051 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:05.051 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:05.067 INFO aloevera_vera::imageset - Formatting imageset Melodius to palette at depth of 8bpp
+20231129 10:42:05.084 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:05.084 INFO aloevera - Finished
+20231129 10:42:05.266 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:05.266 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:05.283 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:05.284 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:05.284 DEBUG aloevera_vera::imageset - Hashes to indices map: {7212676335998947234: 0}
+20231129 10:42:05.284 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:05.284 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:05.299 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:05.299 INFO aloevera - Finished
+20231129 10:42:05.437 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:05.437 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:05.446 INFO aloevera_vera::imageset - Formatting imageset Mine-rescue to palette at depth of 8bpp
+20231129 10:42:05.463 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:05.463 INFO aloevera - Finished
+20231129 10:42:05.636 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:05.636 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:05.640 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:05.640 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:05.641 DEBUG aloevera_vera::imageset - Hashes to indices map: {9245833394105525664: 0}
+20231129 10:42:05.641 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:05.641 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:05.655 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:05.655 INFO aloevera - Finished
+20231129 10:42:05.789 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:05.789 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:05.793 INFO aloevera_vera::imageset - Formatting imageset Minimotors to palette at depth of 8bpp
+20231129 10:42:05.816 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:05.816 INFO aloevera - Finished
+20231129 10:42:05.966 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:05.966 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:05.974 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:05.974 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:05.975 DEBUG aloevera_vera::imageset - Hashes to indices map: {12160350369935797249: 0}
+20231129 10:42:05.975 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:05.975 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:05.991 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:05.991 INFO aloevera - Finished
+20231129 10:42:06.114 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:06.115 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:06.120 INFO aloevera_vera::imageset - Formatting imageset Montezuma to palette at depth of 8bpp
+20231129 10:42:06.139 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:06.139 INFO aloevera - Finished
+20231129 10:42:06.294 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:06.294 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:06.298 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:06.298 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:06.298 DEBUG aloevera_vera::imageset - Hashes to indices map: {14475485410147730438: 0}
+20231129 10:42:06.298 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:06.298 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:06.315 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:06.315 INFO aloevera - Finished
+20231129 10:42:06.442 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:06.442 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:06.448 INFO aloevera_vera::imageset - Formatting imageset MunchMania to palette at depth of 8bpp
+20231129 10:42:06.467 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:06.467 INFO aloevera - Finished
+20231129 10:42:06.622 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:06.622 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:06.625 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:06.625 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:06.626 DEBUG aloevera_vera::imageset - Hashes to indices map: {6168847486050548234: 0}
+20231129 10:42:06.626 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:06.626 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:06.644 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:06.644 INFO aloevera - Finished
+20231129 10:42:06.794 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:06.794 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:06.799 INFO aloevera_vera::imageset - Formatting imageset Pixeus to palette at depth of 8bpp
+20231129 10:42:06.819 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:06.819 INFO aloevera - Finished
+20231129 10:42:06.978 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:06.978 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:06.982 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:06.982 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:06.983 DEBUG aloevera_vera::imageset - Hashes to indices map: {1910571760022913312: 0}
+20231129 10:42:06.983 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:06.983 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:07.000 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:07.000 INFO aloevera - Finished
+20231129 10:42:07.127 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:07.127 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:07.132 INFO aloevera_vera::imageset - Formatting imageset PlanetX16 to palette at depth of 8bpp
+20231129 10:42:07.154 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:07.154 INFO aloevera - Finished
+20231129 10:42:07.329 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:07.329 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:07.397 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:07.398 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:07.398 DEBUG aloevera_vera::imageset - Hashes to indices map: {11215891865688540637: 0}
+20231129 10:42:07.398 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:07.398 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:07.419 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:07.419 INFO aloevera - Finished
+20231129 10:42:07.578 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:07.578 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:07.585 INFO aloevera_vera::imageset - Formatting imageset QRcode to palette at depth of 8bpp
+20231129 10:42:07.607 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:07.607 INFO aloevera - Finished
+20231129 10:42:07.785 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:07.785 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:07.789 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:07.789 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:07.789 DEBUG aloevera_vera::imageset - Hashes to indices map: {12014335488687005722: 0}
+20231129 10:42:07.789 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:07.789 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:07.810 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:07.810 INFO aloevera - Finished
+20231129 10:42:07.975 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:07.975 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:07.983 INFO aloevera_vera::imageset - Formatting imageset Quack to palette at depth of 8bpp
+20231129 10:42:08.006 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:08.006 INFO aloevera - Finished
+20231129 10:42:08.165 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:08.165 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:08.168 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:08.169 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:08.169 DEBUG aloevera_vera::imageset - Hashes to indices map: {765194367149475327: 0}
+20231129 10:42:08.169 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:08.169 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:08.189 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:08.189 INFO aloevera - Finished
+20231129 10:42:08.326 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:08.326 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:08.332 INFO aloevera_vera::imageset - Formatting imageset Ralleyspeedway to palette at depth of 8bpp
+20231129 10:42:08.355 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:08.355 INFO aloevera - Finished
+20231129 10:42:08.507 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:08.507 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:08.511 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:08.511 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:08.511 DEBUG aloevera_vera::imageset - Hashes to indices map: {8530811012637160125: 0}
+20231129 10:42:08.511 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:08.511 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:08.533 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:08.533 INFO aloevera - Finished
+20231129 10:42:08.669 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:08.669 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:08.679 INFO aloevera_vera::imageset - Formatting imageset Rockrunner to palette at depth of 8bpp
+20231129 10:42:08.703 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:08.703 INFO aloevera - Finished
+20231129 10:42:08.888 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:08.888 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:08.892 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:08.892 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:08.893 DEBUG aloevera_vera::imageset - Hashes to indices map: {6319647833524633258: 0}
+20231129 10:42:08.893 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:08.893 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:08.915 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:08.915 INFO aloevera - Finished
+20231129 10:42:09.068 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:09.068 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:09.083 INFO aloevera_vera::imageset - Formatting imageset Scumbotron to palette at depth of 8bpp
+20231129 10:42:09.109 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:09.109 INFO aloevera - Finished
+20231129 10:42:09.258 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:09.258 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:09.262 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:09.262 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:09.263 DEBUG aloevera_vera::imageset - Hashes to indices map: {17416137523714533721: 0}
+20231129 10:42:09.263 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:09.263 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:09.286 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:09.286 INFO aloevera - Finished
+20231129 10:42:09.425 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:09.425 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:09.434 INFO aloevera_vera::imageset - Formatting imageset Ski to palette at depth of 8bpp
+20231129 10:42:09.460 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:09.460 INFO aloevera - Finished
+20231129 10:42:09.641 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:09.641 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:09.645 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:09.646 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:09.646 DEBUG aloevera_vera::imageset - Hashes to indices map: {5245145537868505462: 0}
+20231129 10:42:09.646 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:09.646 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:09.670 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:09.670 INFO aloevera - Finished
+20231129 10:42:09.817 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:09.817 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:09.826 INFO aloevera_vera::imageset - Formatting imageset Tetrads to palette at depth of 8bpp
+20231129 10:42:09.852 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:09.852 INFO aloevera - Finished
+20231129 10:42:09.985 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:09.985 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:10.000 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:10.001 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:10.001 DEBUG aloevera_vera::imageset - Hashes to indices map: {9037091730815516542: 0}
+20231129 10:42:10.001 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:10.001 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:10.026 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:10.026 INFO aloevera - Finished
+20231129 10:42:10.163 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:10.163 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:10.170 INFO aloevera_vera::imageset - Formatting imageset Vindicator to palette at depth of 8bpp
+20231129 10:42:10.197 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:10.197 INFO aloevera - Finished
+20231129 10:42:10.371 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:10.371 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:10.382 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:10.382 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:10.383 DEBUG aloevera_vera::imageset - Hashes to indices map: {4716999916698398000: 0}
+20231129 10:42:10.383 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:10.383 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:10.408 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:10.408 INFO aloevera - Finished
+20231129 10:42:10.553 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:10.553 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:10.562 INFO aloevera_vera::imageset - Formatting imageset X16Maze to palette at depth of 8bpp
+20231129 10:42:10.590 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:10.590 INFO aloevera - Finished
+20231129 10:42:10.770 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:10.770 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:10.774 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:10.774 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:10.774 DEBUG aloevera_vera::imageset - Hashes to indices map: {7842529537803869747: 0}
+20231129 10:42:10.774 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:10.774 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:10.800 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:10.800 INFO aloevera - Finished
+20231129 10:42:10.939 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:10.939 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:10.948 INFO aloevera_vera::imageset - Formatting imageset X16Robots to palette at depth of 8bpp
+20231129 10:42:10.976 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:10.976 INFO aloevera - Finished
+20231129 10:42:11.153 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:11.153 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:11.162 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:11.162 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:11.162 DEBUG aloevera_vera::imageset - Hashes to indices map: {4072510659375991629: 0}
+20231129 10:42:11.162 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:11.162 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:11.190 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:11.190 INFO aloevera - Finished
+20231129 10:42:11.331 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:11.331 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:11.339 INFO aloevera_vera::imageset - Formatting imageset X16Wars to palette at depth of 8bpp
+20231129 10:42:11.367 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:11.367 INFO aloevera - Finished
+20231129 10:42:11.522 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:11.522 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:11.526 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:11.527 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:11.527 DEBUG aloevera_vera::imageset - Hashes to indices map: {8180853074119603270: 0}
+20231129 10:42:11.527 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:11.527 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:11.554 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:11.554 INFO aloevera - Finished
+20231129 10:42:11.713 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:11.713 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:11.723 INFO aloevera_vera::imageset - Formatting imageset Xbert to palette at depth of 8bpp
+20231129 10:42:11.751 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:11.751 INFO aloevera - Finished
+20231129 10:42:11.929 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:11.929 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:11.939 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 10:42:11.939 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 10:42:11.940 DEBUG aloevera_vera::imageset - Hashes to indices map: {9148690018826045788: 0}
+20231129 10:42:11.940 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 10:42:11.940 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 10:42:11.969 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:11.969 INFO aloevera - Finished
+20231129 10:42:12.132 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:12.132 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:12.147 INFO aloevera_vera::imageset - Formatting imageset Xixit to palette at depth of 8bpp
+20231129 10:42:12.177 INFO aloevera - Command 'imageset' completed successfully
+20231129 10:42:12.177 INFO aloevera - Finished
+20231129 10:42:12.310 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 10:42:12.310 DEBUG aloevera - Built with profile "release", features "".
+20231129 10:42:12.362 INFO aloevera::cmd::asm::command - Resource x16pal has size 512
+20231129 10:42:12.363 INFO aloevera::cmd::asm::command - Resource 3Potions has size 12288
+20231129 10:42:12.364 INFO aloevera::cmd::asm::command - Resource Airship has size 12288
+20231129 10:42:12.365 INFO aloevera::cmd::asm::command - Resource BRIXX has size 12288
+20231129 10:42:12.366 INFO aloevera::cmd::asm::command - Resource BRIXX1 has size 12288
+20231129 10:42:12.367 INFO aloevera::cmd::asm::command - Resource CALC has size 12288
+20231129 10:42:12.367 INFO aloevera::cmd::asm::command - Resource Chasvalt has size 12288
+20231129 10:42:12.367 INFO aloevera::cmd::asm::command - Resource CrazyLander has size 12288
+20231129 10:42:12.368 INFO aloevera::cmd::asm::command - Resource FlappyBird has size 12288
+20231129 10:42:12.368 INFO aloevera::cmd::asm::command - Resource Folder has size 12288
+20231129 10:42:12.369 INFO aloevera::cmd::asm::command - Resource FolderDoc has size 12288
+20231129 10:42:12.369 INFO aloevera::cmd::asm::command - Resource FolderGameDemos has size 12288
+20231129 10:42:12.369 INFO aloevera::cmd::asm::command - Resource FolderGames has size 12288
+20231129 10:42:12.369 INFO aloevera::cmd::asm::command - Resource FolderX16 has size 12288
+20231129 10:42:12.369 INFO aloevera::cmd::asm::command - Resource Hangman has size 12288
+20231129 10:42:12.369 INFO aloevera::cmd::asm::command - Resource Invaderz has size 12288
+20231129 10:42:12.370 INFO aloevera::cmd::asm::command - Resource Megaman has size 12288
+20231129 10:42:12.370 INFO aloevera::cmd::asm::command - Resource Melodius has size 12288
+20231129 10:42:12.370 INFO aloevera::cmd::asm::command - Resource Mine-rescue has size 12288
+20231129 10:42:12.370 INFO aloevera::cmd::asm::command - Resource Minimotors has size 12288
+20231129 10:42:12.370 INFO aloevera::cmd::asm::command - Resource Montezuma has size 12288
+20231129 10:42:12.371 INFO aloevera::cmd::asm::command - Resource MunchMania has size 12288
+20231129 10:42:12.371 INFO aloevera::cmd::asm::command - Resource Pixeus has size 12288
+20231129 10:42:12.371 INFO aloevera::cmd::asm::command - Resource PlanetX16 has size 12288
+20231129 10:42:12.371 INFO aloevera::cmd::asm::command - Resource QRcode has size 12288
+20231129 10:42:12.372 INFO aloevera::cmd::asm::command - Resource Quack has size 12288
+20231129 10:42:12.372 INFO aloevera::cmd::asm::command - Resource Ralleyspeedway has size 12288
+20231129 10:42:12.372 INFO aloevera::cmd::asm::command - Resource Rockrunner has size 12288
+20231129 10:42:12.372 INFO aloevera::cmd::asm::command - Resource Scumbotron has size 12288
+20231129 10:42:12.373 INFO aloevera::cmd::asm::command - Resource Ski has size 12288
+20231129 10:42:12.373 INFO aloevera::cmd::asm::command - Resource Tetrads has size 12288
+20231129 10:42:12.373 INFO aloevera::cmd::asm::command - Resource Vindicator has size 12288
+20231129 10:42:12.373 INFO aloevera::cmd::asm::command - Resource X16Maze has size 12288
+20231129 10:42:12.374 INFO aloevera::cmd::asm::command - Resource X16Robots has size 12288
+20231129 10:42:12.374 INFO aloevera::cmd::asm::command - Resource X16Wars has size 12288
+20231129 10:42:12.374 INFO aloevera::cmd::asm::command - Resource Xbert has size 12288
+20231129 10:42:12.374 INFO aloevera::cmd::asm::command - Resource Xixit has size 12288
+20231129 10:42:12.374 INFO aloevera - Command 'asm' completed successfully
+20231129 10:42:12.374 INFO aloevera - Finished
+20231129 11:23:16.111 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:16.111 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:16.111 INFO aloevera::cmd::create::command - Creating new project file at: launcher.av
+20231129 11:23:16.112 INFO aloevera - Command 'create' completed successfully
+20231129 11:23:16.112 INFO aloevera - Finished
+20231129 11:23:16.244 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:16.244 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:16.245 DEBUG aloevera_vera::palette - Palette load: Decoded PNG Info: Info { width: 1024, height: 1024, bit_depth: Eight, color_type: Indexed, interlaced: false, trns: None, pixel_dims: None, palette: Some([0, 0, 0, 255, 255, 255, 136, 0, 0, 170, 255, 238, 204, 68, 204, 0, 204, 85, 0, 0, 170, 238, 238, 119, 221, 136, 85, 102, 68, 0, 255, 119, 119, 51, 51, 51, 119, 119, 119, 170, 255, 102, 0, 136, 255, 187, 187, 187, 0, 0, 0, 17, 17, 17, 34, 34, 34, 51, 51, 51, 68, 68, 68, 85, 85, 85, 102, 102, 102, 119, 119, 119, 136, 136, 136, 153, 153, 153, 170, 170, 170, 187, 187, 187, 204, 204, 204, 221, 221, 221, 238, 238, 238, 255, 255, 255, 34, 17, 17, 68, 51, 51, 102, 68, 68, 136, 102, 102, 170, 136, 136, 204, 153, 153, 255, 187, 187, 34, 24, 24, 68, 34, 34, 102, 51, 51, 136, 68, 68, 170, 85, 85, 204, 102, 102, 255, 119, 119, 34, 0, 0, 68, 17, 17, 102, 17, 17, 136, 34, 34, 170, 34, 34, 204, 51, 51, 255, 51, 51, 34, 0, 0, 68, 0, 0, 102, 0, 0, 136, 0, 0, 170, 0, 0, 204, 0, 0, 255, 0, 0, 34, 34, 17, 68, 68, 51, 102, 102, 68, 136, 136, 102, 170, 170, 136, 204, 204, 153, 255, 238, 187, 34, 17, 17, 68, 51, 34, 102, 85, 51, 136, 119, 68, 170, 153, 85, 204, 187, 102, 255, 221, 119, 34, 17, 0, 68, 51, 17, 102, 85, 17, 136, 102, 34, 170, 136, 34, 204, 170, 51, 255, 204, 51, 34, 17, 0, 68, 51, 0, 102, 68, 0, 136, 102, 0, 170, 136, 0, 204, 153, 0, 255, 187, 0, 17, 34, 17, 51, 68, 51, 85, 102, 68, 119, 136, 102, 153, 170, 136, 187, 204, 153, 221, 255, 187, 17, 34, 17, 51, 68, 34, 68, 102, 51, 102, 136, 68, 136, 170, 85, 153, 204, 102, 187, 255, 119, 17, 34, 0, 34, 68, 17, 68, 102, 17, 85, 136, 34, 102, 170, 34, 136, 204, 51, 153, 255, 51, 17, 34, 0, 34, 68, 0, 51, 102, 0, 68, 136, 0, 85, 170, 0, 102, 204, 0, 119, 255, 0, 17, 34, 17, 51, 68, 51, 68, 102, 85, 102, 136, 102, 136, 170, 136, 153, 204, 170, 187, 255, 204, 17, 34, 17, 34, 68, 34, 51, 102, 68, 68, 136, 85, 85, 170, 102, 102, 204, 136, 119, 255, 153, 0, 34, 0, 17, 68, 17, 17, 102, 34, 34, 136, 51, 34, 170, 68, 51, 204, 85, 51, 255, 102, 0, 34, 0, 0, 68, 17, 0, 102, 17, 0, 136, 34, 0, 170, 34, 0, 204, 51, 0, 255, 51, 17, 34, 34, 51, 68, 68, 68, 102, 102, 102, 136, 136, 136, 170, 170, 153, 204, 204, 187, 255, 255, 17, 34, 34, 34, 68, 68, 51, 102, 102, 68, 136, 136, 85, 170, 170, 102, 204, 204, 119, 255, 255, 0, 34, 34, 17, 68, 68, 17, 102, 102, 34, 136, 136, 34, 170, 170, 51, 204, 204, 51, 255, 255, 0, 34, 34, 0, 68, 68, 0, 102, 102, 0, 136, 136, 0, 170, 170, 0, 204, 204, 0, 255, 255, 17, 17, 34, 51, 51, 68, 68, 85, 102, 102, 102, 136, 136, 136, 170, 153, 170, 204, 187, 204, 255, 17, 17, 34, 34, 34, 68, 51, 68, 102, 68, 85, 136, 85, 102, 170, 102, 136, 204, 119, 153, 255, 0, 0, 34, 17, 17, 68, 17, 34, 102, 34, 51, 136, 34, 68, 170, 51, 85, 204, 51, 102, 255, 0, 0, 34, 0, 17, 68, 0, 17, 102, 0, 34, 136, 0, 34, 170, 0, 51, 204, 0, 51, 255, 17, 17, 34, 51, 51, 68, 85, 68, 102, 119, 102, 136, 153, 136, 170, 187, 153, 204, 221, 187, 255, 17, 17, 34, 51, 34, 68, 68, 51, 102, 102, 68, 136, 136, 85, 170, 153, 102, 204, 187, 119, 255, 17, 0, 34, 34, 17, 68, 68, 17, 102, 85, 34, 136, 102, 34, 170, 136, 51, 204, 153, 51, 255, 17, 0, 34, 34, 0, 68, 51, 0, 102, 68, 0, 136, 85, 0, 170, 102, 0, 204, 119, 0, 255, 34, 17, 34, 68, 51, 68, 102, 68, 102, 136, 102, 136, 170, 136, 170, 204, 153, 204, 255, 187, 238, 34, 17, 21, 68, 34, 51, 102, 51, 85, 136, 68, 119, 170, 85, 153, 204, 102, 187, 255, 119, 221, 34, 0, 17, 68, 17, 51, 102, 17, 85, 136, 34, 102, 170, 34, 136, 204, 51, 170, 255, 51, 204, 34, 7, 17, 68, 0, 51, 102, 0, 68, 136, 0, 102, 170, 0, 136, 204, 0, 153, 255, 0, 187]), frame_control: None, animation_control: None, compression: Fast, filter: Sub }
+20231129 11:23:16.245 INFO aloevera_vera::palette - Creating new palette from image palette
+20231129 11:23:16.245 INFO aloevera_vera::palette - Palette creation successful
+20231129 11:23:16.245 INFO aloevera::cmd::palette::command - Inserting palette into project: launcher.av
+20231129 11:23:16.246 INFO aloevera - Command 'palette' completed successfully
+20231129 11:23:16.246 INFO aloevera - Finished
+20231129 11:23:16.372 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:16.372 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:16.372 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:16.373 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:16.373 DEBUG aloevera_vera::imageset - Hashes to indices map: {15543627673797485341: 0}
+20231129 11:23:16.373 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:16.373 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:16.374 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:16.374 INFO aloevera - Finished
+20231129 11:23:16.525 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:16.525 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:16.525 INFO aloevera_vera::imageset - Formatting imageset 3Potions to palette at depth of 8bpp
+20231129 11:23:16.529 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:16.529 INFO aloevera - Finished
+20231129 11:23:16.672 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:16.672 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:16.672 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:16.672 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:16.673 DEBUG aloevera_vera::imageset - Hashes to indices map: {12096861369896008961: 0}
+20231129 11:23:16.673 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:16.673 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:16.674 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:16.674 INFO aloevera - Finished
+20231129 11:23:16.804 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:16.804 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:16.805 INFO aloevera_vera::imageset - Formatting imageset Airship to palette at depth of 8bpp
+20231129 11:23:16.814 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:16.814 INFO aloevera - Finished
+20231129 11:23:16.982 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:16.982 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:16.983 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:16.983 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:16.983 DEBUG aloevera_vera::imageset - Hashes to indices map: {1611378351227214128: 0}
+20231129 11:23:16.983 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:16.984 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:16.986 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:16.986 INFO aloevera - Finished
+20231129 11:23:17.123 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:17.123 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:17.124 INFO aloevera_vera::imageset - Formatting imageset BRIXX to palette at depth of 8bpp
+20231129 11:23:17.130 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:17.130 INFO aloevera - Finished
+20231129 11:23:17.285 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:17.285 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:17.286 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:17.286 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:17.287 DEBUG aloevera_vera::imageset - Hashes to indices map: {1763340554642726875: 0}
+20231129 11:23:17.287 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:17.287 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:17.294 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:17.294 INFO aloevera - Finished
+20231129 11:23:17.433 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:17.433 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:17.436 INFO aloevera_vera::imageset - Formatting imageset BRIXX1 to palette at depth of 8bpp
+20231129 11:23:17.448 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:17.448 INFO aloevera - Finished
+20231129 11:23:17.579 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:17.579 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:17.579 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:17.579 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:17.579 DEBUG aloevera_vera::imageset - Hashes to indices map: {16580783072271016422: 0}
+20231129 11:23:17.579 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:17.579 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:17.584 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:17.584 INFO aloevera - Finished
+20231129 11:23:17.728 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:17.728 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:17.731 INFO aloevera_vera::imageset - Formatting imageset CALC to palette at depth of 8bpp
+20231129 11:23:17.749 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:17.749 INFO aloevera - Finished
+20231129 11:23:17.920 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:17.920 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:17.920 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGBA, bit_depth: Eight, line_size: 512 }
+20231129 11:23:17.920 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:17.921 DEBUG aloevera_vera::imageset - Hashes to indices map: {10382240961391932136: 0}
+20231129 11:23:17.921 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:17.921 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:17.925 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:17.925 INFO aloevera - Finished
+20231129 11:23:18.096 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:18.096 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:18.102 INFO aloevera_vera::imageset - Formatting imageset Chasvalt to palette at depth of 8bpp
+20231129 11:23:18.111 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:18.111 INFO aloevera - Finished
+20231129 11:23:18.270 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:18.270 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:18.271 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:18.271 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:18.272 DEBUG aloevera_vera::imageset - Hashes to indices map: {9861305395312359022: 0}
+20231129 11:23:18.272 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:18.272 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:18.277 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:18.277 INFO aloevera - Finished
+20231129 11:23:18.394 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:18.394 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:18.399 INFO aloevera_vera::imageset - Formatting imageset CrazyLander to palette at depth of 8bpp
+20231129 11:23:18.411 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:18.411 INFO aloevera - Finished
+20231129 11:23:18.547 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:18.547 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:18.547 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:18.548 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:18.549 DEBUG aloevera_vera::imageset - Hashes to indices map: {122596960052285503: 0}
+20231129 11:23:18.549 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:18.549 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:18.560 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:18.560 INFO aloevera - Finished
+20231129 11:23:18.701 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:18.701 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:18.703 INFO aloevera_vera::imageset - Formatting imageset FlappyBird to palette at depth of 8bpp
+20231129 11:23:18.713 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:18.713 INFO aloevera - Finished
+20231129 11:23:18.856 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:18.856 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:18.857 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:18.857 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:18.858 DEBUG aloevera_vera::imageset - Hashes to indices map: {5535588657145479560: 0}
+20231129 11:23:18.859 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:18.859 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:18.871 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:18.871 INFO aloevera - Finished
+20231129 11:23:19.023 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:19.023 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:19.027 INFO aloevera_vera::imageset - Formatting imageset FoldeMusicr to palette at depth of 8bpp
+20231129 11:23:19.041 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:19.041 INFO aloevera - Finished
+20231129 11:23:19.209 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:19.209 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:19.210 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:19.210 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:19.210 DEBUG aloevera_vera::imageset - Hashes to indices map: {5486202511915113732: 0}
+20231129 11:23:19.210 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:19.210 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:19.218 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:19.218 INFO aloevera - Finished
+20231129 11:23:19.364 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:19.364 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:19.368 INFO aloevera_vera::imageset - Formatting imageset Folder to palette at depth of 8bpp
+20231129 11:23:19.381 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:19.381 INFO aloevera - Finished
+20231129 11:23:19.557 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:19.557 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:19.558 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:19.558 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:19.559 DEBUG aloevera_vera::imageset - Hashes to indices map: {4809819102767877191: 0}
+20231129 11:23:19.559 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:19.559 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:19.568 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:19.568 INFO aloevera - Finished
+20231129 11:23:19.692 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:19.692 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:19.697 INFO aloevera_vera::imageset - Formatting imageset FolderDoc to palette at depth of 8bpp
+20231129 11:23:19.708 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:19.708 INFO aloevera - Finished
+20231129 11:23:19.856 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:19.856 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:19.856 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:19.856 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:19.856 DEBUG aloevera_vera::imageset - Hashes to indices map: {10957225932172388759: 0}
+20231129 11:23:19.856 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:19.856 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:19.865 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:19.865 INFO aloevera - Finished
+20231129 11:23:19.987 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:19.987 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:19.990 INFO aloevera_vera::imageset - Formatting imageset FolderGameDemos to palette at depth of 8bpp
+20231129 11:23:20.003 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:20.003 INFO aloevera - Finished
+20231129 11:23:20.142 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:20.142 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:20.142 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:20.142 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:20.143 DEBUG aloevera_vera::imageset - Hashes to indices map: {2517852181311103498: 0}
+20231129 11:23:20.143 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:20.143 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:20.154 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:20.155 INFO aloevera - Finished
+20231129 11:23:20.289 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:20.289 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:20.293 INFO aloevera_vera::imageset - Formatting imageset FolderGames to palette at depth of 8bpp
+20231129 11:23:20.307 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:20.307 INFO aloevera - Finished
+20231129 11:23:20.490 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:20.490 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:20.490 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:20.490 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:20.491 DEBUG aloevera_vera::imageset - Hashes to indices map: {12369377034678562202: 0}
+20231129 11:23:20.491 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:20.491 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:20.503 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:20.503 INFO aloevera - Finished
+20231129 11:23:20.647 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:20.647 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:20.651 INFO aloevera_vera::imageset - Formatting imageset FolderX16 to palette at depth of 8bpp
+20231129 11:23:20.665 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:20.665 INFO aloevera - Finished
+20231129 11:23:20.811 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:20.811 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:20.811 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:20.811 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:20.812 DEBUG aloevera_vera::imageset - Hashes to indices map: {6242387938183910646: 0}
+20231129 11:23:20.812 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:20.812 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:20.825 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:20.825 INFO aloevera - Finished
+20231129 11:23:20.953 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:20.953 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:20.957 INFO aloevera_vera::imageset - Formatting imageset Hangman to palette at depth of 8bpp
+20231129 11:23:20.972 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:20.972 INFO aloevera - Finished
+20231129 11:23:21.104 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:21.104 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:21.105 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:21.105 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:21.106 DEBUG aloevera_vera::imageset - Hashes to indices map: {6942042588097377529: 0}
+20231129 11:23:21.106 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:21.106 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:21.119 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:21.119 INFO aloevera - Finished
+20231129 11:23:21.286 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:21.286 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:21.293 INFO aloevera_vera::imageset - Formatting imageset Invaderz to palette at depth of 8bpp
+20231129 11:23:21.310 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:21.310 INFO aloevera - Finished
+20231129 11:23:21.462 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:21.463 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:21.463 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:21.463 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:21.463 DEBUG aloevera_vera::imageset - Hashes to indices map: {10296319256696741095: 0}
+20231129 11:23:21.463 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:21.463 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:21.477 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:21.477 INFO aloevera - Finished
+20231129 11:23:21.617 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:21.617 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:21.622 INFO aloevera_vera::imageset - Formatting imageset Megaman to palette at depth of 8bpp
+20231129 11:23:21.639 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:21.639 INFO aloevera - Finished
+20231129 11:23:21.790 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:21.790 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:21.790 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:21.790 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:21.791 DEBUG aloevera_vera::imageset - Hashes to indices map: {6669484271694697250: 0}
+20231129 11:23:21.791 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:21.791 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:21.805 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:21.805 INFO aloevera - Finished
+20231129 11:23:21.972 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:21.972 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:21.979 INFO aloevera_vera::imageset - Formatting imageset Melodius to palette at depth of 8bpp
+20231129 11:23:21.996 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:21.996 INFO aloevera - Finished
+20231129 11:23:22.126 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:22.126 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:22.126 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:22.126 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:22.127 DEBUG aloevera_vera::imageset - Hashes to indices map: {7212676335998947234: 0}
+20231129 11:23:22.127 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:22.127 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:22.141 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:22.141 INFO aloevera - Finished
+20231129 11:23:22.276 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:22.276 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:22.282 INFO aloevera_vera::imageset - Formatting imageset Mine-rescue to palette at depth of 8bpp
+20231129 11:23:22.301 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:22.301 INFO aloevera - Finished
+20231129 11:23:22.444 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:22.444 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:22.444 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:22.444 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:22.445 DEBUG aloevera_vera::imageset - Hashes to indices map: {9245833394105525664: 0}
+20231129 11:23:22.445 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:22.445 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:22.461 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:22.461 INFO aloevera - Finished
+20231129 11:23:22.600 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:22.600 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:22.606 INFO aloevera_vera::imageset - Formatting imageset Minimotors to palette at depth of 8bpp
+20231129 11:23:22.626 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:22.626 INFO aloevera - Finished
+20231129 11:23:22.770 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:22.770 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:22.770 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:22.770 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:22.771 DEBUG aloevera_vera::imageset - Hashes to indices map: {12160350369935797249: 0}
+20231129 11:23:22.771 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:22.771 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:22.787 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:22.787 INFO aloevera - Finished
+20231129 11:23:22.932 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:22.932 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:22.940 INFO aloevera_vera::imageset - Formatting imageset Montezuma to palette at depth of 8bpp
+20231129 11:23:22.961 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:22.961 INFO aloevera - Finished
+20231129 11:23:23.090 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:23.090 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:23.090 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:23.090 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:23.091 DEBUG aloevera_vera::imageset - Hashes to indices map: {14475485410147730438: 0}
+20231129 11:23:23.091 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:23.091 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:23.111 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:23.111 INFO aloevera - Finished
+20231129 11:23:23.237 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:23.237 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:23.242 INFO aloevera_vera::imageset - Formatting imageset MunchMania to palette at depth of 8bpp
+20231129 11:23:23.262 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:23.262 INFO aloevera - Finished
+20231129 11:23:23.402 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:23.402 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:23.402 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:23.402 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:23.403 DEBUG aloevera_vera::imageset - Hashes to indices map: {6168847486050548234: 0}
+20231129 11:23:23.403 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:23.403 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:23.421 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:23.421 INFO aloevera - Finished
+20231129 11:23:23.572 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:23.572 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:23.590 INFO aloevera_vera::imageset - Formatting imageset Pixeus to palette at depth of 8bpp
+20231129 11:23:23.611 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:23.611 INFO aloevera - Finished
+20231129 11:23:23.755 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:23.755 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:23.755 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:23.756 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:23.756 DEBUG aloevera_vera::imageset - Hashes to indices map: {1910571760022913312: 0}
+20231129 11:23:23.756 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:23.756 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:23.776 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:23.776 INFO aloevera - Finished
+20231129 11:23:23.894 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:23.894 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:23.900 INFO aloevera_vera::imageset - Formatting imageset PlanetX16 to palette at depth of 8bpp
+20231129 11:23:23.922 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:23.922 INFO aloevera - Finished
+20231129 11:23:24.068 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:24.068 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:24.068 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:24.068 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:24.069 DEBUG aloevera_vera::imageset - Hashes to indices map: {11215891865688540637: 0}
+20231129 11:23:24.069 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:24.069 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:24.089 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:24.089 INFO aloevera - Finished
+20231129 11:23:24.216 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:24.216 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:24.233 INFO aloevera_vera::imageset - Formatting imageset QRcode to palette at depth of 8bpp
+20231129 11:23:24.257 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:24.257 INFO aloevera - Finished
+20231129 11:23:24.403 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:24.403 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:24.403 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:24.404 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:24.404 DEBUG aloevera_vera::imageset - Hashes to indices map: {12014335488687005722: 0}
+20231129 11:23:24.404 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:24.404 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:24.426 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:24.426 INFO aloevera - Finished
+20231129 11:23:24.560 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:24.560 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:24.574 INFO aloevera_vera::imageset - Formatting imageset Quack to palette at depth of 8bpp
+20231129 11:23:24.598 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:24.598 INFO aloevera - Finished
+20231129 11:23:24.741 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:24.741 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:24.741 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:24.742 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:24.742 DEBUG aloevera_vera::imageset - Hashes to indices map: {765194367149475327: 0}
+20231129 11:23:24.742 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:24.742 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:24.771 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:24.771 INFO aloevera - Finished
+20231129 11:23:24.913 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:24.913 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:24.921 INFO aloevera_vera::imageset - Formatting imageset Ralleyspeedway to palette at depth of 8bpp
+20231129 11:23:24.945 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:24.945 INFO aloevera - Finished
+20231129 11:23:25.079 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:25.079 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:25.079 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:25.079 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:25.079 DEBUG aloevera_vera::imageset - Hashes to indices map: {8530811012637160125: 0}
+20231129 11:23:25.080 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:25.080 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:25.104 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:25.104 INFO aloevera - Finished
+20231129 11:23:25.214 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:25.214 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:25.221 INFO aloevera_vera::imageset - Formatting imageset Rockrunner to palette at depth of 8bpp
+20231129 11:23:25.247 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:25.247 INFO aloevera - Finished
+20231129 11:23:25.401 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:25.401 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:25.401 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:25.402 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:25.403 DEBUG aloevera_vera::imageset - Hashes to indices map: {6319647833524633258: 0}
+20231129 11:23:25.403 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:25.403 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:25.428 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:25.428 INFO aloevera - Finished
+20231129 11:23:25.547 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:25.547 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:25.556 INFO aloevera_vera::imageset - Formatting imageset Scumbotron to palette at depth of 8bpp
+20231129 11:23:25.583 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:25.583 INFO aloevera - Finished
+20231129 11:23:25.720 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:25.720 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:25.721 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:25.721 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:25.721 DEBUG aloevera_vera::imageset - Hashes to indices map: {17416137523714533721: 0}
+20231129 11:23:25.722 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:25.722 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:25.746 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:25.746 INFO aloevera - Finished
+20231129 11:23:25.881 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:25.881 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:25.889 INFO aloevera_vera::imageset - Formatting imageset Ski to palette at depth of 8bpp
+20231129 11:23:25.915 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:25.915 INFO aloevera - Finished
+20231129 11:23:26.072 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:26.072 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:26.072 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:26.072 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:26.072 DEBUG aloevera_vera::imageset - Hashes to indices map: {5245145537868505462: 0}
+20231129 11:23:26.072 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:26.072 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:26.098 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:26.098 INFO aloevera - Finished
+20231129 11:23:26.219 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:26.219 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:26.227 INFO aloevera_vera::imageset - Formatting imageset Tetrads to palette at depth of 8bpp
+20231129 11:23:26.254 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:26.254 INFO aloevera - Finished
+20231129 11:23:26.389 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:26.389 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:26.389 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:26.391 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:26.391 DEBUG aloevera_vera::imageset - Hashes to indices map: {9037091730815516542: 0}
+20231129 11:23:26.391 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:26.391 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:26.418 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:26.418 INFO aloevera - Finished
+20231129 11:23:26.576 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:26.576 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:26.583 INFO aloevera_vera::imageset - Formatting imageset Vindicator to palette at depth of 8bpp
+20231129 11:23:26.611 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:26.611 INFO aloevera - Finished
+20231129 11:23:26.780 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:26.780 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:26.780 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:26.780 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:26.781 DEBUG aloevera_vera::imageset - Hashes to indices map: {4716999916698398000: 0}
+20231129 11:23:26.781 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:26.781 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:26.810 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:26.810 INFO aloevera - Finished
+20231129 11:23:26.951 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:26.951 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:26.958 INFO aloevera_vera::imageset - Formatting imageset X16Maze to palette at depth of 8bpp
+20231129 11:23:26.987 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:26.988 INFO aloevera - Finished
+20231129 11:23:27.118 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:27.118 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:27.118 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:27.119 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:27.119 DEBUG aloevera_vera::imageset - Hashes to indices map: {7842529537803869747: 0}
+20231129 11:23:27.119 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:27.119 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:27.147 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:27.147 INFO aloevera - Finished
+20231129 11:23:27.274 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:27.274 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:27.284 INFO aloevera_vera::imageset - Formatting imageset X16Robots to palette at depth of 8bpp
+20231129 11:23:27.315 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:27.315 INFO aloevera - Finished
+20231129 11:23:27.453 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:27.453 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:27.454 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:27.454 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:27.455 DEBUG aloevera_vera::imageset - Hashes to indices map: {4072510659375991629: 0}
+20231129 11:23:27.455 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:27.455 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:27.490 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:27.490 INFO aloevera - Finished
+20231129 11:23:27.609 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:27.609 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:27.618 INFO aloevera_vera::imageset - Formatting imageset X16Wars to palette at depth of 8bpp
+20231129 11:23:27.647 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:27.647 INFO aloevera - Finished
+20231129 11:23:27.787 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:27.787 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:27.787 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:27.789 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:27.789 DEBUG aloevera_vera::imageset - Hashes to indices map: {8180853074119603270: 0}
+20231129 11:23:27.789 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:27.789 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:27.817 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:27.817 INFO aloevera - Finished
+20231129 11:23:27.944 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:27.944 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:27.953 INFO aloevera_vera::imageset - Formatting imageset Xbert to palette at depth of 8bpp
+20231129 11:23:27.983 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:27.983 INFO aloevera - Finished
+20231129 11:23:28.149 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:28.149 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:28.149 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 11:23:28.150 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 11:23:28.151 DEBUG aloevera_vera::imageset - Hashes to indices map: {9148690018826045788: 0}
+20231129 11:23:28.151 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 11:23:28.151 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 11:23:28.187 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:28.187 INFO aloevera - Finished
+20231129 11:23:28.314 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:28.314 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:28.324 INFO aloevera_vera::imageset - Formatting imageset Xixit to palette at depth of 8bpp
+20231129 11:23:28.356 INFO aloevera - Command 'imageset' completed successfully
+20231129 11:23:28.356 INFO aloevera - Finished
+20231129 11:23:28.512 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 11:23:28.512 DEBUG aloevera - Built with profile "release", features "".
+20231129 11:23:28.523 INFO aloevera::cmd::asm::command - Resource x16pal has size 512
+20231129 11:23:28.523 INFO aloevera::cmd::asm::command - Resource 3Potions has size 12288
+20231129 11:23:28.523 INFO aloevera::cmd::asm::command - Resource Airship has size 12288
+20231129 11:23:28.523 INFO aloevera::cmd::asm::command - Resource BRIXX has size 12288
+20231129 11:23:28.523 INFO aloevera::cmd::asm::command - Resource BRIXX1 has size 12288
+20231129 11:23:28.523 INFO aloevera::cmd::asm::command - Resource CALC has size 12288
+20231129 11:23:28.523 INFO aloevera::cmd::asm::command - Resource Chasvalt has size 12288
+20231129 11:23:28.524 INFO aloevera::cmd::asm::command - Resource CrazyLander has size 12288
+20231129 11:23:28.524 INFO aloevera::cmd::asm::command - Resource FlappyBird has size 12288
+20231129 11:23:28.524 INFO aloevera::cmd::asm::command - Resource FoldeMusicr has size 12288
+20231129 11:23:28.524 INFO aloevera::cmd::asm::command - Resource Folder has size 12288
+20231129 11:23:28.524 INFO aloevera::cmd::asm::command - Resource FolderDoc has size 12288
+20231129 11:23:28.524 INFO aloevera::cmd::asm::command - Resource FolderGameDemos has size 12288
+20231129 11:23:28.525 INFO aloevera::cmd::asm::command - Resource FolderGames has size 12288
+20231129 11:23:28.525 INFO aloevera::cmd::asm::command - Resource FolderX16 has size 12288
+20231129 11:23:28.525 INFO aloevera::cmd::asm::command - Resource Hangman has size 12288
+20231129 11:23:28.525 INFO aloevera::cmd::asm::command - Resource Invaderz has size 12288
+20231129 11:23:28.525 INFO aloevera::cmd::asm::command - Resource Megaman has size 12288
+20231129 11:23:28.525 INFO aloevera::cmd::asm::command - Resource Melodius has size 12288
+20231129 11:23:28.525 INFO aloevera::cmd::asm::command - Resource Mine-rescue has size 12288
+20231129 11:23:28.526 INFO aloevera::cmd::asm::command - Resource Minimotors has size 12288
+20231129 11:23:28.526 INFO aloevera::cmd::asm::command - Resource Montezuma has size 12288
+20231129 11:23:28.526 INFO aloevera::cmd::asm::command - Resource MunchMania has size 12288
+20231129 11:23:28.526 INFO aloevera::cmd::asm::command - Resource Pixeus has size 12288
+20231129 11:23:28.526 INFO aloevera::cmd::asm::command - Resource PlanetX16 has size 12288
+20231129 11:23:28.526 INFO aloevera::cmd::asm::command - Resource QRcode has size 12288
+20231129 11:23:28.526 INFO aloevera::cmd::asm::command - Resource Quack has size 12288
+20231129 11:23:28.526 INFO aloevera::cmd::asm::command - Resource Ralleyspeedway has size 12288
+20231129 11:23:28.527 INFO aloevera::cmd::asm::command - Resource Rockrunner has size 12288
+20231129 11:23:28.527 INFO aloevera::cmd::asm::command - Resource Scumbotron has size 12288
+20231129 11:23:28.527 INFO aloevera::cmd::asm::command - Resource Ski has size 12288
+20231129 11:23:28.527 INFO aloevera::cmd::asm::command - Resource Tetrads has size 12288
+20231129 11:23:28.527 INFO aloevera::cmd::asm::command - Resource Vindicator has size 12288
+20231129 11:23:28.527 INFO aloevera::cmd::asm::command - Resource X16Maze has size 12288
+20231129 11:23:28.527 INFO aloevera::cmd::asm::command - Resource X16Robots has size 12288
+20231129 11:23:28.527 INFO aloevera::cmd::asm::command - Resource X16Wars has size 12288
+20231129 11:23:28.527 INFO aloevera::cmd::asm::command - Resource Xbert has size 12288
+20231129 11:23:28.528 INFO aloevera::cmd::asm::command - Resource Xixit has size 12288
+20231129 11:23:28.528 INFO aloevera - Command 'asm' completed successfully
+20231129 11:23:28.528 INFO aloevera - Finished
+20231129 12:08:49.449 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:49.449 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:49.449 INFO aloevera::cmd::create::command - Creating new project file at: launcher.av
+20231129 12:08:49.449 INFO aloevera - Command 'create' completed successfully
+20231129 12:08:49.449 INFO aloevera - Finished
+20231129 12:08:49.590 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:49.590 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:49.590 DEBUG aloevera_vera::palette - Palette load: Decoded PNG Info: Info { width: 1024, height: 1024, bit_depth: Eight, color_type: Indexed, interlaced: false, trns: None, pixel_dims: None, palette: Some([0, 0, 0, 255, 255, 255, 136, 0, 0, 170, 255, 238, 204, 68, 204, 0, 204, 85, 0, 0, 170, 238, 238, 119, 221, 136, 85, 102, 68, 0, 255, 119, 119, 51, 51, 51, 119, 119, 119, 170, 255, 102, 0, 136, 255, 187, 187, 187, 0, 0, 0, 17, 17, 17, 34, 34, 34, 51, 51, 51, 68, 68, 68, 85, 85, 85, 102, 102, 102, 119, 119, 119, 136, 136, 136, 153, 153, 153, 170, 170, 170, 187, 187, 187, 204, 204, 204, 221, 221, 221, 238, 238, 238, 255, 255, 255, 34, 17, 17, 68, 51, 51, 102, 68, 68, 136, 102, 102, 170, 136, 136, 204, 153, 153, 255, 187, 187, 34, 24, 24, 68, 34, 34, 102, 51, 51, 136, 68, 68, 170, 85, 85, 204, 102, 102, 255, 119, 119, 34, 0, 0, 68, 17, 17, 102, 17, 17, 136, 34, 34, 170, 34, 34, 204, 51, 51, 255, 51, 51, 34, 0, 0, 68, 0, 0, 102, 0, 0, 136, 0, 0, 170, 0, 0, 204, 0, 0, 255, 0, 0, 34, 34, 17, 68, 68, 51, 102, 102, 68, 136, 136, 102, 170, 170, 136, 204, 204, 153, 255, 238, 187, 34, 17, 17, 68, 51, 34, 102, 85, 51, 136, 119, 68, 170, 153, 85, 204, 187, 102, 255, 221, 119, 34, 17, 0, 68, 51, 17, 102, 85, 17, 136, 102, 34, 170, 136, 34, 204, 170, 51, 255, 204, 51, 34, 17, 0, 68, 51, 0, 102, 68, 0, 136, 102, 0, 170, 136, 0, 204, 153, 0, 255, 187, 0, 17, 34, 17, 51, 68, 51, 85, 102, 68, 119, 136, 102, 153, 170, 136, 187, 204, 153, 221, 255, 187, 17, 34, 17, 51, 68, 34, 68, 102, 51, 102, 136, 68, 136, 170, 85, 153, 204, 102, 187, 255, 119, 17, 34, 0, 34, 68, 17, 68, 102, 17, 85, 136, 34, 102, 170, 34, 136, 204, 51, 153, 255, 51, 17, 34, 0, 34, 68, 0, 51, 102, 0, 68, 136, 0, 85, 170, 0, 102, 204, 0, 119, 255, 0, 17, 34, 17, 51, 68, 51, 68, 102, 85, 102, 136, 102, 136, 170, 136, 153, 204, 170, 187, 255, 204, 17, 34, 17, 34, 68, 34, 51, 102, 68, 68, 136, 85, 85, 170, 102, 102, 204, 136, 119, 255, 153, 0, 34, 0, 17, 68, 17, 17, 102, 34, 34, 136, 51, 34, 170, 68, 51, 204, 85, 51, 255, 102, 0, 34, 0, 0, 68, 17, 0, 102, 17, 0, 136, 34, 0, 170, 34, 0, 204, 51, 0, 255, 51, 17, 34, 34, 51, 68, 68, 68, 102, 102, 102, 136, 136, 136, 170, 170, 153, 204, 204, 187, 255, 255, 17, 34, 34, 34, 68, 68, 51, 102, 102, 68, 136, 136, 85, 170, 170, 102, 204, 204, 119, 255, 255, 0, 34, 34, 17, 68, 68, 17, 102, 102, 34, 136, 136, 34, 170, 170, 51, 204, 204, 51, 255, 255, 0, 34, 34, 0, 68, 68, 0, 102, 102, 0, 136, 136, 0, 170, 170, 0, 204, 204, 0, 255, 255, 17, 17, 34, 51, 51, 68, 68, 85, 102, 102, 102, 136, 136, 136, 170, 153, 170, 204, 187, 204, 255, 17, 17, 34, 34, 34, 68, 51, 68, 102, 68, 85, 136, 85, 102, 170, 102, 136, 204, 119, 153, 255, 0, 0, 34, 17, 17, 68, 17, 34, 102, 34, 51, 136, 34, 68, 170, 51, 85, 204, 51, 102, 255, 0, 0, 34, 0, 17, 68, 0, 17, 102, 0, 34, 136, 0, 34, 170, 0, 51, 204, 0, 51, 255, 17, 17, 34, 51, 51, 68, 85, 68, 102, 119, 102, 136, 153, 136, 170, 187, 153, 204, 221, 187, 255, 17, 17, 34, 51, 34, 68, 68, 51, 102, 102, 68, 136, 136, 85, 170, 153, 102, 204, 187, 119, 255, 17, 0, 34, 34, 17, 68, 68, 17, 102, 85, 34, 136, 102, 34, 170, 136, 51, 204, 153, 51, 255, 17, 0, 34, 34, 0, 68, 51, 0, 102, 68, 0, 136, 85, 0, 170, 102, 0, 204, 119, 0, 255, 34, 17, 34, 68, 51, 68, 102, 68, 102, 136, 102, 136, 170, 136, 170, 204, 153, 204, 255, 187, 238, 34, 17, 21, 68, 34, 51, 102, 51, 85, 136, 68, 119, 170, 85, 153, 204, 102, 187, 255, 119, 221, 34, 0, 17, 68, 17, 51, 102, 17, 85, 136, 34, 102, 170, 34, 136, 204, 51, 170, 255, 51, 204, 34, 7, 17, 68, 0, 51, 102, 0, 68, 136, 0, 102, 170, 0, 136, 204, 0, 153, 255, 0, 187]), frame_control: None, animation_control: None, compression: Fast, filter: Sub }
+20231129 12:08:49.590 INFO aloevera_vera::palette - Creating new palette from image palette
+20231129 12:08:49.591 INFO aloevera_vera::palette - Palette creation successful
+20231129 12:08:49.591 INFO aloevera::cmd::palette::command - Inserting palette into project: launcher.av
+20231129 12:08:49.591 INFO aloevera - Command 'palette' completed successfully
+20231129 12:08:49.591 INFO aloevera - Finished
+20231129 12:08:49.723 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:49.723 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:49.723 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:49.723 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:49.723 DEBUG aloevera_vera::imageset - Hashes to indices map: {15543627673797485341: 0}
+20231129 12:08:49.723 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:49.723 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:49.724 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:49.724 INFO aloevera - Finished
+20231129 12:08:49.864 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:49.864 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:49.864 INFO aloevera_vera::imageset - Formatting imageset 3Potions to palette at depth of 8bpp
+20231129 12:08:49.870 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:49.870 INFO aloevera - Finished
+20231129 12:08:50.003 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:50.003 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:50.003 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:50.003 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:50.003 DEBUG aloevera_vera::imageset - Hashes to indices map: {12096861369896008961: 0}
+20231129 12:08:50.003 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:50.003 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:50.005 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:50.005 INFO aloevera - Finished
+20231129 12:08:50.174 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:50.174 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:50.175 INFO aloevera_vera::imageset - Formatting imageset Airship to palette at depth of 8bpp
+20231129 12:08:50.181 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:50.181 INFO aloevera - Finished
+20231129 12:08:50.315 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:50.315 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:50.315 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:50.316 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:50.316 DEBUG aloevera_vera::imageset - Hashes to indices map: {1611378351227214128: 0}
+20231129 12:08:50.316 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:50.316 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:50.318 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:50.318 INFO aloevera - Finished
+20231129 12:08:50.464 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:50.464 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:50.466 INFO aloevera_vera::imageset - Formatting imageset BRIXX to palette at depth of 8bpp
+20231129 12:08:50.472 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:50.472 INFO aloevera - Finished
+20231129 12:08:50.616 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:50.616 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:50.616 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:50.616 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:50.616 DEBUG aloevera_vera::imageset - Hashes to indices map: {1763340554642726875: 0}
+20231129 12:08:50.616 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:50.616 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:50.620 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:50.620 INFO aloevera - Finished
+20231129 12:08:50.747 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:50.747 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:50.748 INFO aloevera_vera::imageset - Formatting imageset BRIXX1 to palette at depth of 8bpp
+20231129 12:08:50.754 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:50.754 INFO aloevera - Finished
+20231129 12:08:50.894 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:50.894 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:50.894 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:50.894 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:50.895 DEBUG aloevera_vera::imageset - Hashes to indices map: {16580783072271016422: 0}
+20231129 12:08:50.895 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:50.895 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:50.899 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:50.899 INFO aloevera - Finished
+20231129 12:08:51.074 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:51.074 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:51.077 INFO aloevera_vera::imageset - Formatting imageset CALC to palette at depth of 8bpp
+20231129 12:08:51.084 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:51.084 INFO aloevera - Finished
+20231129 12:08:51.241 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:51.241 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:51.241 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGBA, bit_depth: Eight, line_size: 512 }
+20231129 12:08:51.242 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:51.243 DEBUG aloevera_vera::imageset - Hashes to indices map: {10382240961391932136: 0}
+20231129 12:08:51.243 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:51.243 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:51.254 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:51.254 INFO aloevera - Finished
+20231129 12:08:51.404 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:51.404 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:51.407 INFO aloevera_vera::imageset - Formatting imageset Chasvalt to palette at depth of 8bpp
+20231129 12:08:51.415 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:51.416 INFO aloevera - Finished
+20231129 12:08:51.573 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:51.573 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:51.573 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:51.573 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:51.574 DEBUG aloevera_vera::imageset - Hashes to indices map: {9861305395312359022: 0}
+20231129 12:08:51.574 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:51.574 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:51.582 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:51.582 INFO aloevera - Finished
+20231129 12:08:51.729 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:51.729 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:51.733 INFO aloevera_vera::imageset - Formatting imageset CrazyLander to palette at depth of 8bpp
+20231129 12:08:51.742 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:51.742 INFO aloevera - Finished
+20231129 12:08:51.908 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:51.908 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:51.908 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:51.908 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:51.909 DEBUG aloevera_vera::imageset - Hashes to indices map: {122596960052285503: 0}
+20231129 12:08:51.909 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:51.909 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:51.917 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:51.917 INFO aloevera - Finished
+20231129 12:08:52.064 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:52.064 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:52.069 INFO aloevera_vera::imageset - Formatting imageset FlappyBird to palette at depth of 8bpp
+20231129 12:08:52.081 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:52.081 INFO aloevera - Finished
+20231129 12:08:52.244 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:52.244 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:52.244 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:52.244 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:52.245 DEBUG aloevera_vera::imageset - Hashes to indices map: {5535588657145479560: 0}
+20231129 12:08:52.245 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:52.245 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:52.252 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:52.252 INFO aloevera - Finished
+20231129 12:08:52.400 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:52.400 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:52.410 INFO aloevera_vera::imageset - Formatting imageset FoldeMusic to palette at depth of 8bpp
+20231129 12:08:52.426 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:52.426 INFO aloevera - Finished
+20231129 12:08:52.579 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:52.579 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:52.579 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:52.579 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:52.580 DEBUG aloevera_vera::imageset - Hashes to indices map: {5486202511915113732: 0}
+20231129 12:08:52.580 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:52.580 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:52.588 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:52.588 INFO aloevera - Finished
+20231129 12:08:52.763 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:52.763 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:52.766 INFO aloevera_vera::imageset - Formatting imageset Folder to palette at depth of 8bpp
+20231129 12:08:52.777 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:52.777 INFO aloevera - Finished
+20231129 12:08:52.930 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:52.930 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:52.930 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:52.930 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:52.931 DEBUG aloevera_vera::imageset - Hashes to indices map: {4809819102767877191: 0}
+20231129 12:08:52.931 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:52.931 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:52.940 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:52.940 INFO aloevera - Finished
+20231129 12:08:53.074 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:53.074 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:53.077 INFO aloevera_vera::imageset - Formatting imageset FolderDoc to palette at depth of 8bpp
+20231129 12:08:53.089 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:53.089 INFO aloevera - Finished
+20231129 12:08:53.257 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:53.257 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:53.258 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:53.258 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:53.258 DEBUG aloevera_vera::imageset - Hashes to indices map: {10957225932172388759: 0}
+20231129 12:08:53.258 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:53.258 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:53.268 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:53.268 INFO aloevera - Finished
+20231129 12:08:53.429 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:53.429 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:53.433 INFO aloevera_vera::imageset - Formatting imageset FolderGameDemos to palette at depth of 8bpp
+20231129 12:08:53.446 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:53.446 INFO aloevera - Finished
+20231129 12:08:53.605 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:53.605 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:53.606 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:53.606 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:53.606 DEBUG aloevera_vera::imageset - Hashes to indices map: {2517852181311103498: 0}
+20231129 12:08:53.606 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:53.606 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:53.616 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:53.616 INFO aloevera - Finished
+20231129 12:08:53.769 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:53.770 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:53.776 INFO aloevera_vera::imageset - Formatting imageset FolderGames to palette at depth of 8bpp
+20231129 12:08:53.790 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:53.790 INFO aloevera - Finished
+20231129 12:08:53.956 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:53.956 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:53.956 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:53.956 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:53.957 DEBUG aloevera_vera::imageset - Hashes to indices map: {12369377034678562202: 0}
+20231129 12:08:53.957 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:53.957 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:53.968 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:53.968 INFO aloevera - Finished
+20231129 12:08:54.098 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:54.098 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:54.106 INFO aloevera_vera::imageset - Formatting imageset FolderX16 to palette at depth of 8bpp
+20231129 12:08:54.122 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:54.122 INFO aloevera - Finished
+20231129 12:08:54.306 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:54.306 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:54.307 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:54.307 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:54.307 DEBUG aloevera_vera::imageset - Hashes to indices map: {6242387938183910646: 0}
+20231129 12:08:54.307 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:54.307 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:54.319 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:54.319 INFO aloevera - Finished
+20231129 12:08:54.480 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:54.480 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:54.486 INFO aloevera_vera::imageset - Formatting imageset Hangman to palette at depth of 8bpp
+20231129 12:08:54.502 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:54.502 INFO aloevera - Finished
+20231129 12:08:54.649 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:54.649 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:54.649 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:54.650 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:54.650 DEBUG aloevera_vera::imageset - Hashes to indices map: {6942042588097377529: 0}
+20231129 12:08:54.650 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:54.650 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:54.662 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:54.662 INFO aloevera - Finished
+20231129 12:08:54.810 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:54.810 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:54.814 INFO aloevera_vera::imageset - Formatting imageset Invaderz to palette at depth of 8bpp
+20231129 12:08:54.830 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:54.830 INFO aloevera - Finished
+20231129 12:08:55.025 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:55.025 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:55.026 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:55.026 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:55.026 DEBUG aloevera_vera::imageset - Hashes to indices map: {10296319256696741095: 0}
+20231129 12:08:55.026 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:55.026 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:55.040 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:55.040 INFO aloevera - Finished
+20231129 12:08:55.160 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:55.160 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:55.164 INFO aloevera_vera::imageset - Formatting imageset Megaman to palette at depth of 8bpp
+20231129 12:08:55.181 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:55.181 INFO aloevera - Finished
+20231129 12:08:55.339 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:55.339 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:55.340 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:55.340 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:55.341 DEBUG aloevera_vera::imageset - Hashes to indices map: {6669484271694697250: 0}
+20231129 12:08:55.341 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:55.341 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:55.355 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:55.355 INFO aloevera - Finished
+20231129 12:08:55.487 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:55.487 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:55.491 INFO aloevera_vera::imageset - Formatting imageset Melodius to palette at depth of 8bpp
+20231129 12:08:55.509 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:55.509 INFO aloevera - Finished
+20231129 12:08:55.649 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:55.649 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:55.649 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:55.649 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:55.649 DEBUG aloevera_vera::imageset - Hashes to indices map: {7212676335998947234: 0}
+20231129 12:08:55.649 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:55.649 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:55.664 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:55.664 INFO aloevera - Finished
+20231129 12:08:55.819 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:55.819 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:55.827 INFO aloevera_vera::imageset - Formatting imageset Mine-rescue to palette at depth of 8bpp
+20231129 12:08:55.846 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:55.846 INFO aloevera - Finished
+20231129 12:08:56.002 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:56.002 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:56.002 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:56.002 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:56.003 DEBUG aloevera_vera::imageset - Hashes to indices map: {9245833394105525664: 0}
+20231129 12:08:56.003 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:56.003 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:56.018 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:56.018 INFO aloevera - Finished
+20231129 12:08:56.176 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:56.176 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:56.185 INFO aloevera_vera::imageset - Formatting imageset Minimotors to palette at depth of 8bpp
+20231129 12:08:56.205 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:56.205 INFO aloevera - Finished
+20231129 12:08:56.347 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:56.347 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:56.347 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:56.348 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:56.348 DEBUG aloevera_vera::imageset - Hashes to indices map: {12160350369935797249: 0}
+20231129 12:08:56.348 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:56.348 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:56.375 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:56.375 INFO aloevera - Finished
+20231129 12:08:56.534 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:56.534 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:56.543 INFO aloevera_vera::imageset - Formatting imageset Montezuma to palette at depth of 8bpp
+20231129 12:08:56.563 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:56.563 INFO aloevera - Finished
+20231129 12:08:56.711 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:56.711 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:56.711 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:56.712 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:56.712 DEBUG aloevera_vera::imageset - Hashes to indices map: {14475485410147730438: 0}
+20231129 12:08:56.712 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:56.712 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:56.729 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:56.729 INFO aloevera - Finished
+20231129 12:08:56.879 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:56.879 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:56.890 INFO aloevera_vera::imageset - Formatting imageset MunchMania to palette at depth of 8bpp
+20231129 12:08:56.912 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:56.912 INFO aloevera - Finished
+20231129 12:08:57.069 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:57.069 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:57.069 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:57.070 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:57.070 DEBUG aloevera_vera::imageset - Hashes to indices map: {6168847486050548234: 0}
+20231129 12:08:57.071 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:57.071 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:57.095 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:57.095 INFO aloevera - Finished
+20231129 12:08:57.225 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:57.225 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:57.235 INFO aloevera_vera::imageset - Formatting imageset Pixeus to palette at depth of 8bpp
+20231129 12:08:57.255 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:57.255 INFO aloevera - Finished
+20231129 12:08:57.408 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:57.408 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:57.408 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:57.408 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:57.409 DEBUG aloevera_vera::imageset - Hashes to indices map: {1910571760022913312: 0}
+20231129 12:08:57.409 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:57.409 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:57.429 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:57.429 INFO aloevera - Finished
+20231129 12:08:57.554 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:57.554 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:57.562 INFO aloevera_vera::imageset - Formatting imageset PlanetX16 to palette at depth of 8bpp
+20231129 12:08:57.584 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:57.584 INFO aloevera - Finished
+20231129 12:08:57.724 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:57.724 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:57.724 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:57.724 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:57.725 DEBUG aloevera_vera::imageset - Hashes to indices map: {2620883119416756008: 0}
+20231129 12:08:57.725 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:57.725 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:57.745 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:57.745 INFO aloevera - Finished
+20231129 12:08:57.896 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:57.896 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:57.903 INFO aloevera_vera::imageset - Formatting imageset Program to palette at depth of 8bpp
+20231129 12:08:57.925 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:57.925 INFO aloevera - Finished
+20231129 12:08:58.094 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:58.094 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:58.094 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:58.095 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:58.096 DEBUG aloevera_vera::imageset - Hashes to indices map: {11215891865688540637: 0}
+20231129 12:08:58.096 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:58.096 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:58.120 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:58.120 INFO aloevera - Finished
+20231129 12:08:58.272 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:58.272 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:58.280 INFO aloevera_vera::imageset - Formatting imageset QRcode to palette at depth of 8bpp
+20231129 12:08:58.304 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:58.304 INFO aloevera - Finished
+20231129 12:08:58.444 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:58.444 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:58.444 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:58.444 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:58.445 DEBUG aloevera_vera::imageset - Hashes to indices map: {12014335488687005722: 0}
+20231129 12:08:58.445 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:58.445 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:58.467 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:58.467 INFO aloevera - Finished
+20231129 12:08:58.623 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:58.623 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:58.633 INFO aloevera_vera::imageset - Formatting imageset Quack to palette at depth of 8bpp
+20231129 12:08:58.657 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:58.657 INFO aloevera - Finished
+20231129 12:08:58.787 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:58.787 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:58.787 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:58.788 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:58.788 DEBUG aloevera_vera::imageset - Hashes to indices map: {765194367149475327: 0}
+20231129 12:08:58.788 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:58.788 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:58.814 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:58.814 INFO aloevera - Finished
+20231129 12:08:58.962 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:58.962 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:58.969 INFO aloevera_vera::imageset - Formatting imageset Ralleyspeedway to palette at depth of 8bpp
+20231129 12:08:58.994 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:58.994 INFO aloevera - Finished
+20231129 12:08:59.156 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:59.156 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:59.157 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:59.157 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:59.157 DEBUG aloevera_vera::imageset - Hashes to indices map: {8530811012637160125: 0}
+20231129 12:08:59.157 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:59.157 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:59.180 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:59.180 INFO aloevera - Finished
+20231129 12:08:59.309 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:59.309 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:59.317 INFO aloevera_vera::imageset - Formatting imageset Rockrunner to palette at depth of 8bpp
+20231129 12:08:59.344 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:59.344 INFO aloevera - Finished
+20231129 12:08:59.507 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:59.507 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:59.507 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:59.507 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:59.508 DEBUG aloevera_vera::imageset - Hashes to indices map: {6319647833524633258: 0}
+20231129 12:08:59.508 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:59.508 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:59.531 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:59.531 INFO aloevera - Finished
+20231129 12:08:59.691 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:59.691 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:59.705 INFO aloevera_vera::imageset - Formatting imageset Scumbotron to palette at depth of 8bpp
+20231129 12:08:59.732 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:59.732 INFO aloevera - Finished
+20231129 12:08:59.899 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:08:59.899 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:08:59.899 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:08:59.900 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:08:59.900 DEBUG aloevera_vera::imageset - Hashes to indices map: {17416137523714533721: 0}
+20231129 12:08:59.900 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:08:59.900 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:08:59.924 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:08:59.924 INFO aloevera - Finished
+20231129 12:09:00.056 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:00.056 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:00.065 INFO aloevera_vera::imageset - Formatting imageset Ski to palette at depth of 8bpp
+20231129 12:09:00.096 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:00.096 INFO aloevera - Finished
+20231129 12:09:00.248 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:00.248 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:00.248 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:09:00.248 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:09:00.248 DEBUG aloevera_vera::imageset - Hashes to indices map: {5245145537868505462: 0}
+20231129 12:09:00.248 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:09:00.248 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:09:00.277 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:00.277 INFO aloevera - Finished
+20231129 12:09:00.398 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:00.398 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:00.407 INFO aloevera_vera::imageset - Formatting imageset Tetrads to palette at depth of 8bpp
+20231129 12:09:00.436 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:00.436 INFO aloevera - Finished
+20231129 12:09:00.561 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:00.561 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:00.562 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:09:00.562 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:09:00.562 DEBUG aloevera_vera::imageset - Hashes to indices map: {9037091730815516542: 0}
+20231129 12:09:00.562 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:09:00.562 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:09:00.588 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:00.588 INFO aloevera - Finished
+20231129 12:09:00.711 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:00.711 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:00.719 INFO aloevera_vera::imageset - Formatting imageset Vindicator to palette at depth of 8bpp
+20231129 12:09:00.749 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:00.749 INFO aloevera - Finished
+20231129 12:09:00.905 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:00.905 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:00.905 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:09:00.905 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:09:00.906 DEBUG aloevera_vera::imageset - Hashes to indices map: {4716999916698398000: 0}
+20231129 12:09:00.906 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:09:00.906 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:09:00.932 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:00.932 INFO aloevera - Finished
+20231129 12:09:01.055 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:01.055 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:01.063 INFO aloevera_vera::imageset - Formatting imageset X16Maze to palette at depth of 8bpp
+20231129 12:09:01.093 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:01.093 INFO aloevera - Finished
+20231129 12:09:01.228 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:01.228 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:01.228 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:09:01.228 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:09:01.228 DEBUG aloevera_vera::imageset - Hashes to indices map: {7842529537803869747: 0}
+20231129 12:09:01.228 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:09:01.228 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:09:01.256 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:01.256 INFO aloevera - Finished
+20231129 12:09:01.416 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:01.416 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:01.426 INFO aloevera_vera::imageset - Formatting imageset X16Robots to palette at depth of 8bpp
+20231129 12:09:01.457 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:01.457 INFO aloevera - Finished
+20231129 12:09:01.623 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:01.623 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:01.623 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:09:01.623 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:09:01.624 DEBUG aloevera_vera::imageset - Hashes to indices map: {4072510659375991629: 0}
+20231129 12:09:01.624 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:09:01.624 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:09:01.652 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:01.652 INFO aloevera - Finished
+20231129 12:09:01.803 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:01.803 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:01.812 INFO aloevera_vera::imageset - Formatting imageset X16Wars to palette at depth of 8bpp
+20231129 12:09:01.843 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:01.843 INFO aloevera - Finished
+20231129 12:09:01.989 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:01.989 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:01.989 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:09:01.989 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:09:01.990 DEBUG aloevera_vera::imageset - Hashes to indices map: {8180853074119603270: 0}
+20231129 12:09:01.990 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:09:01.990 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:09:02.018 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:02.018 INFO aloevera - Finished
+20231129 12:09:02.156 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:02.156 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:02.167 INFO aloevera_vera::imageset - Formatting imageset Xbert to palette at depth of 8bpp
+20231129 12:09:02.200 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:02.200 INFO aloevera - Finished
+20231129 12:09:02.347 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:02.347 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:02.347 DEBUG aloevera_vera::png_util - Decoded PNG Info: OutputInfo { width: 128, height: 96, color_type: RGB, bit_depth: Eight, line_size: 384 }
+20231129 12:09:02.348 INFO aloevera_vera::png_util - Parsing 1 frames
+20231129 12:09:02.348 DEBUG aloevera_vera::imageset - Hashes to indices map: {9148690018826045788: 0}
+20231129 12:09:02.348 DEBUG aloevera_vera::imageset - Imageset culled? - false
+20231129 12:09:02.348 INFO aloevera_vera::imageset - Image parsed successfully
+20231129 12:09:02.377 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:02.377 INFO aloevera - Finished
+20231129 12:09:02.529 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:02.529 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:02.540 INFO aloevera_vera::imageset - Formatting imageset Xixit to palette at depth of 8bpp
+20231129 12:09:02.573 INFO aloevera - Command 'imageset' completed successfully
+20231129 12:09:02.573 INFO aloevera - Finished
+20231129 12:09:02.752 INFO aloevera - This is Aloevera version 0.2.4, built for x86_64-pc-windows-msvc by rustc 1.43.1 (8d69840ab 2020-05-04).
+20231129 12:09:02.752 DEBUG aloevera - Built with profile "release", features "".
+20231129 12:09:02.762 INFO aloevera::cmd::asm::command - Resource x16pal has size 512
+20231129 12:09:02.763 INFO aloevera::cmd::asm::command - Resource 3Potions has size 12288
+20231129 12:09:02.763 INFO aloevera::cmd::asm::command - Resource Airship has size 12288
+20231129 12:09:02.763 INFO aloevera::cmd::asm::command - Resource BRIXX has size 12288
+20231129 12:09:02.763 INFO aloevera::cmd::asm::command - Resource BRIXX1 has size 12288
+20231129 12:09:02.764 INFO aloevera::cmd::asm::command - Resource CALC has size 12288
+20231129 12:09:02.764 INFO aloevera::cmd::asm::command - Resource Chasvalt has size 12288
+20231129 12:09:02.764 INFO aloevera::cmd::asm::command - Resource CrazyLander has size 12288
+20231129 12:09:02.764 INFO aloevera::cmd::asm::command - Resource FlappyBird has size 12288
+20231129 12:09:02.764 INFO aloevera::cmd::asm::command - Resource FoldeMusic has size 12288
+20231129 12:09:02.765 INFO aloevera::cmd::asm::command - Resource Folder has size 12288
+20231129 12:09:02.765 INFO aloevera::cmd::asm::command - Resource FolderDoc has size 12288
+20231129 12:09:02.765 INFO aloevera::cmd::asm::command - Resource FolderGameDemos has size 12288
+20231129 12:09:02.765 INFO aloevera::cmd::asm::command - Resource FolderGames has size 12288
+20231129 12:09:02.765 INFO aloevera::cmd::asm::command - Resource FolderX16 has size 12288
+20231129 12:09:02.765 INFO aloevera::cmd::asm::command - Resource Hangman has size 12288
+20231129 12:09:02.766 INFO aloevera::cmd::asm::command - Resource Invaderz has size 12288
+20231129 12:09:02.766 INFO aloevera::cmd::asm::command - Resource Megaman has size 12288
+20231129 12:09:02.766 INFO aloevera::cmd::asm::command - Resource Melodius has size 12288
+20231129 12:09:02.766 INFO aloevera::cmd::asm::command - Resource Mine-rescue has size 12288
+20231129 12:09:02.767 INFO aloevera::cmd::asm::command - Resource Minimotors has size 12288
+20231129 12:09:02.767 INFO aloevera::cmd::asm::command - Resource Montezuma has size 12288
+20231129 12:09:02.767 INFO aloevera::cmd::asm::command - Resource MunchMania has size 12288
+20231129 12:09:02.767 INFO aloevera::cmd::asm::command - Resource Pixeus has size 12288
+20231129 12:09:02.767 INFO aloevera::cmd::asm::command - Resource PlanetX16 has size 12288
+20231129 12:09:02.768 INFO aloevera::cmd::asm::command - Resource Program has size 12288
+20231129 12:09:02.768 INFO aloevera::cmd::asm::command - Resource QRcode has size 12288
+20231129 12:09:02.768 INFO aloevera::cmd::asm::command - Resource Quack has size 12288
+20231129 12:09:02.768 INFO aloevera::cmd::asm::command - Resource Ralleyspeedway has size 12288
+20231129 12:09:02.769 INFO aloevera::cmd::asm::command - Resource Rockrunner has size 12288
+20231129 12:09:02.769 INFO aloevera::cmd::asm::command - Resource Scumbotron has size 12288
+20231129 12:09:02.769 INFO aloevera::cmd::asm::command - Resource Ski has size 12288
+20231129 12:09:02.769 INFO aloevera::cmd::asm::command - Resource Tetrads has size 12288
+20231129 12:09:02.769 INFO aloevera::cmd::asm::command - Resource Vindicator has size 12288
+20231129 12:09:02.769 INFO aloevera::cmd::asm::command - Resource X16Maze has size 12288
+20231129 12:09:02.769 INFO aloevera::cmd::asm::command - Resource X16Robots has size 12288
+20231129 12:09:02.770 INFO aloevera::cmd::asm::command - Resource X16Wars has size 12288
+20231129 12:09:02.770 INFO aloevera::cmd::asm::command - Resource Xbert has size 12288
+20231129 12:09:02.770 INFO aloevera::cmd::asm::command - Resource Xixit has size 12288
+20231129 12:09:02.770 INFO aloevera - Command 'asm' completed successfully
+20231129 12:09:02.770 INFO aloevera - Finished

@@ -42,6 +42,7 @@ bool isLocalMode = false;
 
 extern void LaunchPrg();
 
+void showTextWrapped(char* strText, uint8_t x, uint8_t y, uint8_t w, uint8_t h);
 
 /*****************************************************************************/
 // get directory list
@@ -76,8 +77,8 @@ int getDirectoryList(char* base)
 
     for (index=0; index < numEntries; index++)
     {
-        arrDirectory[index].hasThumb = false;
-        arrDirectory[index].hasMeta = false;
+        arrDirectory[index].hasThumb = true;
+        arrDirectory[index].hasMeta = true;
         if (arrDirectory[index].isDir)
         {
             // check if there is a PRG of identical name in that folder
@@ -90,16 +91,11 @@ int getDirectoryList(char* base)
             strcat(prgPath, "/");
             strcat(prgPath, prgName);
 
- 
-            arrDirectory[index].hasThumb = false;
-            arrDirectory[index].hasMeta = false;            
             arrDirectory[index].hasPrg = false;
             if (szName[0]=='.')
                 continue;
-//*
+
             arrDirectory[index].hasPrg = checkFile(prgPath);                
-            arrDirectory[index].hasThumb = true;
-            arrDirectory[index].hasMeta = true;            
 
         }
     }
@@ -126,6 +122,9 @@ int getDirectoryListSorted(char* base)
     getDirectory(&DirList, base, "dir");
     for (index=0; index < DirList.numEntries; index++)
     {
+        if (strcmp(DirList.arrEntries[index].name, "launcher")==0)
+            continue;
+
         for (i=0; i<=c; i++)
         {
             if (i==c || strcmp(DirList.arrEntries[index].name, arrDirectory[i].name) < 0)
@@ -159,8 +158,8 @@ int getDirectoryListSorted(char* base)
 
     for (index=0; index < numEntries; index++)
     {
-        arrDirectory[index].hasThumb = false;
-        arrDirectory[index].hasMeta = false;
+        arrDirectory[index].hasThumb = true;
+        arrDirectory[index].hasMeta = true;
         if (arrDirectory[index].isDir)
         {
             // check if there is a PRG of identical name in that folder
@@ -174,15 +173,11 @@ int getDirectoryListSorted(char* base)
             strcat(prgPath, prgName);
 
  
-            arrDirectory[index].hasThumb = false;
-            arrDirectory[index].hasMeta = false;            
             arrDirectory[index].hasPrg = false;
             if (szName[0]=='.')
                 continue;
 //*
             arrDirectory[index].hasPrg = checkFile(prgPath);                
-            arrDirectory[index].hasThumb = true;
-            arrDirectory[index].hasMeta = true;            
 
 /*
             getDirectory(&SubList, szName, "*");
@@ -352,7 +347,7 @@ void updateDirList(int8_t selectedIndex)
 /*****************************************************************************/
 char* getThumbnailFileName(int selectedIndex, int subIndex)
 {
-    static char strThumbFile[60];
+    static char strThumbFile[80];
 
     if (isLocalMode)
     {
@@ -381,8 +376,29 @@ char* getThumbnailFileName(int selectedIndex, int subIndex)
             return strThumbFile;
         }
         else
+        {
             return NULL;
+        }
     }
+    return strThumbFile;
+}
+
+/*****************************************************************************/
+char* getDefaultThumbnailFileName(int selectedIndex)
+{
+    static char strThumbFile[80];
+    if (isLocalMode)
+        return NULL;
+
+    strcpy(strThumbFile, launcherDir);
+    strcat(strThumbFile, "/");
+    if (arrDirectory[selectedIndex].isDir && !arrDirectory[selectedIndex].hasPrg)
+        strcat(strThumbFile, ".folder.abm");
+    else if (arrDirectory[selectedIndex].isPrg)
+        strcat(strThumbFile, ".program.abm");
+    else
+        strcat(strThumbFile, ".program.abm");
+        //return NULL;
     return strThumbFile;
 }
 
@@ -397,33 +413,37 @@ void showThumbnail(int selectedIndex, int subIndex)
     int y = 0;
     int x = 0;
     int c = 0;
+    struct DirEntry* pEntry = &arrDirectory[selectedIndex];
     unsigned char pixelValue = 0;
     char* strThumbFile=NULL;
 
-    if (!arrDirectory[selectedIndex].hasPrg && !arrDirectory[selectedIndex].isDir)
+    if (!pEntry->hasPrg && !pEntry->isDir && !pEntry->isPrg)
         return;
 
     // hide all sprites
     hideAllSprites();
    
     // don't show anything on the ".." (parent folder) entry
-    if (arrDirectory[selectedIndex].name[0] == '.')
+    if (pEntry->name[0] == '.')
         return;
 
-    if (!arrDirectory[selectedIndex].hasThumb)
-        return;
-
-    strThumbFile = getThumbnailFileName(selectedIndex, subIndex);
+    if (pEntry->hasThumb || isLocalMode)
+        strThumbFile = getThumbnailFileName(selectedIndex, subIndex);
+    else
+        strThumbFile = getDefaultThumbnailFileName(selectedIndex);
     if (!strThumbFile)
         return;
 
     // load image
     if (!veraload(strThumbFile, 8, THUMBNAIL_BUFFER_ADDR))
     {
-        arrDirectory[selectedIndex].hasThumb = false;
-        //check_dos_error();
-        //checkFile(strThumbFile);
-        return;
+        strThumbFile = getDefaultThumbnailFileName(selectedIndex);
+
+        if (!strThumbFile || !veraload(strThumbFile, 8, THUMBNAIL_BUFFER_ADDR))
+        {
+            pEntry->hasThumb = false;
+            return;
+        }
     }
 
     split_thumbnail();
@@ -494,13 +514,9 @@ void showMeta(int selectedIndex)
         printf("                                      ");
     }
 
-    if (!arrDirectory[selectedIndex].hasMeta)
+    if (!arrDirectory[selectedIndex].hasMeta && isLocalMode)
         return;
 
-    if (!arrDirectory[selectedIndex].hasPrg && !arrDirectory[selectedIndex].isDir)
-    {
-        return;
-    }
     // don't show anything on the ".." (parent folder) entry
     if (arrDirectory[selectedIndex].name[0] == '.')
     {
@@ -566,6 +582,10 @@ void showMeta(int selectedIndex)
     // show description with word wrap
     len -= (szDesc - szMeta);
     szDesc[len] = 0;
+
+    //showTextWrapped(szDesc, 32, 19, 35, 6);
+
+     
     x = 32;
     y = 19;
     boPrint = true;
@@ -635,7 +655,7 @@ repeat:
             tick++;
 
             // handle automatic thumbnail slideshow
-            if (tick > 180)
+            if (tick > 180 && arrDirectory[index].hasThumb)
             {
                 tick = 0;
                 if (getThumbnailFileName(index,subIndex+1))
@@ -762,6 +782,7 @@ repeat:
                 {
                     index = 0;
                     pageStart = 0;
+                    pageEnd = pageStart + pageSize;
                     return index;
                 }
                 else
@@ -771,6 +792,8 @@ repeat:
                 index = numEntries-1;
             break;
             case 0x0D: // enter key
+                pageStart = 0;
+                pageEnd = pageStart + pageSize;
                 return index;
             break;
         }
@@ -846,6 +869,135 @@ void drawLayout()
 }
 
 /*****************************************************************************/
+// show intro screen
+void showTextWrapped(char* strText, uint8_t x, uint8_t y, uint8_t w, uint8_t h)
+{
+    int i=0;
+    int p=0;
+    int len=strlen(strText);
+    uint8_t t = y;
+    char c=0;
+    char* szWord=strText;
+
+    gotoxy(x, y);
+
+    for (i=0; i<=len; i++)
+    {
+        c=strText[i];
+        if (c==' ' || c== '\r' || i == len)
+        {
+            strText[i] = 0;
+            if (p+strlen(strText) > w)
+            {
+                p=0;
+                y++;
+                gotoxy(x, y);
+            }
+            gotoxy(x+p, y);
+            printf(szWord);
+            p+=strlen(szWord)+1; // include space
+            if (c=='\r')
+            {
+                i++;
+                p=0;
+                y++;
+                gotoxy(x, y);
+            }
+            else
+                printf(" ");
+                if (y > t+h)
+                    return;
+            szWord = strText+i+1;
+        }
+    }
+
+}
+
+/*****************************************************************************/
+// show intro screen
+void showIntroScreen()
+{
+    uint8_t y;
+    static char* szIntro = 
+        "This launcher let's you navigate through directories and start programs.\r\n"
+        "For a selection of games and programs a thumbnail and short description is shown. "
+        "For all others default icons are shown.\r\n\r\n"
+        "Navigation by keybard:\r\n"
+        "- up/down:    scroll through directory list\r\n"
+        "- left/right: cycle through thumbnails (if multiple)\r\n"
+        "- enter:      select directory or start program\r\n"
+        "- any letter: jump directly in the list\r\n"
+        "- esc:        exit launcher\r\n\r\n"
+        "Navigation by joystick/controller:\r\n"
+        "- up/down:    scroll through directory list\r\n"
+        "- left/right: cycle through thumbnails (if multiple)\r\n"
+        "- any button: select directory or start program\r\n"
+        ;
+
+    clrscr();
+    while (kbhit())
+    { cgetc(); }
+
+    bgcolor(15);
+    textcolor(6);
+
+    gotoxy(7,2);
+    printf(" %-54s ", "Launcher (c) by AndyMt: Introduction");
+
+    bgcolor(6);
+    textcolor(15);
+
+    for (y=2; y<24; y++)
+    {
+        gotoxy(6, y);
+        cbm_k_chrout('\xb6');
+        gotoxy(63, y);
+        cbm_k_chrout('\xb4');
+    }
+    bgcolor(15);
+    textcolor(6);
+    gotoxy(7,23);
+    printf(" %-54s ", "This message is only shown once. Press any key...");
+
+    bgcolor(6);
+    textcolor(1);
+    showTextWrapped(szIntro, 8,4,53,10);
+
+    while (!kbhit()) {}
+
+    // empty keyboard buffer first
+    while (kbhit())
+    { cgetc(); }
+
+}
+
+/*****************************************************************************/
+void manageInfoscreen()
+{
+    struct ini_section *sections = NULL;
+    char* szValue=NULL;
+
+    //show intro screen?
+    changeDir(launcherDir);
+    sections = read_ini(".launcher.tmp");
+
+    if (!sections) // does not exist? show intro
+    {
+        showIntroScreen();
+        sections = create_ini_section(sections, "State");
+    }
+    else // otherwise store ini to skip it next time
+    {
+        szValue = get_ini_property(sections, "skipintro")->value;
+        if (szValue[0]=='0' || szValue[0]=='n')
+            showIntroScreen();
+    }
+    set_ini_property(sections, "skipintro", "1");
+    save_ini(".launcher.tmp", sections);
+
+}
+
+/*****************************************************************************/
 // main program
 int main(int argc, char *argv[])
 {
@@ -864,13 +1016,12 @@ int main(int argc, char *argv[])
     strcpy(launcherDir, "");
     isLocalMode = true;
 
-    //cbm_k_bsout(CH_FONT_ISO);
-    //screen_set_charset(3);
+    while (kbhit())
+    { cgetc(); }
     
     sections = read_ini("launcher.ini");
     if (sections) // ini file is there, get values
     {
-        printf("[%s]\r\n", sections->properties->key);
         szValue = get_ini_property(sections, "localmode")->value;
         isLocalMode = szValue[0]=='1' || szValue[0]=='y';
         szValue = get_ini_property(sections, "launcherDir")->value;
@@ -882,17 +1033,18 @@ int main(int argc, char *argv[])
         if (szValue)
         {
             strcpy(startDir, szValue);
-            
         }
     }
     curr_section = sections;
 
-    if (startDir[0])
-        changeDir(startDir);
-
     SetupScreenMode();
 
     joy_install(cx16_std_joy);
+
+    manageInfoscreen();
+
+    if (startDir[0])
+        changeDir(startDir);
 
     // empty keyboard buffer first
     while (kbhit())
