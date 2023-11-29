@@ -237,6 +237,7 @@ void launchPrg(char* name)
     __asm__("jsr $fec3");
     __asm__("lda #13");
     __asm__("jsr $fec3");
+    textcolor(1);
 }
 
 /*****************************************************************************/
@@ -279,6 +280,7 @@ void launch(char* dir, char* name)
     __asm__("jsr $fec3");
     __asm__("lda #13");
     __asm__("jsr $fec3");
+    textcolor(1);
 }
 
 /*****************************************************************************/
@@ -961,13 +963,7 @@ void showIntroScreen()
 
     bgcolor(6);
     textcolor(1);
-    showTextWrapped(szIntro, 8,4,53,10);
-
-    while (!kbhit()) {}
-
-    // empty keyboard buffer first
-    while (kbhit())
-    { cgetc(); }
+    showTextWrapped(szIntro, 8,4,53,18);
 
 }
 
@@ -985,15 +981,23 @@ void manageInfoscreen()
     {
         showIntroScreen();
         sections = create_ini_section(sections, "State");
+        set_ini_property(sections, "skipintro", "1");
+        save_ini(".launcher.tmp", sections);
+
+        while (!kbhit()) {} while (kbhit()) { cgetc(); }
+
     }
     else // otherwise store ini to skip it next time
     {
         szValue = get_ini_property(sections, "skipintro")->value;
         if (szValue[0]=='0' || szValue[0]=='n')
+        {
             showIntroScreen();
+            set_ini_property(sections, "skipintro", "1");
+            save_ini(".launcher.tmp", sections);
+            while (!kbhit()) {} while (kbhit()) { cgetc(); }
+        }
     }
-    set_ini_property(sections, "skipintro", "1");
-    save_ini(".launcher.tmp", sections);
 
 }
 

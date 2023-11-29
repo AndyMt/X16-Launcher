@@ -32,8 +32,7 @@ for %%f in (*) do (
 )
 endlocal
 
-copy .\output\imagesets\*.bin ..\out\thumbnails\*.ABM >nul
-copy .\output\palettes\*.bin ..\out\*.ABM >nul
+copy .\output\imagesets\*.bin .\LAUNCHER\*.ABM >nul
 
 goto end
 
