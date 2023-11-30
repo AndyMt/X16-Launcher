@@ -132,6 +132,11 @@ int SetupScreenMode()
     uint8_t a = 0;
     int result = 0;
 
+    clrscr();
+    restoreScreenmode();
+    cbm_k_bsout(CH_FONT_LOWER);
+    screen_set_charset(3);
+
     videomode(VIDEOMODE_80x30);
     VERA.display.border = 5;
     VERA.control = VERA.control | 0x03;
@@ -148,7 +153,6 @@ int SetupScreenMode()
     cbm_k_bsout(CH_FONT_LOWER);
     screen_set_charset(3);
 
-    clrscr();
 
     // 
     // HACK: Set mouse cursor (Sprite 0) to be transparent (invisible)

@@ -16,6 +16,8 @@
 #include "inifile.h"
 
 /*****************************************************************************/
+#define TMP_FILE ".launcher.tmp"
+#define INI_FILE "launcher.ini"
 
 extern uint8_t res1;
 extern uint8_t res2;
@@ -43,6 +45,8 @@ bool isLocalMode = false;
 extern void LaunchPrg();
 
 void showTextWrapped(char* strText, uint8_t x, uint8_t y, uint8_t w, uint8_t h);
+void showIntroScreen();
+void drawLayout();
 
 /*****************************************************************************/
 // get directory list
@@ -122,7 +126,11 @@ int getDirectoryListSorted(char* base)
     getDirectory(&DirList, base, "dir");
     for (index=0; index < DirList.numEntries; index++)
     {
-        if (strcmp(DirList.arrEntries[index].name, "launcher")==0)
+        szName = DirList.arrEntries[index].name;
+        if (strstr(launcherDir, DirList.arrEntries[index].name))
+            continue;
+
+        if (strstr(startDir, baseDir) && szName[0]=='.')
             continue;
 
         for (i=0; i<=c; i++)
@@ -137,14 +145,18 @@ int getDirectoryListSorted(char* base)
         c++;
     }
 
-    // programs next - allow to sort stuff later.
+    // programs next, add in alphabetical order
     getDirectory(&DirList, base, "prg");
     s=c;
     for (index=0; index < DirList.numEntries; index++)
     {
+        szName = DirList.arrEntries[index].name;
+        if (strcmp(szName, "launcher.prg")==0)
+            continue;
+
         for (i=s; i<=c; i++)
         {
-            if (i==c || strcmp(DirList.arrEntries[index].name, arrDirectory[i].name) < 0)
+            if (i==c || strcmp(szName, arrDirectory[i].name) < 0)
             {
                 memmove(&arrDirectory[i+1], &arrDirectory[i], sizeof(struct DirEntry)*(c-i+2));
                 memcpy(&arrDirectory[i], &DirList.arrEntries[index], sizeof(struct DirEntry));
@@ -797,6 +809,14 @@ repeat:
                 pageStart = 0;
                 pageEnd = pageStart + pageSize;
                 return index;
+            case 0x85: // F1 key
+                hideAllSprites();
+                showIntroScreen();
+                waitKeypress();
+                clrscr();
+                drawLayout();
+                getDirectoryListSorted("");    
+                continue;
             break;
         }
 
@@ -837,8 +857,8 @@ void drawLayout()
     textcolor(6);
 
     strcpy(baseDir, getCurrentDirectory());
-    if (baseDir[0] > '9' && baseDir[1] != '.')
-        baseDir[0]+=32;
+    //if (baseDir[0] > '9' && baseDir[1] != '.')
+    //    baseDir[0]+=32;
 
 
     if (baseDir[0]=='/')
@@ -877,28 +897,32 @@ void showTextWrapped(char* strText, uint8_t x, uint8_t y, uint8_t w, uint8_t h)
     int i=0;
     int p=0;
     int len=strlen(strText);
+    uint8_t l = 0;
     uint8_t t = y;
     char c=0;
     char* szWord=strText;
+    static char buf[40];
 
-    gotoxy(x, y);
+    gotoxy(x, y);                       // start top right coordinates
 
     for (i=0; i<=len; i++)
     {
         c=strText[i];
-        if (c==' ' || c== '\r' || i == len)
+        if (c==' ' || c== '\r' || i >= len)
         {
-            strText[i] = 0;
-            if (p+strlen(strText) > w)
+            l = strText+i - szWord;     // length of word
+            if (p+l > w)                // wrap around?
             {
                 p=0;
                 y++;
                 gotoxy(x, y);
             }
-            gotoxy(x+p, y);
-            printf(szWord);
-            p+=strlen(szWord)+1; // include space
-            if (c=='\r')
+            gotoxy(x+p, y);             // print word
+            strncpy(buf, szWord, l);
+            buf[l]=0;
+            printf(buf);
+            p+=l+1;                     // include space
+            if (c=='\r')                // newline?
             {
                 i++;
                 p=0;
@@ -906,10 +930,11 @@ void showTextWrapped(char* strText, uint8_t x, uint8_t y, uint8_t w, uint8_t h)
                 gotoxy(x, y);
             }
             else
-                printf(" ");
-                if (y > t+h)
+                printf(" ");            // include space
+                if (y > t+h)            // exceeding max lines?
                     return;
-            szWord = strText+i+1;
+
+            szWord = strText+i+1;       // jump to next word
         }
     }
 
@@ -924,7 +949,7 @@ void showIntroScreen()
         "This launcher let's you navigate through directories and start programs.\r\n"
         "For a selection of games and programs a thumbnail and short description is shown. "
         "For all others default icons are shown.\r\n\r\n"
-        "Navigation by keybard:\r\n"
+        "Navigation by keyboard:\r\n"
         "- up/down:    scroll through directory list\r\n"
         "- left/right: cycle through thumbnails (if multiple)\r\n"
         "- enter:      select directory or start program\r\n"
@@ -933,7 +958,8 @@ void showIntroScreen()
         "Navigation by joystick/controller:\r\n"
         "- up/down:    scroll through directory list\r\n"
         "- left/right: cycle through thumbnails (if multiple)\r\n"
-        "- any button: select directory or start program\r\n"
+        "- any button: select directory or start program\r\n\r\n"
+        "This message can be shown again by pressing F1."
         ;
 
     clrscr();
@@ -959,7 +985,7 @@ void showIntroScreen()
     bgcolor(15);
     textcolor(6);
     gotoxy(7,23);
-    printf(" %-54s ", "This message is only shown once. Press any key...");
+    printf(" %-54s ", "Press any key to continue...");
 
     bgcolor(6);
     textcolor(1);
@@ -972,33 +998,29 @@ void manageInfoscreen()
 {
     struct ini_section *sections = NULL;
     char* szValue=NULL;
+    bool tmpExists = false;
 
     //show intro screen?
     changeDir(launcherDir);
-    sections = read_ini(".launcher.tmp");
 
-    if (!sections) // does not exist? show intro
+    //if (checkFile(TMP_FILE))
+    //    return;
+
+    sections = read_ini(TMP_FILE);
+    if (sections)
+        szValue = get_ini_property(sections, "skipintro")->value;
+    else
+        sections = create_ini_section(sections, "state");
+    
+
+    // save flag to skip it from  now on
+    if (!szValue || szValue[0]=='0' || szValue[0]=='n')
     {
         showIntroScreen();
-        sections = create_ini_section(sections, "State");
         set_ini_property(sections, "skipintro", "1");
-        save_ini(".launcher.tmp", sections);
-
-        while (!kbhit()) {} while (kbhit()) { cgetc(); }
-
+        save_ini(TMP_FILE, sections);
+        waitKeypress();
     }
-    else // otherwise store ini to skip it next time
-    {
-        szValue = get_ini_property(sections, "skipintro")->value;
-        if (szValue[0]=='0' || szValue[0]=='n')
-        {
-            showIntroScreen();
-            set_ini_property(sections, "skipintro", "1");
-            save_ini(".launcher.tmp", sections);
-            while (!kbhit()) {} while (kbhit()) { cgetc(); }
-        }
-    }
-
 }
 
 /*****************************************************************************/
@@ -1014,16 +1036,19 @@ int main(int argc, char *argv[])
     struct ini_section *sections = NULL;
     struct ini_section *curr_section = sections;
 
+    bgcolor(6);
+    textcolor(6);
+
     baseDir[0]=0;
     strcpy(baseDir, "/");
     strcpy(startDir, "");
     strcpy(launcherDir, "");
     isLocalMode = true;
-
+    
     while (kbhit())
     { cgetc(); }
     
-    sections = read_ini("launcher.ini");
+    sections = read_ini(INI_FILE);
     if (sections) // ini file is there, get values
     {
         szValue = get_ini_property(sections, "localmode")->value;
@@ -1088,7 +1113,11 @@ repeat:
         }
         else // change directory
         {
-            changeDir(arrDirectory[index].name);
+
+            szValue = getCurrentDirectory();
+            if (strstr(startDir, szValue)==0 || arrDirectory[index].name[0]!='.')
+                changeDir(arrDirectory[index].name);
+
             goto repeat;
         }
     }

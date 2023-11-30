@@ -19,14 +19,16 @@ clean:
 	del .\out\*.prg .\src\*.o
 
 copy:
-	cp .\out\launcher.prg .\out\Testdata\LAUNCHER.PRG
-	cp .\out\launcher.prg .\out\Testdata\AUTOBOOT.X16
-	rm -f .\out\Testdata\LAUNCHER\.LAUNCHER.TMP
-	cp .\out\launcher.prg E:\LAUNCHER.PRG
-	cp .\out\launcher.prg E:\AUTOBOOT.X16
-	cp .\out\launcher.prg E:\APPS\LAUNCHER.PRG
+	#cp .\out\launcher.prg .\out\Testdata\LAUNCHER.PRG
+	#cp .\out\launcher.prg .\out\Testdata\AUTOBOOT.X16
+
+	cp .\out\launcher.prg .\out\Testdata\LAUNCHER\LAUNCHER.PRG
+	cp .\out\launcher.prg .\out\Testdata\LAUNCHER\AUTOBOOT.X16
+	rm -f .\out\Testdata\LAUNCHER\.THUMBMETA\.LAUNCHER.TMP
+
+	cp .\out\launcher.prg E:\LAUNCHER\LAUNCHER.PRG
 	cp .\out\launcher.prg E:\LAUNCHER\AUTOBOOT.X16
-	rm -f E:\LAUNCHER\.LAUNCHER.TMP
+	rm -f E:\LAUNCHER\.THUMBMETA\.LAUNCHER.TMP
 
 all: bins main copy
 

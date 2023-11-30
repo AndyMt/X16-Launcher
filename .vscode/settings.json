@@ -8,6 +8,7 @@
         "joystick.h": "c",
         "stdio.h": "c",
         "inifile.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "x16_charmap.h": "c"
     }
 }

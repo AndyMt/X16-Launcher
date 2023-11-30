@@ -71,3 +71,16 @@ void dump(uint16_t addr, int len)
     }
     printf("\r\n");
 }
+
+//----------------------------------------------------------------------------
+// wait for a keypress. flushes keyboardbuffer before and after.
+void waitKeypress()
+{
+    while (kbhit())
+    { cgetc(); }
+
+    while (!kbhit()) {}
+
+    while (kbhit())
+    { cgetc(); }
+}

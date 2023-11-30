@@ -7,6 +7,8 @@
 
 #define MAXLINE 100
 
+//----------------------------------------------------------------------------
+// maps characters from X16 any screencodes to upper case
 void mapFromX16ToUpper(char* szString)
 {
     uint8_t i=0;
@@ -22,6 +24,8 @@ void mapFromX16ToUpper(char* szString)
 
 }
 
+//----------------------------------------------------------------------------
+// maps characters from Ascii to X16 screencodes
 void mapFromAsciiToX16(char* szString)
 {
     uint8_t i=0;
@@ -39,6 +43,8 @@ void mapFromAsciiToX16(char* szString)
 
 }
 
+//----------------------------------------------------------------------------
+// read ini file. Returns pointer to first found section
 struct ini_section *read_ini(char *filename)
 {
     static char buf[MAXLINE];
@@ -312,7 +318,9 @@ int save_ini(char* filename, struct ini_section *sections)
         curr_section = curr_section->next_section;
     }
 
+    fflush(fp);
     fclose(fp);
+    return 0;
 }
 
 void dump_ini(struct ini_section *sections)
