@@ -6,43 +6,16 @@
 #include <cx16.h>
 #include <conio.h>
 #include <cbm.h>
-#include <dirent.h>
 #include <errno.h>
 #include <joystick.h>
 #include <vload.h>
+#include "globals.h"
 #include "graphics.h"
 #include "util.h"
 #include "dirtools.h"
 #include "inifile.h"
-
-//----------------------------------------------------------------------------
-#define TMP_FILE ".launcher.tmp"
-#define INI_FILE "launcher.ini"
-
-//----------------------------------------------------------------------------
-extern uint8_t res1;
-extern uint8_t res2;
-extern uint8_t res3;
-extern uint16_t VarTab;
-extern char* Name;
-
-//----------------------------------------------------------------------------
-static struct DirCollection DirList;
-static struct DirCollection SubList;
-
-static struct DirEntry arrDirectory[50];
-uint8_t numEntries;
-uint8_t maxEntries = 50;
-
-static int8_t pageSize = 20;
-static int8_t pageStart = 0;
-static int8_t pageEnd = 0;
-
-static char baseDir[40];
-static char startDir[40];
-static char launcherDir[40];
-
-bool isLocalMode = false;
+#include "launch.h"
+#include "intro.h"
 
 //----------------------------------------------------------------------------
 void showTextWrapped(char* strText, uint8_t x, uint8_t y, uint8_t w, uint8_t h);
@@ -136,82 +109,6 @@ int getDirectoryListSorted()
     }
 
     return numEntries;
-}
-
-//----------------------------------------------------------------------------
-// launch program
-void launchPrg(char* name)
-{
-    while (kbhit()) cgetc();  // eat all keypresses before launching anything
-    checkFile(""); // clear drive status
-
-    // hide all sprites
-    restoreScreenmode();
-
-    // restore color and screen
-    textcolor(6);
-    bgcolor(6);
-    clrscr();
-
-    // print load command on screen"
-    gotoxy(0,6);
-    printf("load\"");
-    printf(name);
-    printf("\",8,1");
-
-    // print run command
-    gotoxy(0,11);
-    printf("run");
-
-    gotoxy(0,4);
-    __asm__("lda #13");
-    __asm__("jsr $fec3");
-    __asm__("lda #13");
-    __asm__("jsr $fec3");
-    textcolor(1);
-}
-
-//----------------------------------------------------------------------------
-// launch program in diretory
-void launch(char* dir, char* name)
-{
-    while (kbhit()) cgetc();  // eat all keypresses before launching anything
-    checkFile(""); // clear drive status
-
-    restoreScreenmode();
-
-    // restore color and screen
-    textcolor(6);
-    bgcolor(6);
-    clrscr();
-
-    // print change dir command on screen"
-    gotoxy(0,2);
-    printf("dos\"cd");
-  
-    printf("/");
-    printf(dir);
-    printf("/:\"");
-
-    // print load command on screen"
-    gotoxy(0,6);
-    printf("load\"");
-    printf(name);
-    printf("\",8,1");
-
-    // print run command
-    gotoxy(0,11);
-    printf("run");
-
-    // TRICK: put a number of "enter" keys into keyboard buffer
-    gotoxy(0,0);
-    __asm__("lda #13");
-    __asm__("jsr $fec3");
-    __asm__("lda #13");
-    __asm__("jsr $fec3");
-    __asm__("lda #13");
-    __asm__("jsr $fec3");
-    textcolor(1);
 }
 
 //----------------------------------------------------------------------------
@@ -776,88 +673,6 @@ void drawLayout()
     gotoxy(4,25);
     printf("Launcher (c) by AndyMt");
 }
-
-//----------------------------------------------------------------------------
-// show intro screen
-void showIntroScreen()
-{
-    uint8_t y;
-    static char* szIntro = 
-        "This launcher let's you navigate through directories and start programs.\r\n"
-        "For a selection of games and programs a thumbnail and short description is shown. "
-        "For all others default icons are shown.\r\n\r\n"
-        "Navigation by keyboard:\r\n"
-        "- up/down:    scroll through directory list\r\n"
-        "- left/right: cycle through thumbnails (if multiple)\r\n"
-        "- enter:      select directory or start program\r\n"
-        "- dot:        to parent directory\r\n"
-        "- any letter: jump directly in the list\r\n"
-        "- esc:        exit launcher\r\n\r\n"
-        "Navigation by joystick/controller:\r\n"
-        "- up/down:    scroll through directory list\r\n"
-        "- left:       to parent directory\r\n"
-        "- any button: select directory or start program\r\n\r\n"
-        "This message can be shown again by pressing F1."
-        ;
-
-    clrscr();
-    while (kbhit())
-    { cgetc(); }
-
-    bgcolor(15);
-    textcolor(0);
-
-    gotoxy(7,2);
-    printf(" %-54s ", "Launcher (c) by AndyMt: Introduction");
-
-    bgcolor(6);
-    textcolor(15);
-
-    for (y=2; y<24; y++)
-    {
-        gotoxy(6, y);
-        cbm_k_chrout('\xb6');
-        gotoxy(63, y);
-        cbm_k_chrout('\xb4');
-    }
-    bgcolor(15);
-    textcolor(0);
-    gotoxy(7,23);
-    printf(" %-54s ", "Press any key to continue...");
-
-    bgcolor(6);
-    textcolor(1);
-    showTextWrapped(szIntro, 8,4,53,18);
-
-}
-
-//----------------------------------------------------------------------------
-void manageInfoscreen()
-{
-    struct ini_section *sections = NULL;
-    char* szValue=NULL;
-    bool tmpExists = false;
-
-    //show intro screen?
-    changeDir(launcherDir);
-
-    sections = read_ini(TMP_FILE);
-    if (sections)
-        szValue = get_ini_property(sections, "skipintro")->value;
-    else
-        sections = create_ini_section(sections, "state");
-    
-
-    // save flag to skip it from  now on
-    if (!szValue || szValue[0]=='0' || szValue[0]=='n')
-    {
-        showIntroScreen();
-        set_ini_property(sections, "skipintro", "1");
-        save_ini(TMP_FILE, sections);
-        waitKeypress();
-    }
-}
-
 
 //----------------------------------------------------------------------------
 // initialize stuff

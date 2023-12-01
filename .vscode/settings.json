@@ -9,6 +9,7 @@
         "stdio.h": "c",
         "inifile.h": "c",
         "string.h": "c",
-        "x16_charmap.h": "c"
+        "x16_charmap.h": "c",
+        "globals.h": "c"
     }
 }

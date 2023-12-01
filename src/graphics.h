@@ -26,6 +26,8 @@ void hideAllSprites();
 int SetupScreenMode();
 void restoreScreenmode();
 uint16_t veraload(const char* filename, uint8_t device, uint32_t addr);
+
+// show text with word wrap in a specific rectangle
 void showTextWrapped(char* strText, uint8_t x, uint8_t y, uint8_t w, uint8_t h);
 
 #endif

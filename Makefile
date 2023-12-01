@@ -4,7 +4,7 @@ LIBRARIES := -L libX16/lib
 INCLUDES := -I libX16/include 
 
 SRC = \
-	src/dirtools.c src/inifile.c src/utils.c src/main.c src/graphics.c src/util.asm
+	strc/globals.c src/dirtools.c src/inifile.c src/utils.c src/intro.c src/launch.c src/main.c src/graphics.c src/util.asm
 
 OBJ = $(SRC:%.c=%.o)
 
