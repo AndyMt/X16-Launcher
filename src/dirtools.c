@@ -141,7 +141,7 @@ char* getCurrentDirectory()
 
 /*****************************************************************************/
 // get directory
-uint8_t getDirectory(struct DirCollection* dir, char* base, char* filter)
+uint8_t getDirectory(struct DirCollection* dir, char* filter)
 {
     uint16_t len = 0;
     uint16_t pos = 0;
@@ -156,62 +156,6 @@ uint8_t getDirectory(struct DirCollection* dir, char* base, char* filter)
     bool isPrg = false;
     bool isValid = false;
 
-    if (base[0])
-    {
-        //strcpy(strDirLoad, "$//");
-        //strcat(strDirLoad, base);
-        //strcat(strDirLoad, "/:");
-        changeDir(base);
-    }
-/*    else if (filter[0]=='d')
-    {
-        strcpy(dir->arrEntries[count].name, "system");
-        strcpy(dir->arrEntries[count].type, "dir");
-        dir->arrEntries[count].isDir = true;
-        dir->arrEntries[count].hasPrg = false;
-        dir->arrEntries[count].isPrg = false;
-        count++;
-        strcpy(dir->arrEntries[count].name, "games-demo");
-        strcpy(dir->arrEntries[count].type, "dir");
-        dir->arrEntries[count].isDir = true;
-        dir->arrEntries[count].hasPrg = false;
-        dir->arrEntries[count].isPrg = false;
-        count++;
-        strcpy(dir->arrEntries[count].name, "games-prg");
-        strcpy(dir->arrEntries[count].type, "dir");
-        dir->arrEntries[count].isDir = true;
-        dir->arrEntries[count].hasPrg = false;
-        dir->arrEntries[count].isPrg = false;
-        count++;
-        strcpy(dir->arrEntries[count].name, "games");
-        strcpy(dir->arrEntries[count].type, "dir");
-        dir->arrEntries[count].isDir = true;
-        dir->arrEntries[count].hasPrg = false;
-        dir->arrEntries[count].isPrg = false;
-        count++;
-        strcpy(dir->arrEntries[count].name, "invaderz");
-        strcpy(dir->arrEntries[count].type, "dir");
-        dir->arrEntries[count].isDir = true;
-        dir->arrEntries[count].hasPrg = false;
-        dir->arrEntries[count].isPrg = false;
-        count++;
-        strcpy(dir->arrEntries[count].name, "launcher");
-        strcpy(dir->arrEntries[count].type, "dir");
-        dir->arrEntries[count].isDir = true;
-        dir->arrEntries[count].hasPrg = false;
-        dir->arrEntries[count].isPrg = false;
-        count++;
-        strcpy(dir->arrEntries[count].name, "applications");
-        strcpy(dir->arrEntries[count].type, "dir");
-        dir->arrEntries[count].isDir = true;
-        dir->arrEntries[count].hasPrg = false;
-        dir->arrEntries[count].isPrg = false;
-        count++;
-        dir->numEntries = count;
-        return dir->numEntries;
-    }
-*/
-
     if (filter[0]=='d')
         strcpy(strDirLoad, "$");
     else if (filter[0]=='p')
@@ -222,8 +166,6 @@ uint8_t getDirectory(struct DirCollection* dir, char* base, char* filter)
     dir->numEntries = 0;
     setHighBank(2);
     len = bload(strDirLoad, 0xA000);
-    //if (base[0])
-    //    dump(0xA000, 20);
 
     while (pos < len)
     {
@@ -254,16 +196,10 @@ uint8_t getDirectory(struct DirCollection* dir, char* base, char* filter)
         isPrg = (bool)strstr(name, ".prg");
         isDir = type[0] == 'd';
 
-
         dir->arrEntries[index].isPrg = isPrg;
         dir->arrEntries[index].hasPrg = false;
 
-        if (filter[0]=='*')
-        {
-            isValid = (bool)strstr(name, ".thumb.abm");
-            isValid |= (bool)strstr(name, ".meta.inf");
-        }
-        else if (filter[0]=='p' && !isPrg)
+        if (filter[0]=='p' && !isPrg)
             continue;
         else if (filter[0]=='d' && !isDir)
             continue;
@@ -291,10 +227,6 @@ uint8_t getDirectory(struct DirCollection* dir, char* base, char* filter)
         }
     }    
 
-    if (base[0])
-    {
-        changeDir("..");
-    }
     return index;    
 }
 

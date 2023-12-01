@@ -29,7 +29,7 @@ struct DirCollection
 extern uint16_t bload(char* filename, uint16_t address);
 extern bool checkFile(char* filename);
 extern bool setupDirectory(struct DirCollection* dir, int max);
-extern uint8_t getDirectory(struct DirCollection* dir, char* base, char* filter);
+extern uint8_t getDirectory(struct DirCollection* dir, char* filter);
 extern char* getCurrentDirectory();
 extern bool changeDir(char* directory);
 

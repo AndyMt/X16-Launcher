@@ -12,11 +12,13 @@
 
 #include "graphics.h"
 
+//----------------------------------------------------------------------------
+
 uint32_t spriteAttr0 = ((uint32_t)VERA_INC_1 << 16) | SPRITE_ATTR0;
 #define SPRITE_ATTR_BASE(index) spriteAttr0 + (uint32_t)(index * 8)
 
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // load into VRAM
 uint16_t veraload(const char *fileName, uint8_t device, uint32_t rawAddr)
 {
@@ -30,7 +32,7 @@ uint16_t veraload(const char *fileName, uint8_t device, uint32_t rawAddr)
 }
 
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // create and load a sprite
 void createSprite(uint8_t index, uint8_t width, uint8_t height, uint16_t xPos, uint16_t yPos, uint32_t addr, const char* filename)
 {
@@ -74,7 +76,7 @@ void createSprite(uint8_t index, uint8_t width, uint8_t height, uint16_t xPos, u
     }
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 void setSpriteBitmap(uint8_t index, uint32_t addr)
 {
     uint32_t spriteAttrBaseAddr = SPRITE_ATTR_BASE(index);
@@ -85,7 +87,7 @@ void setSpriteBitmap(uint8_t index, uint32_t addr)
     VERA.data0 = SPRITE_ADDR_H(addr) | SPRITE_8BPP;     // Attr1
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // set pixel pos for sprite
 void setSpritePosition(uint8_t index, uint16_t px, uint16_t py)
 {
@@ -99,7 +101,7 @@ void setSpritePosition(uint8_t index, uint16_t px, uint16_t py)
     // OPTIMIZED: VERA.data0 = SPRITE_Y_H(py);                 // Attr5
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 void showSprite(uint8_t index)
 {
     uint8_t flags = 0;
@@ -110,7 +112,7 @@ void showSprite(uint8_t index)
     vpoke(flags | SPRITE_LAYER1, spriteAttrBaseAddr+6);  
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 void hideSprite(uint8_t index)
 {
     uint8_t flags = 0;
@@ -122,7 +124,7 @@ void hideSprite(uint8_t index)
 }
 
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // setup screen configuration (bitmapped + text)
 int SetupScreenMode()
 {
@@ -252,7 +254,7 @@ int SetupScreenMode()
 
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // restore screen mode back to boot state
 void restoreScreenmode()
 {
@@ -263,7 +265,7 @@ void restoreScreenmode()
     __asm__("jsr $FF81"); // call CINT
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // hide all sprites
 void hideAllSprites()
 {
@@ -272,4 +274,54 @@ void hideAllSprites()
     {
         hideSprite(i);
     }   
+}
+
+//----------------------------------------------------------------------------
+// show text with word wrap in a specific rectangle
+void showTextWrapped(char* strText, uint8_t x, uint8_t y, uint8_t w, uint8_t h)
+{
+    int i=0;
+    int p=0;
+    int len=strlen(strText);
+    uint8_t l = 0;
+    uint8_t t = y;
+    char c=0;
+    char* szWord=strText;
+    static char buf[40];
+
+    gotoxy(x, y);                       // start top right coordinates
+
+    for (i=0; i<=len; i++)
+    {
+        c=strText[i];
+        if (c==' ' || c== '\r' || i >= len)
+        {
+            l = strText+i - szWord;     // length of word
+            if (p+l > w)                // wrap around?
+            {
+                p=0;
+                y++;
+                gotoxy(x, y);
+            }
+            gotoxy(x+p, y);             // print word
+            strncpy(buf, szWord, l);
+            buf[l]=0;
+            printf(buf);
+            p+=l+1;                     // include space
+            if (c=='\r')                // newline?
+            {
+                i++;
+                p=0;
+                y++;
+                gotoxy(x, y);
+            }
+            else
+                printf(" ");            // include space
+                if (y > t+h)            // exceeding max lines?
+                    return;
+
+            szWord = strText+i+1;       // jump to next word
+        }
+    }
+
 }

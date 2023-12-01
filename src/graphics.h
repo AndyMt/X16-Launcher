@@ -17,14 +17,15 @@
 #define SET_VERA_ADDR(addr) VERA.address_hi = (uint8_t)VERA_INC_1  | ((addr >> 16) & 0x0F); VERA.address = (uint16_t)addr & 0xFFFF;
 #define SET_VERA_ADDR_SHORT(addr) VERA.address = addr;
 
-extern void createSprite(uint8_t index, uint8_t width, uint8_t height, uint16_t xPos, uint16_t yPos, uint32_t addr, const char* filename);
-extern void setSpriteBitmap(uint8_t index, uint32_t addr);
-extern void setSpritePosition(uint8_t index, uint16_t px, uint16_t py);
-extern void showSprite(uint8_t index);
-extern void hideSprite(uint8_t index);
-extern void hideAllSprites();
-extern int SetupScreenMode();
-extern void restoreScreenmode();
-extern uint16_t veraload(const char* filename, uint8_t device, uint32_t addr);
+void createSprite(uint8_t index, uint8_t width, uint8_t height, uint16_t xPos, uint16_t yPos, uint32_t addr, const char* filename);
+void setSpriteBitmap(uint8_t index, uint32_t addr);
+void setSpritePosition(uint8_t index, uint16_t px, uint16_t py);
+void showSprite(uint8_t index);
+void hideSprite(uint8_t index);
+void hideAllSprites();
+int SetupScreenMode();
+void restoreScreenmode();
+uint16_t veraload(const char* filename, uint8_t device, uint32_t addr);
+void showTextWrapped(char* strText, uint8_t x, uint8_t y, uint8_t w, uint8_t h);
 
 #endif

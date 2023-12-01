@@ -15,16 +15,18 @@
 #include "dirtools.h"
 #include "inifile.h"
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 #define TMP_FILE ".launcher.tmp"
 #define INI_FILE "launcher.ini"
 
+//----------------------------------------------------------------------------
 extern uint8_t res1;
 extern uint8_t res2;
 extern uint8_t res3;
 extern uint16_t VarTab;
 extern char* Name;
 
+//----------------------------------------------------------------------------
 static struct DirCollection DirList;
 static struct DirCollection SubList;
 
@@ -42,15 +44,14 @@ static char launcherDir[40];
 
 bool isLocalMode = false;
 
-extern void LaunchPrg();
-
+//----------------------------------------------------------------------------
 void showTextWrapped(char* strText, uint8_t x, uint8_t y, uint8_t w, uint8_t h);
 void showIntroScreen();
 void drawLayout();
 
-/*****************************************************************************/
-// get directory list
-int getDirectoryList(char* base)
+//----------------------------------------------------------------------------
+// get sorted directory list
+int getDirectoryListSorted()
 {
     uint8_t index = 0;
     uint8_t i = 0;
@@ -63,67 +64,7 @@ int getDirectoryList(char* base)
     bool isPrg = false;
 
     // load directories first, add in alphabetical order
-    getDirectory(&DirList, base, "dir");
-    for (index=0; index < DirList.numEntries; index++)
-    {
-        memcpy(&arrDirectory[c], &DirList.arrEntries[index], sizeof(struct DirEntry));
-        c++;
-    }
-
-    // programs next - allow to sort stuff later.
-    getDirectory(&DirList, base, "prg");
-    for (index=0; index < DirList.numEntries; index++)
-    {
-        memcpy(&arrDirectory[c], &DirList.arrEntries[index], sizeof(struct DirEntry));
-        c++;
-    }    
-    numEntries = c;
-
-    for (index=0; index < numEntries; index++)
-    {
-        arrDirectory[index].hasThumb = true;
-        arrDirectory[index].hasMeta = true;
-        if (arrDirectory[index].isDir)
-        {
-            // check if there is a PRG of identical name in that folder
-            szName = arrDirectory[index].name;
-            strcpy(prgName, szName);
-            strcat(prgName, ".prg");
-
-            strcpy(prgPath, "");
-            strcat(prgPath, szName);
-            strcat(prgPath, "/");
-            strcat(prgPath, prgName);
-
-            arrDirectory[index].hasPrg = false;
-            if (szName[0]=='.')
-                continue;
-
-            arrDirectory[index].hasPrg = checkFile(prgPath);                
-
-        }
-    }
-
-    return numEntries;
-}
-
-
-/*****************************************************************************/
-// get directory list
-int getDirectoryListSorted(char* base)
-{
-    uint8_t index = 0;
-    uint8_t i = 0;
-    uint8_t c = 0;
-    uint8_t s = 0;
-    char* szName = NULL;
-    char prgName[30];
-    char prgPath[100];    
-    bool isDir = false;
-    bool isPrg = false;
-
-    // load directories first, add in alphabetical order
-    getDirectory(&DirList, base, "dir");
+    getDirectory(&DirList, "dir");
     for (index=0; index < DirList.numEntries; index++)
     {
         szName = DirList.arrEntries[index].name;
@@ -146,7 +87,7 @@ int getDirectoryListSorted(char* base)
     }
 
     // programs next, add in alphabetical order
-    getDirectory(&DirList, base, "prg");
+    getDirectory(&DirList, "prg");
     s=c;
     for (index=0; index < DirList.numEntries; index++)
     {
@@ -168,6 +109,7 @@ int getDirectoryListSorted(char* base)
 
     numEntries = c;
 
+    // check if directory contains PRG with same name
     for (index=0; index < numEntries; index++)
     {
         arrDirectory[index].hasThumb = true;
@@ -188,30 +130,7 @@ int getDirectoryListSorted(char* base)
             arrDirectory[index].hasPrg = false;
             if (szName[0]=='.')
                 continue;
-//*
             arrDirectory[index].hasPrg = checkFile(prgPath);                
-
-/*
-            getDirectory(&SubList, szName, "*");
-            for (i=0; i<SubList.numEntries; i++)
-            {
-                //gotoxy(0,25+c);
-                //printf(SubList.arrEntries[c++].name);
-                if (strstr(SubList.arrEntries[i].name, prgName))
-                {
-                    arrDirectory[index].hasPrg = true;
-                }
-                else if (strstr(SubList.arrEntries[i].name, ".thumb.abm"))
-                {
-                    arrDirectory[index].hasThumb = true;
-                }
-                else if (strstr(SubList.arrEntries[i].name, "meta.inf"))
-                {
-                    arrDirectory[index].hasMeta = true;
-                }
-            } 
-*/
- 
 
         }
     }
@@ -219,7 +138,7 @@ int getDirectoryListSorted(char* base)
     return numEntries;
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // launch program
 void launchPrg(char* name)
 {
@@ -252,7 +171,7 @@ void launchPrg(char* name)
     textcolor(1);
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // launch program in diretory
 void launch(char* dir, char* name)
 {
@@ -295,7 +214,7 @@ void launch(char* dir, char* name)
     textcolor(1);
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // directory update
 void updateDirList(int8_t selectedIndex)
 {
@@ -358,7 +277,8 @@ void updateDirList(int8_t selectedIndex)
 
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
+// get filename for thumbnail of selected folder/program
 char* getThumbnailFileName(int selectedIndex, int subIndex)
 {
     static char strThumbFile[80];
@@ -397,7 +317,8 @@ char* getThumbnailFileName(int selectedIndex, int subIndex)
     return strThumbFile;
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
+// get default filename for thumbnails (folders, programs etc)
 char* getDefaultThumbnailFileName(int selectedIndex)
 {
     static char strThumbFile[80];
@@ -416,7 +337,7 @@ char* getDefaultThumbnailFileName(int selectedIndex)
     return strThumbFile;
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // show thumbnail (if available)
 //  this loads a binary flat Bitmap file of 128x96 pixels 
 //  and distributes it to 6 sprites (2 of 64x64 and 4 of 32x32)
@@ -474,7 +395,7 @@ void showThumbnail(int selectedIndex, int subIndex)
 
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 char* getMetaFileName(int selectedIndex)
 {
     static char strMetaFile[60];
@@ -496,7 +417,7 @@ char* getMetaFileName(int selectedIndex)
     return strMetaFile;
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // show meta information (if available)
 //  this loads a text file. 1St line is the game name, 2nd line is the Authors name
 //  Following is the description text
@@ -597,45 +518,11 @@ void showMeta(int selectedIndex)
     len -= (szDesc - szMeta);
     szDesc[len] = 0;
 
-    //showTextWrapped(szDesc, 32, 19, 35, 6);
-
-     
-    x = 32;
-    y = 19;
-    boPrint = true;
-    for (i=0; i<len; i++)
-    {
-        if (boPrint)
-        {
-            gotoxy(x,y);
-            if (szDesc[i] == '\r')
-                continue;
-            if (szDesc[i] == '\n')
-            {
-                y++;
-                x=32;
-                continue;
-            }
-            cbm_k_chrout(szDesc[i]);
-            x++;
-            // word wrap (crude, but kind of working)
-            if (szDesc[i] == ' ' && x > 60)
-            {
-                y++;
-                if (y>25)
-                    break;
-                x=32;
-            }
-        }
-    }    
-    textcolor(1);
-    bgcolor(6);    
-
-    //if (kbhit()) cgetc();
+    showTextWrapped(szDesc, 32, 19, 36, 6);
 
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // directory navigation
 int navigate()
 {
@@ -815,7 +702,7 @@ repeat:
                 waitKeypress();
                 clrscr();
                 drawLayout();
-                getDirectoryListSorted("");    
+                getDirectoryListSorted();    
                 continue;
             break;
         }
@@ -838,7 +725,7 @@ repeat:
 
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // screen layout and decorations
 void drawLayout()
 {
@@ -854,7 +741,7 @@ void drawLayout()
     }
     gotoxy(4,2);
     bgcolor(15);
-    textcolor(6);
+    textcolor(0);
 
     strcpy(baseDir, getCurrentDirectory());
     //if (baseDir[0] > '9' && baseDir[1] != '.')
@@ -890,57 +777,7 @@ void drawLayout()
     printf("Launcher (c) by AndyMt");
 }
 
-/*****************************************************************************/
-// show intro screen
-void showTextWrapped(char* strText, uint8_t x, uint8_t y, uint8_t w, uint8_t h)
-{
-    int i=0;
-    int p=0;
-    int len=strlen(strText);
-    uint8_t l = 0;
-    uint8_t t = y;
-    char c=0;
-    char* szWord=strText;
-    static char buf[40];
-
-    gotoxy(x, y);                       // start top right coordinates
-
-    for (i=0; i<=len; i++)
-    {
-        c=strText[i];
-        if (c==' ' || c== '\r' || i >= len)
-        {
-            l = strText+i - szWord;     // length of word
-            if (p+l > w)                // wrap around?
-            {
-                p=0;
-                y++;
-                gotoxy(x, y);
-            }
-            gotoxy(x+p, y);             // print word
-            strncpy(buf, szWord, l);
-            buf[l]=0;
-            printf(buf);
-            p+=l+1;                     // include space
-            if (c=='\r')                // newline?
-            {
-                i++;
-                p=0;
-                y++;
-                gotoxy(x, y);
-            }
-            else
-                printf(" ");            // include space
-                if (y > t+h)            // exceeding max lines?
-                    return;
-
-            szWord = strText+i+1;       // jump to next word
-        }
-    }
-
-}
-
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 // show intro screen
 void showIntroScreen()
 {
@@ -953,11 +790,12 @@ void showIntroScreen()
         "- up/down:    scroll through directory list\r\n"
         "- left/right: cycle through thumbnails (if multiple)\r\n"
         "- enter:      select directory or start program\r\n"
+        "- dot:        to parent directory\r\n"
         "- any letter: jump directly in the list\r\n"
         "- esc:        exit launcher\r\n\r\n"
         "Navigation by joystick/controller:\r\n"
         "- up/down:    scroll through directory list\r\n"
-        "- left/right: cycle through thumbnails (if multiple)\r\n"
+        "- left:       to parent directory\r\n"
         "- any button: select directory or start program\r\n\r\n"
         "This message can be shown again by pressing F1."
         ;
@@ -967,7 +805,7 @@ void showIntroScreen()
     { cgetc(); }
 
     bgcolor(15);
-    textcolor(6);
+    textcolor(0);
 
     gotoxy(7,2);
     printf(" %-54s ", "Launcher (c) by AndyMt: Introduction");
@@ -983,7 +821,7 @@ void showIntroScreen()
         cbm_k_chrout('\xb4');
     }
     bgcolor(15);
-    textcolor(6);
+    textcolor(0);
     gotoxy(7,23);
     printf(" %-54s ", "Press any key to continue...");
 
@@ -993,7 +831,7 @@ void showIntroScreen()
 
 }
 
-/*****************************************************************************/
+//----------------------------------------------------------------------------
 void manageInfoscreen()
 {
     struct ini_section *sections = NULL;
@@ -1002,9 +840,6 @@ void manageInfoscreen()
 
     //show intro screen?
     changeDir(launcherDir);
-
-    //if (checkFile(TMP_FILE))
-    //    return;
 
     sections = read_ini(TMP_FILE);
     if (sections)
@@ -1023,18 +858,14 @@ void manageInfoscreen()
     }
 }
 
-/*****************************************************************************/
-// main program
-int main(int argc, char *argv[])
+
+//----------------------------------------------------------------------------
+// initialize stuff
+void init()
 {
-    char key=argc;
-    int index=0;
-    char prgName[40];
-    char prgPath[80];
-    char* szName=NULL;
-    char* szValue=NULL;
     struct ini_section *sections = NULL;
     struct ini_section *curr_section = sections;
+    char* szValue=NULL;
 
     bgcolor(6);
     textcolor(6);
@@ -1064,12 +895,12 @@ int main(int argc, char *argv[])
             strcpy(startDir, szValue);
         }
     }
-    curr_section = sections;
 
+    // setup hardware
     SetupScreenMode();
-
     joy_install(cx16_std_joy);
 
+    // show startup info screen
     manageInfoscreen();
 
     if (startDir[0])
@@ -1082,50 +913,65 @@ int main(int argc, char *argv[])
     // prepare directory buffers
     setupDirectory(&DirList, 50);
     setupDirectory(&SubList, 10);
+}
 
-repeat:
-    clrscr();
-    drawLayout();
-    getDirectoryListSorted("");    
-    index = navigate();
-    if (index == -1)
+//----------------------------------------------------------------------------
+// main program
+int main(int argc, char *argv[])
+{
+    char key=argc;
+    int index=0;
+    char prgName[40];
+    char prgPath[80];
+    char* szName=argv[0];
+
+    init();
+
+    do
     {
-        checkFile(""); // clear drive status
-        restoreScreenmode();
-        return 0;
-    }
-    
-    strcpy(prgName, arrDirectory[index].name);
-
-    if (arrDirectory[index].type[0] == 'd') // selected a directory
-    {
-        strcat(prgName, ".prg");
-
-        strcpy(prgPath, "");
-        strcat(prgPath, arrDirectory[index].name);
-        strcat(prgPath, "/");
-        strcat(prgPath, prgName);
-
-        if (checkFile(prgPath)) // program file exists => launch it
+        clrscr();
+        drawLayout();
+        getDirectoryListSorted();    
+        index = navigate();
+        if (index == -1)
         {
-            launch(arrDirectory[index].name, prgName);
+            checkFile(""); // clear drive status
+            restoreScreenmode();
+            
             return 0;
         }
-        else // change directory
+        
+        strcpy(prgName, arrDirectory[index].name);
+
+        if (arrDirectory[index].type[0] == 'd') // selected a directory
         {
+            strcat(prgName, ".prg");
 
-            szValue = getCurrentDirectory();
-            if (strstr(startDir, szValue)==0 || arrDirectory[index].name[0]!='.')
-                changeDir(arrDirectory[index].name);
+            strcpy(prgPath, "");
+            strcat(prgPath, arrDirectory[index].name);
+            strcat(prgPath, "/");
+            strcat(prgPath, prgName);
 
-            goto repeat;
+            if (checkFile(prgPath)) // program file exists => launch it
+            {
+                launch(arrDirectory[index].name, prgName);
+                return 0;
+            }
+            else // change directory
+            {
+
+                szName = getCurrentDirectory();
+                if (strstr(startDir, szName)==0 || arrDirectory[index].name[0]!='.')
+                    changeDir(arrDirectory[index].name);
+            }
         }
-    }
-    else // launch prg in current directory
-    {
-        launchPrg(prgName); 
-       return 0;
-    }
+        else // launch prg in current directory
+        {
+            launchPrg(prgName); 
+            return 0;
+        }
+    } 
+    while (true);
 
     return 0;
 }
