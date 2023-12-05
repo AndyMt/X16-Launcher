@@ -18,8 +18,6 @@
 #include "intro.h"
 
 //----------------------------------------------------------------------------
-void showTextWrapped(char* strText, uint8_t x, uint8_t y, uint8_t w, uint8_t h);
-void showIntroScreen();
 void drawLayout();
 
 //----------------------------------------------------------------------------
@@ -41,7 +39,9 @@ int getDirectoryListSorted()
     for (index=0; index < DirList.numEntries; index++)
     {
         szName = DirList.arrEntries[index].name;
-        if (strstr(launcherDir, DirList.arrEntries[index].name))
+        if (strstr(thumbDir, DirList.arrEntries[index].name))
+            continue;
+        if (strstr(metaDir, DirList.arrEntries[index].name))
             continue;
 
         if (strstr(startDir, baseDir) && szName[0]=='.')
@@ -188,7 +188,7 @@ char* getThumbnailFileName(int selectedIndex, int subIndex)
     }
     else
     {
-        strcpy(strThumbFile, launcherDir);
+        strcpy(strThumbFile, thumbDir);
         strcat(strThumbFile, "/");
         strcat(strThumbFile, arrDirectory[selectedIndex].name);
     }
@@ -222,7 +222,7 @@ char* getDefaultThumbnailFileName(int selectedIndex)
     if (isLocalMode)
         return NULL;
 
-    strcpy(strThumbFile, launcherDir);
+    strcpy(strThumbFile, thumbDir);
     strcat(strThumbFile, "/");
     if (arrDirectory[selectedIndex].isDir && !arrDirectory[selectedIndex].hasPrg)
         strcat(strThumbFile, ".folder.abm");
@@ -305,7 +305,7 @@ char* getMetaFileName(int selectedIndex)
     }
     else
     {
-        strcpy(strMetaFile, launcherDir);
+        strcpy(strMetaFile, metaDir);
         strcat(strMetaFile, "/");
         strcat(strMetaFile, arrDirectory[selectedIndex].name);
     }
@@ -671,7 +671,7 @@ void drawLayout()
 
     textcolor(15);
     gotoxy(4,25);
-    printf("Launcher (c) by AndyMt");
+    printf("Launcher V1.0 (c) AndyMt");
 }
 
 //----------------------------------------------------------------------------
@@ -688,7 +688,8 @@ void init()
     baseDir[0]=0;
     strcpy(baseDir, "/");
     strcpy(startDir, "");
-    strcpy(launcherDir, "");
+    strcpy(thumbDir, "");
+    strcpy(metaDir, "");
     isLocalMode = true;
     
     while (kbhit())
@@ -699,10 +700,15 @@ void init()
     {
         szValue = get_ini_property(sections, "localmode")->value;
         isLocalMode = szValue[0]=='1' || szValue[0]=='y';
-        szValue = get_ini_property(sections, "launcherDir")->value;
+        szValue = get_ini_property(sections, "thumbDir")->value;
         if (szValue)
         {
-            strcpy(launcherDir, szValue);
+            strcpy(thumbDir, szValue);
+        }
+        szValue = get_ini_property(sections, "metaDir")->value;
+        if (szValue)
+        {
+            strcpy(metaDir, szValue);
         }
         szValue = get_ini_property(sections, "startDir")->value;
         if (szValue)
@@ -750,10 +756,14 @@ int main(int argc, char *argv[])
         index = navigate();
         if (index == -1)
         {
-            checkFile(""); // clear drive status
-            restoreScreenmode();
-            
-            return 0;
+            // reset machine
+            asm ("lda #0");
+            asm ("sta $9F60");
+            asm ("jsr $FF81");
+            asm ("jsr $FF8A");
+            asm ("sec");
+            asm ("jsr $FF47");
+            return 0;         
         }
         
         strcpy(prgName, arrDirectory[index].name);

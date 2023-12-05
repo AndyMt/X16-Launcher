@@ -132,8 +132,10 @@ int SetupScreenMode()
     uint8_t y = 0;
     uint32_t i=0;
     uint8_t a = 0;
+    uint8_t tv = 0;
     int result = 0;
 
+    tv = get_tv();
     clrscr();
     restoreScreenmode();
     cbm_k_bsout(CH_FONT_LOWER);
@@ -166,6 +168,7 @@ int SetupScreenMode()
 
     // clear top 
     //vpoke(0x00, screenTextAddr + 256*2*32 - i);
+    set_tv(tv); // preserve tv mode (vga or composite)
 
     clrscr();
     // arrow up symbol

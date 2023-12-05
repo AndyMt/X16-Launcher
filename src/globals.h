@@ -29,7 +29,8 @@ extern int8_t pageEnd;
 
 extern char baseDir[];
 extern char startDir[];
-extern char launcherDir[];
+extern char thumbDir[];
+extern char metaDir[];
 
 extern bool isLocalMode;
 

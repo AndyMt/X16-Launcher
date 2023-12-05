@@ -76,7 +76,7 @@ void manageInfoscreen()
     bool tmpExists = false;
 
     //show intro screen?
-    changeDir(launcherDir);
+    changeDir(metaDir);
 
     sections = read_ini(TMP_FILE);
     if (sections)
