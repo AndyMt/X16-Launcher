@@ -62,7 +62,7 @@ struct ini_section *read_ini(char *filename)
     fp = fopen(filename, "r");
     if (!fp)
     {
-printf("cannot open [%s]\n\r",filename);
+//printf("cannot open [%s]\n\r",filename);
         return 0;
     }
 
