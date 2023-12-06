@@ -43,6 +43,7 @@
 *.pdb
 
 # Kernel Module Compile Results
+*.log*
 *.mod*
 *.vhd
 .tmp_versions/
@@ -56,4 +57,4 @@ assets/aloevera.log
 assets/launcher.av
 assets/launcher.av
 assets/aloevera.log
-out.log
+
