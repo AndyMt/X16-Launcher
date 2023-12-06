@@ -74,10 +74,11 @@ void manageInfoscreen()
     struct ini_section *sections = NULL;
     char* szValue=NULL;
     bool tmpExists = false;
+    int res=0;
+
+    res = changeDir(launcherDir);
 
     //show intro screen?
-    changeDir(metaDir);
-
     sections = read_ini(TMP_FILE);
     if (sections)
         szValue = get_ini_property(sections, "skipintro")->value;
@@ -93,4 +94,5 @@ void manageInfoscreen()
         save_ini(TMP_FILE, sections);
         waitKeypress();
     }
+    changeDir(startDir);
 }

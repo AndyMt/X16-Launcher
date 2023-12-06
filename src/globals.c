@@ -26,5 +26,6 @@ char baseDir[40];
 char startDir[40];
 char thumbDir[40];
 char metaDir[40];
+char launcherDir[40];
 
 bool isLocalMode = false;

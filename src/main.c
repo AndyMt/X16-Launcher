@@ -687,7 +687,8 @@ void init()
 
     baseDir[0]=0;
     strcpy(baseDir, "/");
-    strcpy(startDir, "");
+    strcpy(launcherDir, "/");
+    strcpy(startDir, "/");
     strcpy(thumbDir, "");
     strcpy(metaDir, "");
     isLocalMode = true;
@@ -714,6 +715,11 @@ void init()
         if (szValue)
         {
             strcpy(startDir, szValue);
+        }
+        szValue = get_ini_property(sections, "launcherDir")->value;
+        if (szValue)
+        {
+            strcpy(launcherDir, szValue);
         }
     }
 
@@ -757,12 +763,14 @@ int main(int argc, char *argv[])
         if (index == -1)
         {
             // reset machine
-            asm ("lda #0");
+/*            asm ("lda #0");
             asm ("sta $9F60");
             asm ("jsr $FF81");
             asm ("jsr $FF8A");
             asm ("sec");
-            asm ("jsr $FF47");
+            asm ("jsr $FF47");*/
+            restoreScreenmode();
+            cbm_k_clall();
             return 0;         
         }
         

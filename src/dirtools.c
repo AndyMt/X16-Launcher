@@ -235,7 +235,7 @@ uint8_t getDirectory(struct DirCollection* dir, char* filter)
 bool changeDir(char* directory)
 {
     int res = 0;
-    int lfn = 15;
+    int lfn = 1;
     int sad = 15;
     char command[80];
 
@@ -247,6 +247,6 @@ bool changeDir(char* directory)
     cbm_k_close(lfn);
 //checkFile(directory);
 
-    return res == 4;    
+    return res;    
 }
 

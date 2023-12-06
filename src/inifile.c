@@ -57,10 +57,14 @@ struct ini_section *read_ini(char *filename)
 
     struct ini_property *prev_property = NULL;
     struct ini_property *curr_property = NULL;
+    FILE *fp = NULL;
 
-    FILE *fp = fopen(filename, "r");
+    fp = fopen(filename, "r");
     if (!fp)
+    {
+printf("cannot open [%s]\n\r",filename);
         return 0;
+    }
 
     while(fgets(buf, MAXLINE, fp) != NULL)
     {
@@ -318,7 +322,7 @@ int save_ini(char* filename, struct ini_section *sections)
         curr_section = curr_section->next_section;
     }
 
-    fflush(fp);
+    //fflush(fp); // this doesn't work with SD cards, so NEVER use fflush()!
     fclose(fp);
     return 0;
 }

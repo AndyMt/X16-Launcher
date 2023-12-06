@@ -261,11 +261,14 @@ int SetupScreenMode()
 // restore screen mode back to boot state
 void restoreScreenmode()
 {
+    uint8_t tv=get_tv();
+    
     //screen_set_charset(2);
     //cbm_k_bsout(CH_FONT_UPPER);
 
     //hideAllSprites();
     __asm__("jsr $FF81"); // call CINT
+    set_tv(tv);
 }
 
 //----------------------------------------------------------------------------

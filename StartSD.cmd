@@ -1,13 +1,14 @@
-REM "C:\Program Files\Josip Medved\VHD Attach\VhdAttach.exe" /attach sd8.vhd
+"C:\Program Files\Josip Medved\VHD Attach\VhdAttach.exe" /attach sd8.vhd
 ping 127.0.0.1 -n 2 > nul
 REM rmdir F:\games /s /q
 REM rmdir F:\games-demo /s /q
 REM rmdir F:\games-prg /s /q
 REM xcopy out\TestData\*.* F:\ /s /d /y
-rem xcopy out\TestData\*.PRG F:\ /y
+xcopy out\LAUNCHER.PRG F:\LAUNCHER /y
+del F:\LAUNCHER\.META\.LAUNCHER.TMP
 rem xcopy out\TestData\*.X16 F:\ /y
 ping 127.0.0.1 -n 2 > nul
-REM "C:\Program Files\Josip Medved\VHD Attach\VhdAttach.exe" /detach sd8.vhd
+"C:\Program Files\Josip Medved\VHD Attach\VhdAttach.exe" /detach sd8.vhd
 ping 127.0.0.1 -n 3 > nul
 (echo LOAD"LAUNCHER.PRG",8) | clip
 ping 127.0.0.1 -n 1 > nul

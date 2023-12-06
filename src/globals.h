@@ -31,6 +31,7 @@ extern char baseDir[];
 extern char startDir[];
 extern char thumbDir[];
 extern char metaDir[];
+extern char launcherDir[];
 
 extern bool isLocalMode;
 
