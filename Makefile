@@ -26,9 +26,9 @@ copy:
 	@cp .\out\launcher.prg .\out\Testdata\LAUNCHER\AUTOBOOT.X16
 	@rm -f .\out\Testdata\LAUNCHER\.LAUNCHER.TMP
 
-	@cp .\out\launcher.prg E:\LAUNCHER\LAUNCHER.PRG
-	#@cp .\out\launcher.prg E:\LAUNCHER\AUTOBOOT.X16 
-	@rm -f E:\LAUNCHER\.LAUNCHER.TMP
+	@cp .\out\launcher.prg E:\APPS\LAUNCHER.PRG
+	@rm -f E:\LAUNCHER.DATA\.LAUNCHER.TMP
+	@rm -f E:\.LAUNCHER.TMP
 
 all: bins main copy
 

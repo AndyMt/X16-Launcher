@@ -63,7 +63,7 @@ struct ini_section *read_ini(char *filename)
     if (!fp)
     {
 //printf("cannot open [%s]\n\r",filename);
-        return 0;
+        return NULL;
     }
 
     while(fgets(buf, MAXLINE, fp) != NULL)

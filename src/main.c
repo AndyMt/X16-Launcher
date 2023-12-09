@@ -654,8 +654,8 @@ void drawLayout()
     bgcolor(15);
 
     gotoxy(4,23);
-    printf(" use arrow keys + enter   ");
-
+    printf(" F1 for instructions      ");
+                                      //
     // background for thumbnail
     bgcolor(0);
     textcolor(1);
@@ -726,9 +726,6 @@ void init()
     // setup hardware
     SetupScreenMode();
     joy_install(cx16_std_joy);
-
-    // show startup info screen
-    manageInfoscreen();
 
     if (startDir[0])
         changeDir(startDir);
