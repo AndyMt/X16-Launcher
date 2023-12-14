@@ -39,6 +39,17 @@
             "externalConsole": false
         },
         {
+            "name": "(EMU) Launch from VHD",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "D:/Projects/RetroComputing/X16/emu/x16emu.exe",
+            "args": ["-sdcard", "SD9.VHD", "-scale","2", "-joy1", "-keymap", "de-ch" ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false
+        },
+        {
             "name": "(BOX16) Launch",
             "type": "cppvsdbg",
             "request": "launch",
