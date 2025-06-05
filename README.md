@@ -1,2 +1,56 @@
 # X16-Launcher
-Simple launcher for the Commander X16
+
+*Launcher for the Commander X16*<br>
+<img src="assets/launcher.png" width="256">
+
+This launcher allows to browse the directory structure of the SD card for X16 programs.<br>
+Each program is presented by a thumbnail with a short text description. This is done by providing thumbnail images in ABM format and a INF file for each PRG file.
+The match is done by matching the name portion of the filename.
+
+If a thumbnail is missing, then a default icon is shown.
+If no INF file is found, then just the program name is shown.
+
+Launcher can be operated by keyboard or gamepad/joystick.
+
+Shows an introduction message at the first start.
+
+## Configuration and Operating modes:
+
+Launcher can operate in 2 different modes: 
+
+### Local (default): 
+looks for the INF and ABM file inside the same directory of the PRG file. This means every program needs to reside in it's own directory with the same name as the PRG (without .prg extension).
+
+### Global: 
+looks for all INF and ABM files inside configurable directories. Filenames need to be the same as the PRG name.
+
+### LAUNCHER.INI file:
+>\# Configuration &ensp; *some comment line*<br>
+[Config]<br>
+localmode=0 &ensp; *operating mode*<br>
+startDir=/ &ensp; *where to start scanning for PRG files*<br>
+thumbDir=/LAUNCHER/.THUMB &ensp; *where the ABM files are located*<br>
+metaDir=/LAUNCHER/.META &ensp; *where the INF files are located*<br>
+launcherDir=/LAUNCHER &ensp; *where the launcher's temporary files are located*<br>
+
+## Metainformation files:
+
+text based file format as follows:
+1st to lines are parameters, the rest is description.
+
+>**Title:** *title to show. max 32 chars*<br>
+>**Author:** *optional - author of program orother copyright info.*<br>
+>*description. max 5x32 chars. Automatic word wrap.*
+
+## How to create thumbnails
+
+the ABM format is a binary image with 128x96 pixel of size, 8bpp.  **Example:**  
+![alt text](assets/Thumbnails128x96/BRIXX.png)
+
+The palette used is the default X16 ROM palette:<br>
+<img src="assets//X16DefaultPalette8bpp.png" alt="alt text" width="120"/><br>
+Make sure the source files use exactly this palette and **don't** change any color indices.
+
+## Building the provided thumbnails in this repository
+
+The source code contains the build.cmd script to build all thumbnails in the [assets directory](assets/Thumbnails128x96) using the tool [aloevera](https://github.com/yeastplume/aloevera).
