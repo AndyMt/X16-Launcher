@@ -77,5 +77,5 @@ The source code contains the [build.cmd](assets/build.cmd) script to build all t
 - use "make" to build the LAUNCHER.PRG
 
 ## Technical background
-*Launcher* uses 80x25 columns text mode. Actually it's 64x20 (512x192 pixels) to allow for overscan safe areas on CRTs. To show the thumbnails it's using sprites in a 8x3 8bpp configuration. Because of the doubled horizontal resolution in this mode each sprite has to stretch it's part of the thumbnail by a factor of 2 *(pity VERA doesn't support sprite stretch modes natively on VERA, the C64 did...)*. This increases loading time, so this part of the launcher is optimized in assembler.<br>
+*Launcher* uses 80x25 columns text mode. Actually it's 64x20 (512x192 pixels) to allow for overscan safe areas on CRTs. To show the thumbnails it's using sprites in a 8x3 8bpp configuration. Because of the doubled horizontal resolution in this mode each sprite has to stretch it's part of the thumbnail by a factor of 2 *(pity VERA doesn't support sprite stretch modes natively, the C64 did...)*. This increases loading time, so this part of the launcher is optimized in assembler.<br>
 To safe time the default X16 palette is used. Consequently all source material for thumbnails needs to be exactly 128x96 pixels of size. The color indexes used need to be exactly the same as in the default palette. This reduces loading time.
