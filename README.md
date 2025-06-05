@@ -5,14 +5,29 @@
 
 This launcher allows to browse the directory structure of the SD card for X16 programs.<br>
 Each program is presented by a thumbnail with a short text description. This is done by providing thumbnail images in ABM format and a INF file for each PRG file.
-The match is done by matching the name portion of the filename.
+The match is performed by the name portion of the PRG filename.
 
 If a thumbnail is missing, then a default icon is shown.
 If no INF file is found, then just the program name is shown.
 
-Launcher can be operated by keyboard or gamepad/joystick.
+## Using Launcher
 
+Launcher can be operated by keyboard or gamepad/joystick.
 Shows an introduction message at the first start.
+
+**Navigation by keyboard:**
+- up/down:    scroll through directory list<br>
+- left/right: cycle through thumbnails (if multiple)<br>
+- enter:      select directory or start program<br>
+- dot:        to parent directory<br>
+- any letter: jump directly in the list<br>
+- f1:         show introduction message
+- esc:        exit launcher
+
+**Navigation by joystick/controller:**
+- up/down:    scroll through directory list<br>
+- left:       to parent directory<br>
+- any button: select directory or start program<br>
 
 ## Configuration and Operating modes:
 
@@ -35,8 +50,8 @@ launcherDir=/LAUNCHER &ensp; *where the launcher's temporary files are located*<
 
 ## Metainformation files:
 
-text based file format as follows:
-1st to lines are parameters, the rest is description.
+text based file format as follows:<br>
+1st two lines are parameters, the rest is description.
 
 >**Title:** *title to show. max 32 chars*<br>
 >**Author:** *optional - author of program orother copyright info.*<br>
@@ -62,5 +77,5 @@ The source code contains the [build.cmd](assets/build.cmd) script to build all t
 - use "make" to build the LAUNCHER.PRG
 
 ## Technical background
-*Launcher* uses 80x25 columns text mode. Actually it's 64x20 (512x192 pixels) to allow for overscan safe areas on CRTs. To show the thumbnails it's using sprites in a 8x3 8bpp configuration. Because of the doubled horizontal resolution in this text mode each sprite has to stretch it's part of the thumbnail by a factor of 2 *(pity VERA doesn't support sprite stretch modes natively on VERA, the C64 did...)*. This increases loading time, so this part of the launcher is optimized in assembler.<br>
+*Launcher* uses 80x25 columns text mode. Actually it's 64x20 (512x192 pixels) to allow for overscan safe areas on CRTs. To show the thumbnails it's using sprites in a 8x3 8bpp configuration. Because of the doubled horizontal resolution in this mode each sprite has to stretch it's part of the thumbnail by a factor of 2 *(pity VERA doesn't support sprite stretch modes natively on VERA, the C64 did...)*. This increases loading time, so this part of the launcher is optimized in assembler.<br>
 To safe time the default X16 palette is used. Consequently all source material for thumbnails needs to be exactly 128x96 pixels of size. The color indexes used need to be exactly the same as in the default palette. This reduces loading time.
